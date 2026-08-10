@@ -11,6 +11,8 @@ This file is an append-only diagnostic index with a bounded active-entry lifecyc
 
 Each entry contains one prerequisite question and one evidence category only. The canonical verbatim response, hints, and demonstrated evidence live in `learning-records/{{EVIDENCE_ID}}.md`-style records and are referenced by both Evidence ID and Obsidian link.
 
+Multiple-choice or true/false is the default for initial diagnosis, end-of-Note checkpoints, and ordinary knowledge checks. Ask one item at a time. Use a produced-work follow-up when the target itself is derivation, proof, calculation, source translation, or implementation reasoning. Do not infer reconstruction from option recognition.
+
 ## Diagnostic index
 
 | Diagnostic ID | Date | Session | Prerequisite | Evidence ID + Obsidian link | Status |
@@ -29,6 +31,11 @@ Copy the following level-2 section for every new diagnostic. Change the stable I
 - **Supersedes Diagnostic ID, if any:**
 - **Prerequisite being tested:**
 - **Evidence category:** explanation, derivation, proof, or computation
+- **Question type:** multiple-choice, true/false, or produced-work follow-up
+- **Complete option text, when applicable:**
+- **Correct-option position:** PENDING until after the learner responds; then record the evaluated position
+- **Misconception mapped to each distractor:**
+- **Produced-work follow-up required for the target, if any:**
 - **Related mission target:**
 - **Source anchors:** reference the repeatable anchor table in {{EVIDENCE_ID}} — {{OBSIDIAN_LINK}} when applicable
 - **One question, exactly as asked:**

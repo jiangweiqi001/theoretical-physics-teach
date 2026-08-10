@@ -46,10 +46,16 @@ Record the learner's first response verbatim before any hint, correction, worked
 
 If the learner gave self-report or conversational context but no observable performance was requested, write `No observable attempt elicited` under work shown and assign level 0; do not infer a positive capability.
 
+- Exact question or task shown to the learner:
+- Question type: multiple-choice, true/false, or produced work
+- Complete options shown, when applicable:
+- Learner's selected option or true/false response, when applicable:
+- Misconception associated with the selected distractor, when applicable:
 - Time or source access allowed:
 - Work shown without assistance:
 - Correct elements:
 - Incorrect, missing, or uncertain elements:
+- Produced-work follow-up requested for reconstruction, proof, calculation, translation, or implementation, when applicable:
 
 ## Learner self-report
 
@@ -82,6 +88,8 @@ Do not merge assisted work into the unaided response.
 - Remaining gap:
 
 Level 0 makes no positive mastery claim. The four positive capability levels are not necessarily linear: evaluate only the capability and evidence required by the learner's target, without assuming that one label must precede or outrank another.
+
+Passing an option item alone does not establish reconstruction mastery. Record which interpretation or recognition boundary the response supports, then require the target derivation, proof, calculation, source translation, or implementation reasoning before a stronger judgment.
 
 ## Historical state changes caused by this evidence
 

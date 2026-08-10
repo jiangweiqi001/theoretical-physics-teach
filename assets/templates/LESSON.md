@@ -14,6 +14,10 @@ Build the complete symbol-and-code-identifier dependency graph before drafting t
 
 This exact leading section is also mandatory for every response-only finished Note or preview. Use $...$ for inline LaTeX and $$...$$ for display LaTeX. Never use backslash-parenthesis or backslash-bracket math delimiters in canonical or response-only Note content.
 
+Keep display-math fences on their own lines with blank lines around them. For multi-line algebra, use `\begin{aligned}` and `\end{aligned}` inside `$$...$$`; do not put a multi-line derivation in a Markdown table or a code fence.
+
+Use [[note#heading]] for section links and [[note#^block-id]] only when an exact equation or derivation step needs a stable deep link. Keep a linked heading or block ID stable; if it must change, repair every affected inbound link in the same writeback. Use a block ID only when `CURRENT-STATE.md` or another Note must reopen that exact local object.
+
 Only after reading the complete canonical index may you allocate a stable ID. Absence from the prompt is not evidence that an index is empty. In provisional response-only output, replace every concrete sample ID below with inert type-specific placeholders such as `{{LESSON_ID_PENDING}}`, `{{EVIDENCE_ID_PENDING}}`, `{{SOURCE_ID_PENDING}}`, `{{RELATION_ID_PENDING}}`, `{{NOTATION_ID_PENDING}}`, `{{CODE_MAP_ID_PENDING}}`, and `{{RUN_ID_PENDING}}`; emit no live Obsidian link. Do not claim that a canonical record was created.
 
 When continuing an existing lesson, do not repeat completed content. Before first use of any new symbol in added prose or formulas, display or apply a patch to the leading notation section that completes every symbol-definition field. Apply that notation patch before the content patch; in response-only output, show it first without claiming a canonical write. The first H2 of that continuation output must still be exactly `## Notation and conventions`.
@@ -22,6 +26,8 @@ When continuing an existing lesson, do not repeat completed content. Before firs
 - **Canonical lesson Obsidian link:** [[lessons/L-000001]]
 
 This lesson is canonical only for teaching content, check criteria, and links to stable Evidence IDs plus Obsidian links. The dependency graph belongs to `CONCEPT-MAP.md`, the active snapshot belongs to `CURRENT-STATE.md`, and historical learner evidence belongs to immutable `learning-records/EV-000001.md`-style instances.
+
+Before learner delivery, remove authoring instructions, unused schema rows, and inactive conditional sections from the instantiated Note. Keep only populated learner-facing content and active canonical links; never expose an empty code, comparison, execution, or assessment scaffold merely because it exists in this template.
 
 Preserve each dated prior Evidence boundary explicitly: date, evidence category, exact capability demonstrated, and exact unfinished boundary. In continuation and writeback patches, keep current self-report, prior unaided performance, and assisted work distinct; link the prior record when possible instead of compressing its demonstrated capability into a generic stop point.
 
@@ -84,6 +90,13 @@ Repeat the inventory scan until no undefined glyph remains. When a repair introd
 - Prerequisite Concept Node IDs and Edge IDs, linked without redefining them:
 - Prior Evidence ID + Obsidian links relied upon, such as EV-000001 — [[learning-records/EV-000001]], without copying learner history:
 - Separate prerequisite lesson to open if a required step is unfamiliar:
+
+## Note navigation
+
+- Prerequisite Note links with descriptive aliases:
+- Related Note links with descriptive aliases:
+- Parent Note bridge back to the first dependent section, when this is a prerequisite Note:
+- Next Note link, when already allocated:
 
 ## Exact source anchors and provenance
 
@@ -442,3 +455,16 @@ Without a canonical Run record and inspected output, a filename or pseudocode su
 - Next lesson link:
 
 Do not copy canonical learner history, current obstacles, queue state, or the exact resume snapshot into this lesson.
+
+Before writeback delivery, read from the preceding established result through the first downstream result affected by the edit. Confirm that the inserted explanation is at its first dependency point, both surrounding transitions are complete, stale obstacle text and duplicates are gone, local numbering and provenance remain consistent, and every changed Note link resolves.
+
+## End-of-Note checkpoint
+
+- Question type: multiple-choice or true/false by default; use a produced-work follow-up only when the target requires it
+- One concept or evidence category tested:
+- Question shown without its answer:
+- Options, when multiple-choice: three or four parallel plausible choices with varied correct-position placement
+- Misconception mapped to each distractor:
+- Observable interpretation or recognition criterion:
+- Required derivation, proof, calculation, translation, or implementation follow-up, when stronger mastery is targeted:
+- Evidence remains pending until the learner responds.

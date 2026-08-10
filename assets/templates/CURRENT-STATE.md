@@ -25,9 +25,13 @@ Add one row for every source needed to resume safely.
 
 ## Exact resume point
 
+- Active Note section or block link:
 - Exact equation, proof step, code operation, or sentence where work stopped:
+- Exact formula, proof step, code operation, or sentence label:
 - Last completed intermediate step:
+- Last completed section or block link:
 - First unfinished calculation or logical implication:
+- First unfinished section or block link:
 
 ## Current obstacle
 

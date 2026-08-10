@@ -126,9 +126,9 @@ Every notation entry records:
 
 Each lesson teaches one dependency-sized unit and contains:
 
-1. mission connection and prerequisites;
-2. source anchors;
-3. notation and conventions used in this lesson;
+1. a leading notation and conventions section;
+2. mission connection and prerequisites;
+3. source anchors;
 4. the physical question being answered;
 5. a step-by-step derivation with no unexplained algebraic or conceptual jump;
 6. the physical meaning of each important expression;
@@ -136,6 +136,18 @@ Each lesson teaches one dependency-sized unit and contains:
 8. comparison with other supplied sources;
 9. retrieval or derivation exercises;
 10. an observable mastery check and the next dependency.
+
+The first content section of every Note is `## Notation and conventions`. Before any new symbol appears in prose or an equation, this section records:
+
+- the exact glyph and how it is read;
+- mathematical type and domain, including index ranges;
+- physical meaning;
+- units or dimensions when applicable;
+- source ID and location;
+- sign, metric, Fourier-transform, normalization, natural-unit, and operator conventions that affect it;
+- the meaning of hats, bars, stars, boldface, subscripts, and superscripts.
+
+A previously defined symbol may link to `NOTATION-CROSSWALK.md`, but the Note must still state the local meaning when ambiguity is possible. Do not use a new letter first and define it several paragraphs later.
 
 When the learner says a field-theory or condensed-matter step is unfamiliar, the skill expands that prerequisite in a separate linked lesson instead of compressing it into a parenthetical aside.
 
@@ -244,6 +256,7 @@ Run realistic prompts without the new skill and record whether the agent:
 - normalizes conflicting source notation without a crosswalk;
 - skips unfamiliar derivation steps;
 - compresses algebra or logic behind phrases such as “obvious” or “similarly”;
+- uses new symbols before a leading notation section defines them;
 - teaches from memory instead of source anchors;
 - creates HTML or browser artifacts;
 - describes code without mapping it to equations and approximations.
@@ -260,6 +273,7 @@ Run the same prompts with the skill and require:
 - source-local notation plus explicit crosswalk;
 - prerequisite-aware, stepwise derivations;
 - complete intermediate calculations and explicit logical justifications without a length cap;
+- a leading Note-level notation section defining every new symbol before use;
 - separation of fact, approximation, disagreement, and inference;
 - conditional code-theory mapping.
 - exact resume behavior and canonical conversation writeback;

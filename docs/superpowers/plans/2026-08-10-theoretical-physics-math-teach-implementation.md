@@ -77,6 +77,7 @@ The script resolves the repository root, accumulates failures, and asserts:
 - `agents/openai.yaml` contains `allow_implicit_invocation: false`;
 - the skill names `CURRENT-STATE.md`, `NOTATION-CROSSWALK.md`, `SYNTHESIS.md`, and conversation writeback;
 - the skill explicitly permits long Notes and forbids skipped calculation or logic steps;
+- the lesson template begins with `## Notation and conventions` and requires every new symbol to be defined before use;
 - the package contains no canonical `lessons/*.html` or `reference/*.html` paths;
 - `NOTICE.md` identifies `mattpocock/skills`;
 - `LICENSE` retains `Copyright (c) 2026 Matt Pocock`.
@@ -177,7 +178,7 @@ Each file contains explicit headings rather than blank placeholders:
 - `ROADMAP.md` contains phases, prerequisite edges, source anchors, mastery target, exit evidence, and status;
 - `CONCEPT-MAP.md` contains concept nodes and explicit prerequisite edges;
 - `REVIEW-QUEUE.md` contains target, current level, failed evidence, review method, due condition, and result;
-- `LESSON.md` follows the ten-part physics lesson protocol and includes provenance labels;
+- `LESSON.md` begins its content with `## Notation and conventions`, defines every new symbol before use, then follows the remaining physics lesson protocol and includes provenance labels;
 - `LEARNING-RECORD.md` records task, unaided response, hints, mastery level, remaining gap, and state changes.
 
 - [ ] **Step 4: Commit templates**
@@ -200,7 +201,7 @@ Define material registration, stable source IDs, exact anchors, four provenance 
 
 - [ ] **Step 2: Write physics pedagogy**
 
-Define one-question diagnostics, four mastery levels, dependency-sized Notes with no length cap, complete intermediate calculations, explicit logical justifications, physical interpretation, limiting and dimensional checks, Chinese/source-language terminology, resume behavior, canonical conversation writeback, review queue updates, and pure-math support rules.
+Define one-question diagnostics, four mastery levels, a mandatory leading Note-level notation section, definitions of every new glyph/type/domain/meaning/dimension/convention before use, dependency-sized Notes with no length cap, complete intermediate calculations, explicit logical justifications, physical interpretation, limiting and dimensional checks, Chinese/source-language terminology, resume behavior, canonical conversation writeback, review queue updates, and pure-math support rules.
 
 - [ ] **Step 3: Write code-theory bridge**
 
@@ -229,7 +230,7 @@ description: Use when a user explicitly invokes this skill to study supplied the
 
 - [ ] **Step 2: Add invariant rules**
 
-Require a user-designated workspace outside the installed skill, Markdown-only artifacts, source-grounded claims, source-local notation, exact resume state, canonical writeback, no Note length cap, and no skipped calculation or logic steps.
+Require a user-designated workspace outside the installed skill, Markdown-only artifacts, source-grounded claims, source-local notation, a leading notation section in every Note, definitions of all new symbols before use, exact resume state, canonical writeback, no Note length cap, and no skipped calculation or logic steps.
 
 - [ ] **Step 3: Add action routing**
 

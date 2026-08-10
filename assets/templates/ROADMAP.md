@@ -41,4 +41,8 @@ Copy this keyed block for each stable Phase ID.
 | --- | --- | --- | --- | --- |
 |  |  |  | Phase premise, target, or comparison | Source, Reconstructed, Inference, or Unresolved |
 
+### Phase completion gate
+
+Do not set a phase's status to `complete` unless `Supporting Evidence ID + Obsidian link` contains at least one EV reference whose linked record satisfies that phase's exact `Observable exit criterion`. An unlinked ID, a link without an ID, progress elsewhere, or evidence for a different criterion cannot close the phase.
+
 Do not restate node definitions, edge endpoints, dependency reasons, or learner responses here. Resolve Node IDs and Edge IDs through `CONCEPT-MAP.md`; resolve evidence through both the Evidence ID and Obsidian link registered in `learning-records/INDEX.md`.

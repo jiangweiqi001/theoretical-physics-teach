@@ -127,7 +127,7 @@ When comparison is active, link canonical Synthesis IDs and Relation IDs from `S
 | --- | --- | --- | --- |
 | Y-001 | [[SYNTHESIS#Y-001]] | REL-000001 | [[SYNTHESIS#REL-000001]] |
 
-Never claim equivalence without following the assumption map owned by the linked Synthesis ID and Relation ID.
+Never claim equivalence without following the assumption map owned only by the canonical Relation registry entry. The linked Synthesis entry owns this lesson's comparison and application regime, not the assumptions that define whether the Relation holds.
 
 ## Code–theory map
 
@@ -135,13 +135,63 @@ Trigger this section only when supplied material includes code, pseudocode, nume
 
 Every lesson-local Code Map ID must include this lesson's stable ID as the prefix, for example `CMAP-L-000001-001`, and is canonical only inside this lesson. Complete the architecture-level map before adding line-level commentary.
 
-A map shared by multiple lessons is not lesson-local. Create its canonical file as `reference/code-maps/CMAP-GLOBAL-000001.md`, register it in `reference/code-maps/INDEX.md`, and place only its ID plus Obsidian link in this lesson. Never copy a shared architecture map into a lesson.
+A map shared by multiple lessons is not lesson-local. Create its canonical file as `reference/code-maps/CMAP-GLOBAL-0001.md`, register it in `reference/code-maps/INDEX.md`, and place only its ID plus Obsidian link in the lesson instance. Never copy a shared architecture map into a lesson.
 
-### Shared Code Map references
+### Shared global Code Map registry protocol
+
+These are copy-ready creation rules for the canonical registry and global map file. A completed lesson does not embed the populated registry row or global architecture fields; it fills only the reference table below.
+
+#### Global Code Map ID allocation and append-only index
+
+1. If `reference/code-maps/INDEX.md` does not exist, create it with the schema below and no data rows.
+2. Read every index event, find the largest numeric suffix ever used by an active, superseded, or tombstoned global map, add one, and zero-pad to four digits. Begin with `CMAP-GLOBAL-0001` when the index has no events.
+3. Never reuse a Code Map ID, including after supersession, deletion, failure, or tombstone.
+4. Create `reference/code-maps/CMAP-GLOBAL-0001.md` and append its `registered` event to the index.
+5. The index is append-only: never edit or delete an earlier event. Append lifecycle events for supersession or tombstone. A replacement receives a new Code Map ID, records `Supersedes`, and the prior canonical file records `Superseded-by`.
+6. A tombstoned ID remains in the index permanently with its reason and is never allocated again.
+
+The `reference/code-maps/INDEX.md` event-row schema is:
+
+| Event date and sequence | Code Map ID | Canonical Obsidian link | Map version | Code commit | Status event | Supersedes ID | Superseded-by ID | Tombstone reason |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+|  | CMAP-GLOBAL-0001 | [[reference/code-maps/CMAP-GLOBAL-0001]] |  |  | registered, superseded, or tombstone |  |  |  |
+
+#### Canonical global architecture map schema
+
+Copy this schema into `reference/code-maps/CMAP-GLOBAL-0001.md`, not into a lesson instance. Complete the architecture-level fields before adding any line-level mapping links.
+
+| Field | Canonical value |
+| --- | --- |
+| Code Map ID | CMAP-GLOBAL-0001 |
+| Canonical path and Obsidian link | `reference/code-maps/CMAP-GLOBAL-0001.md`; [[reference/code-maps/CMAP-GLOBAL-0001]] |
+| Title and reusable scope |  |
+| Map version |  |
+| Status | Active, superseded, or tombstoned |
+| Supersedes Code Map ID |  |
+| Superseded-by Code Map ID |  |
+| Tombstone reason, when applicable |  |
+| Theoretical object, equation, functional, action, or algorithm |  |
+| Theory source anchors and provenance |  |
+| Assumptions and controlled approximations |  |
+| Code repository and version |  |
+| Code commit |  |
+| Architecture entry points | Repository, package, module, or executable locations |
+| Modules and data flow |  |
+| Inputs and their physical meaning and units |  |
+| Outputs and their physical meaning and units |  |
+| Discretization |  |
+| Truncation |  |
+| Regulator |  |
+| Convergence and numerical-stability checks |  |
+| Validation observables and expected behavior |  |
+| Line-level mapping IDs or links |  |
+| What the code cannot establish or what must not be claimed |  |
+
+### Shared Code Map references in this lesson
 
 | Code Map ID | Canonical Obsidian link | Role in this lesson |
 | --- | --- | --- |
-| CMAP-GLOBAL-000001 | [[reference/code-maps/CMAP-GLOBAL-000001]] |  |
+| CMAP-GLOBAL-0001 | [[reference/code-maps/CMAP-GLOBAL-0001]] |  |
 
 ### Architecture-level map
 

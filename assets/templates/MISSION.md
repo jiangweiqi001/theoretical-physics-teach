@@ -42,19 +42,20 @@ Every demonstrated-prerequisite claim must cite one or more canonical evidence r
 
 ## Target mastery levels
 
-| Target concept or task | Target level | Observable performance |
-| --- | --- | --- |
-|  | Interpretation, reconstruction, synthesis, or implementation |  |
+| Target capability ID | Target concept or task | Target capability | Observable performance |
+| --- | --- | --- | --- |
+| T-001 |  | Interpretation, reconstruction, synthesis, or implementation |  |
 
 ## Completion evidence
 
-| Required completion item | Observable criterion | Evidence ID + Obsidian link | Gate status |
-| --- | --- | --- | --- |
-| Explanation |  | EV-000001 — [[learning-records/EV-000001]] | Open or satisfied |
-| Unaided derivation or proof |  |  | Open or satisfied |
-| Cross-source translation |  |  | Open, satisfied, or not applicable |
-| Implementation, when code or numerical work is in scope |  |  | Open, satisfied, or not applicable |
+Create one row for each capability named in `Target mastery levels`. Mark capabilities that are not mission targets `N/A`; do not invent requirements for them.
+
+| Target capability ID | Target capability | Applicability | Observable criterion | Evidence ID + Obsidian link | Gate status |
+| --- | --- | --- | --- | --- | --- |
+| T-001 | Interpretation | Required or N/A |  | EV-000001 — [[learning-records/EV-000001]] | Open, satisfied, or N/A |
 
 ### Completion gate
 
-Mark the mission complete only when every required row is `satisfied`, every accepted claim has an Evidence ID plus canonical Obsidian link, and the linked record demonstrates the row's observable criterion. Self-report, an unlinked ID, a link without an ID, recognition, or confidence alone cannot satisfy the gate.
+Target capabilities alone decide which rows are `Required`. An interpretation-only mission may mark reconstruction, derivation, proof, synthesis, and implementation `N/A`; it must not be forced to produce derivation or proof evidence unless those capabilities are explicit targets.
+
+Mark the mission complete only when every `Required` row is `satisfied`, every required row has an Evidence ID plus canonical Obsidian link, and the linked record demonstrates that row's observable criterion. Every non-target row must be explicitly `N/A`. Self-report, an unlinked ID, a link without an ID, recognition, or confidence alone cannot satisfy the gate.

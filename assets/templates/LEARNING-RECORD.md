@@ -4,17 +4,19 @@ This file is a copy template, not the canonical history file. Each canonical evi
 
 ## Evidence ID allocation and index
 
-1. Read `learning-records/INDEX.md` before allocating an Evidence ID.
-2. Find the largest numeric suffix ever registered, add one, and zero-pad it to six digits. If the index is empty, begin with `EV-000001`.
-3. Never reuse an Evidence ID, including after an erroneous, superseded, missing, or deleted record.
-4. Create the immutable instance at `learning-records/EV-000001.md`, append its row to the global index, and use both `EV-000001` and `[[learning-records/EV-000001]]` in every reference.
-5. Never accumulate multiple evidence instances in one `LEARNING-RECORD.md` file. Corrections use a new Evidence ID and link the superseded Evidence ID plus Obsidian link.
+1. If `learning-records/INDEX.md` does not exist, create it first with the append-only schema below and no data rows.
+2. Read the entire index before allocating an Evidence ID.
+3. Find the largest numeric suffix ever registered in any active, supersession, or tombstone event, add one, and zero-pad it to six digits. If the index has no events, begin with `EV-000001`.
+4. Never reuse an Evidence ID, including after an erroneous, superseded, missing, deleted, or tombstoned record.
+5. Create the immutable instance at `learning-records/EV-000001.md`, append its registration event to the global index, and use both `EV-000001` and `[[learning-records/EV-000001]]` in every reference.
+6. The index is append-only: never edit or delete an earlier event row. If a record becomes unusable, append a `tombstone` event with the reason and keep its numeric suffix permanently reserved.
+7. Never accumulate multiple evidence instances in one `LEARNING-RECORD.md` file. Corrections use a new Evidence ID, append a new registration event, and link the superseded Evidence ID plus Obsidian link.
 
 The `learning-records/INDEX.md` row schema is:
 
-| Evidence ID | Canonical Obsidian link | Date and session | Task label | Concept Node IDs | Mastery judgment | Supersedes Evidence ID + link |
-| --- | --- | --- | --- | --- | --- | --- |
-| EV-000001 | [[learning-records/EV-000001]] |  |  |  |  |  |
+| Event date and sequence | Evidence ID | Canonical Obsidian link | Status event | Date and session | Task label | Concept Node IDs | Mastery judgment | Supersedes Evidence ID + link | Tombstone reason |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+|  | EV-000001 | [[learning-records/EV-000001]] | registered, superseded, or tombstone |  |  |  |  |  |  |
 
 ## Evidence identity and task
 
@@ -96,7 +98,7 @@ Reference maps by stable ID and canonical Obsidian link; do not copy their conte
 | Code Map ID | Canonical Obsidian link | Scope | Role in this evidence |
 | --- | --- | --- | --- |
 | CMAP-L-000001-001 | [[lessons/L-000001#CMAP-L-000001-001]] | Lesson-local |  |
-| CMAP-GLOBAL-000001 | [[reference/code-maps/CMAP-GLOBAL-000001]] | Shared architecture |  |
+| CMAP-GLOBAL-0001 | [[reference/code-maps/CMAP-GLOBAL-0001]] | Shared architecture |  |
 
 ## Next observable check
 

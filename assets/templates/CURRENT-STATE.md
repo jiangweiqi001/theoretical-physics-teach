@@ -54,7 +54,7 @@ Do not copy the explanation, learner response, hints, or state-change history in
 | Code Map ID | Canonical Obsidian link | Scope | Active role |
 | --- | --- | --- | --- |
 | CMAP-L-000001-001 | [[lessons/L-000001#CMAP-L-000001-001]] | Lesson-local |  |
-| CMAP-GLOBAL-000001 | [[reference/code-maps/CMAP-GLOBAL-000001]] | Shared architecture |  |
+| CMAP-GLOBAL-0001 | [[reference/code-maps/CMAP-GLOBAL-0001]] | Shared architecture |  |
 
 ## Next action
 

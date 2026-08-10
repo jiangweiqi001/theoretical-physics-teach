@@ -2,7 +2,7 @@
 
 Compare physical objects and conclusions without flattening source-local notation or hiding incompatible assumptions.
 
-Use stable synthesis IDs such as `Y-001`. The narrow index is for navigation; each keyed synthesis entry contains the comparison details. `SYNTHESIS.md` is also the canonical owner of the general Relation registry; `NOTATION-CROSSWALK.md` remains the owner only of source-local notation entries.
+Use stable synthesis IDs such as `Y-001`. The narrow index is for navigation; each keyed synthesis entry contains the comparison details. `SYNTHESIS.md` is also the canonical owner of the general Relation registry, including the assumptions required for each Relation to hold; `NOTATION-CROSSWALK.md` remains the owner only of source-local notation entries.
 
 ## Synthesis index
 
@@ -25,6 +25,14 @@ Use exactly one of these six complete Relation types:
 
 No shorthand or alternative taxonomy value is valid as a Relation type. Put finer distinctions in notes.
 
+Minimum endpoint compatibility rules:
+
+- `same object, different notation` and `same notation, different object` require at least one endpoint of type `notation entry`; never use `same notation, different object` when neither endpoint is notation.
+- `equivalent only under stated assumptions` requires comparable objects, claims, results, theorems, methods, or code objects and a complete canonical assumption map.
+- `alternative approximation or renormalization scheme` permits method, assumption, claim, result, physical-object, or code-object endpoints and requires the differing approximation or scheme to be identified.
+- `apparent contradiction requiring resolution` requires endpoints that express conflicting claims, results, theorems, or source statements and records the evidence needed for resolution.
+- `historical or pedagogical restatement` requires evidence that the later endpoint is a historical or pedagogical presentation of the earlier one.
+
 ### Relation index
 
 | Relation ID | Left endpoint type | Right endpoint type | Relation type | Status |
@@ -41,6 +49,8 @@ Copy this subsection for every stable Relation ID.
 - **Relation type:** one exact six-class display name above
 - **Status:** proposed, verified, disputed, or superseded
 - **Assumptions required:**
+- **Supersedes Relation ID:**
+- **Superseded by Relation ID:**
 - **Comparison or translation map:**
 - **Differences that remain:**
 - **Notes that are not Relation types:**
@@ -87,7 +97,7 @@ Copy this source-record subsection once per compared source.
 | Exact location |  |
 | Role in comparison |  |
 | Provenance | Source, Reconstructed, Inference, or Unresolved |
-| Assumptions |  |
+| Source-local assumptions, not a Relation definition |  |
 | Method |  |
 | Approximation, regulator, expansion parameter, or limit |  |
 | Result or conclusion |  |
@@ -101,10 +111,11 @@ Reference the canonical Relation registry above. Do not copy endpoint data, type
 | --- | --- | --- |
 | REL-000001 | [[SYNTHESIS#REL-000001]] |  |
 
-#### Assumption map and result
+#### Application map and result
 
 - **Starting source statements:**
-- **Assumptions required for the relation:**
+- **Canonical Relation assumption map:** link the Relation heading above; do not copy its assumptions into this synthesis entry
+- **Additional application conditions for this synthesis, not part of the Relation definition:**
 - **Translation, comparison, or derivation steps:**
 - **Compared result:**
 - **Shared validity regime, if any:**

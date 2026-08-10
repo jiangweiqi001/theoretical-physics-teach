@@ -29,3 +29,7 @@ Copy this subsection for each stable Review ID.
 - **Result mastery level:** reference the judgment in the linked result evidence; do not duplicate the response or hints here
 - **Remaining-gap Evidence ID + Obsidian links:**
 - **Status:** Pending, scheduled, completed, or retired
+
+## Review completion gate
+
+Do not set a Review ID to `completed` unless `Result Evidence ID + Obsidian links` contains at least one EV reference whose linked record satisfies that review entry's `Target capability and observable criterion`. A scheduled attempt, an unlinked result, evidence for another target, or rereading alone cannot complete the review. Use `retired` rather than `completed` when the target is deliberately removed without mastery evidence.

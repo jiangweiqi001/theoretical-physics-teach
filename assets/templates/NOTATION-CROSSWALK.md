@@ -1,6 +1,6 @@
 # Notation Crosswalk
 
-Preserve the notation of each source. `NOTATION-CROSSWALK.md` is the exclusive canonical owner of source-local notation entries. General cross-source Relations, including Relations whose endpoints are not notation, are owned by the Relation registry in `SYNTHESIS.md`; this file only links relevant Relation IDs.
+Preserve the notation of each source. `NOTATION-CROSSWALK.md` is the exclusive canonical owner of source-local notation entries. General cross-source Relations, including Relations whose endpoints are not notation and the assumptions required for those Relations to hold, are owned by the Relation registry in `SYNTHESIS.md`. This file links relevant Relation IDs and stores only brief noncanonical counterpart and assumption mirrors; when a mirror conflicts with the linked Relation, `SYNTHESIS.md` is canonical.
 
 Use stable notation entry IDs such as `N-S1-001`. Never renumber an ID after another file links to it. The narrow index is for navigation; the keyed entry is canonical. Escape a literal vertical bar when it appears inside a Markdown table value.
 

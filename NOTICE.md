@@ -1,8 +1,10 @@
 # Notice
 
 This project is derived from Matt Pocock's `teach` skill in
-[mattpocock/skills](https://github.com/mattpocock/skills). The upstream project
-is licensed under the MIT License.
+[mattpocock/skills](https://github.com/mattpocock/skills). The exact upstream
+source used for this derivative is the revision-pinned
+[`teach` skill](https://github.com/mattpocock/skills/tree/84fdeffd12f2ee307994d1eb6feb48173b6e0502/skills/productivity/teach).
+The upstream project is licensed under the MIT License.
 
 This project is independent and is not endorsed by Matt Pocock.
 

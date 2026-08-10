@@ -11,14 +11,27 @@ Use only materials the user supplies or explicitly places in scope. Do not brows
 
 ## Non-negotiable invariants
 
-- Require a user-designated teaching workspace. Keep it outside the installed skill directory. Never write learning state, lessons, course files, snapshots, or learner evidence into the installed skill directory.
+- Stateful course use requires a real user-designated workspace. Keep it outside the installed skill directory. Never write learning state, lessons, course files, snapshots, or learner evidence into the installed skill directory.
 - Canonical teaching artifacts are Obsidian-compatible Markdown only.
 - Do not create HTML, CSS, JavaScript, or browser-dependent lessons.
+- Use $...$ for inline LaTeX and $$...$$ for display LaTeX.
+- Canonical Notes must not use backslash-parenthesis or backslash-bracket math delimiters.
 - Preserve each source's notation. Translate through `NOTATION-CROSSWALK.md` and compare through canonical Relations and entries in `SYNTHESIS.md`; never silently normalize sources into one convention.
 - Ground material-dependent claims in supplied evidence and exact, reopenable anchors. Do not expand the available evidence from memory.
 - Resume from the recorded first unfinished equation, proof step, code operation, or conceptual obstacle. Do not restart or silently skip ahead.
 - There is no Note length cap.
 - No skipped calculation or logic steps.
+
+## Workspace and response-only gate
+
+When the user explicitly requests a response-only finished Note, preview, or exact patch but has not authorized canonical writes or the workspace cannot actually be written, continue only with a provisional response:
+
+- State `Provisional response-only artifact; no canonical write performed.`
+- If a supplied excerpt cannot be registered or snapshotted, use the exact pending sentinel `Unassigned — supplied excerpt; snapshot registration pending`, give the visible session/excerpt locator, and do not invent a Source ID, version key, path, hash, or registration.
+- Follow every Note, notation, mathematics, provenance, and code non-claim rule below. Show the exact canonical patches that would be applied, but do not imply that any file changed.
+- State `Canonical writeback is not complete.` Never claim the conversation writeback or resume state was persisted.
+
+If response-only was not explicitly requested, ask for the workspace and stop.
 
 ## Load only what the action requires
 
@@ -53,11 +66,13 @@ Do not convert `Blocked` to `N/A` merely because evidence has not arrived.
 
 ## Lesson and Note contract
 
-For every lesson or Note, the first content H2 must be exactly:
+For every newly created lesson or Note, including a response-only finished Note or preview, the first content H2 must be exactly:
 
 `## Notation and conventions`
 
 Define every new symbol there before its first use in prose or equations. Complete the exact glyph and reading, mathematical type, domain, index ranges, physical meaning, units or dimensions, origin/provenance and exact anchor, local sign/metric/Fourier/normalization/natural-unit/boundary/operator conventions, and the meaning of hats, bars, stars, boldface, subscripts, and superscripts. Define meaning-changing decorated or indexed forms separately. A source or crosswalk link never waives the local definition.
+
+When continuing an existing lesson, resume at the recorded point without reteaching completed content. Before first use of any new symbol in added prose or formulas, display or apply a patch to the leading notation section that completes every symbol-definition field. Apply that notation patch before the content patch when canonical writing is available; in response-only output, show the notation patch first. Perform a symbol inventory audit before delivery.
 
 Preserve source-local symbols. Register source notation in `NOTATION-CROSSWALK.md`; place general cross-source Relations and their assumption maps in `SYNTHESIS.md`. Use exactly the six complete Relation types defined in `references/source-workflow.md`; do not shorten them or invent another type. Never claim equivalence without the canonical assumption map and its validity conditions.
 
@@ -76,6 +91,8 @@ Give each important claim, equation, convention, derivation step, comparison pre
 
 Never invent an equation, citation, convention, theorem, appendix, code behavior, or anchor. Git material uses an exact commit as its immutable anchor. For an independent file, chat excerpt, or inline pseudocode, first save a workspace read-only snapshot and record its path, hash algorithm and digest, received date, and exact block or algorithm-step locator.
 
+Before mapping inline or non-Git pseudocode to theory, display its immutable-anchor status. If a response-only context prevents a real snapshot, use `Unassigned — supplied excerpt; snapshot registration pending` with a temporary visible locator; never fabricate a snapshot path, hash, or registration. Without a canonical Run record and inspected output, a filename or pseudocode is not evidence of successful numerical calculation: describe only the intended output or interface and state `No execution or validation claim is made.`
+
 Put unavailable or ambiguous evidence and unresolved conflicts in `OPEN-QUESTIONS.md` with the evidence needed and next verification. Preserve conflicting anchored statements. Do not average them, select one silently, or call them equivalent without the required Relation and assumption map.
 
 ## Canonical ownership and evidence gates
@@ -93,7 +110,7 @@ Material intake, planning, an agent explanation, or a pure explanation with no l
 
 ## Writeback and completion gate
 
-Before ending a teaching turn:
+For a provisional response-only artifact, show the would-be patches and the two required provisional status statements instead of performing this checklist. Do not claim canonical writeback. Otherwise, before ending a teaching turn:
 
 1. Patch the active lesson or create and link the required prerequisite lesson when teaching content changed.
 2. Update every affected canonical source, notation, terminology, Relation, synthesis, Open Question, code-map, or Run record without duplicating its owner's data.
@@ -103,4 +120,4 @@ Before ending a teaching turn:
 
 Do not say the teaching task is complete unless every target-required `MISSION.md` completion row is satisfied by an Evidence ID plus resolvable canonical link that proves its observable criterion; `CURRENT-STATE.md` records a next action or explicit complete state consistent with those rows; required `OPEN-QUESTIONS.md` blockers are resolved or explicitly handled by scope; and all required local links resolve.
 
-If the workspace is unspecified, ask for it and stop. If a required source is unavailable, mark only the dependent branch Unresolved and create an Open Question. If notation is ambiguous or sources conflict, preserve the alternatives and record the gap. If evidence is missing, do not advance the affected mastery or completion state. If validation fails, repair it before claiming completion.
+If response-only was not explicitly requested, ask for the workspace and stop. If a required source is unavailable, mark only the dependent branch Unresolved and create an Open Question. If notation is ambiguous or sources conflict, preserve the alternatives and record the gap. If evidence is missing, do not advance the affected mastery or completion state. If validation fails, repair it before claiming completion.

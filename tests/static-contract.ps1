@@ -101,6 +101,8 @@ foreach ($relativePath in $requiredPaths) {
 }
 
 $skillText = Get-RepositoryText 'SKILL.md'
+$pedagogyText = Get-RepositoryText 'references/physics-pedagogy.md'
+$codeBridgeText = Get-RepositoryText 'references/code-theory-bridge.md'
 $skillFrontmatter = ''
 $frontmatterMatch = [regex]::Match(
     $skillText,
@@ -150,6 +152,75 @@ $defineBeforeUsePattern = '(?is)\b(?:define(?:s|d)? every new symbol|every new s
 Assert-Contract (
     [regex]::IsMatch($lessonTemplate, $defineBeforeUsePattern)
 ) 'LESSON.md requires every new symbol to be defined before use'
+
+$mathDelimiterPolicy = 'Use $...$ for inline LaTeX and $$...$$ for display LaTeX.'
+foreach ($policyTarget in @(
+    @{ Name = 'SKILL.md'; Text = $skillText }
+    @{ Name = 'references/physics-pedagogy.md'; Text = $pedagogyText }
+    @{ Name = 'assets/templates/LESSON.md'; Text = $lessonTemplate }
+)) {
+    Assert-Contract (
+        $policyTarget.Text.Contains($mathDelimiterPolicy)
+    ) "$($policyTarget.Name) states: $mathDelimiterPolicy"
+}
+
+foreach ($requiredResponseOnlySkillPhrase in @(
+    'Stateful course use requires a real user-designated workspace.'
+    'response-only finished Note, preview, or exact patch'
+    'Provisional response-only artifact; no canonical write performed.'
+    'Unassigned — supplied excerpt; snapshot registration pending'
+    'Canonical writeback is not complete.'
+    'If response-only was not explicitly requested, ask for the workspace and stop.'
+)) {
+    Assert-Contract (
+        $skillText.Contains($requiredResponseOnlySkillPhrase)
+    ) "SKILL.md states response-only policy: $requiredResponseOnlySkillPhrase"
+}
+
+foreach ($requiredResponseOnlyPedagogyPhrase in @(
+    'response-only finished Note, preview, or exact patch'
+    'Provisional response-only artifact; no canonical write performed.'
+    'Unassigned — supplied excerpt; snapshot registration pending'
+    'Canonical writeback is not complete.'
+)) {
+    Assert-Contract (
+        $pedagogyText.Contains($requiredResponseOnlyPedagogyPhrase)
+    ) "physics-pedagogy.md states response-only policy: $requiredResponseOnlyPedagogyPhrase"
+}
+
+$notationContinuationPolicy = 'Before first use of any new symbol in added prose or formulas, display or apply a patch to the leading notation section that completes every symbol-definition field.'
+$symbolInventoryPolicy = 'Perform a symbol inventory audit before delivery.'
+foreach ($notationPolicyTarget in @(
+    @{ Name = 'SKILL.md'; Text = $skillText }
+    @{ Name = 'references/physics-pedagogy.md'; Text = $pedagogyText }
+)) {
+    Assert-Contract (
+        $notationPolicyTarget.Text.Contains($notationContinuationPolicy)
+    ) "$($notationPolicyTarget.Name) requires the continuation notation patch"
+    Assert-Contract (
+        $notationPolicyTarget.Text.Contains($symbolInventoryPolicy)
+    ) "$($notationPolicyTarget.Name) requires a pre-delivery symbol inventory"
+}
+Assert-Contract (
+    $lessonTemplate.Contains('### Pre-delivery symbol inventory audit') -and
+    $lessonTemplate.Contains($symbolInventoryPolicy)
+) 'LESSON.md contains an explicit pre-delivery symbol inventory checklist'
+
+$pendingSourceSentinel = 'Unassigned — supplied excerpt; snapshot registration pending'
+$executionNonClaimPolicy = 'No execution or validation claim is made.'
+foreach ($codePolicyTarget in @(
+    @{ Name = 'references/code-theory-bridge.md'; Text = $codeBridgeText }
+    @{ Name = 'assets/templates/LESSON.md'; Text = $lessonTemplate }
+)) {
+    Assert-Contract (
+        $codePolicyTarget.Text.Contains('Immutable-anchor status') -and
+        $codePolicyTarget.Text.Contains($pendingSourceSentinel)
+    ) "$($codePolicyTarget.Name) requires an explicit immutable-anchor status"
+    Assert-Contract (
+        $codePolicyTarget.Text.Contains('intended output or interface') -and
+        $codePolicyTarget.Text.Contains($executionNonClaimPolicy)
+    ) "$($codePolicyTarget.Name) forbids execution or validation claims without a canonical Run"
+}
 
 $lessonHtml = @(
     Get-ChildItem -LiteralPath (Join-Path $repoRoot 'lessons') -Filter '*.html' -File -Recurse -ErrorAction SilentlyContinue
@@ -203,10 +274,12 @@ foreach ($relativeDirectory in @('references', 'assets/templates')) {
 $tagDiagnostics = @(Get-InstructionMatchDiagnostics $instructionFiles '(?i)</?[A-Za-z][A-Za-z0-9-]*(?:\s[^>]*)?\s*/?>')
 $htmlPathDiagnostics = @(Get-InstructionMatchDiagnostics $instructionFiles '(?i)\b(?:lessons|references?)[/\\][^\s)\]>]*\.html\b')
 $stylePathDiagnostics = @(Get-InstructionMatchDiagnostics $instructionFiles '(?i)\b(?:lessons|references?)[/\\][^\s)\]>]*\.(?:css|js)\b')
+$mathDelimiterDiagnostics = @(Get-InstructionMatchDiagnostics $instructionFiles '\\[\(\)\[\]]')
 
 $tagMessage = 'skill instructions and templates contain no forbidden HTML markup tags'
 $htmlPathMessage = 'skill instructions and templates contain no canonical lesson or reference HTML paths'
 $stylePathMessage = 'skill instructions and templates contain no canonical lesson or reference CSS/JavaScript paths'
+$mathDelimiterMessage = 'canonical skill instructions and templates contain no backslash-parenthesis or backslash-bracket math delimiters'
 if ($tagDiagnostics.Count -gt 0) {
     $tagMessage += '. Matches: ' + ($tagDiagnostics -join '; ')
 }
@@ -216,10 +289,14 @@ if ($htmlPathDiagnostics.Count -gt 0) {
 if ($stylePathDiagnostics.Count -gt 0) {
     $stylePathMessage += '. Matches: ' + ($stylePathDiagnostics -join '; ')
 }
+if ($mathDelimiterDiagnostics.Count -gt 0) {
+    $mathDelimiterMessage += '. Matches: ' + ($mathDelimiterDiagnostics -join '; ')
+}
 
 Assert-Contract ($tagDiagnostics.Count -eq 0) $tagMessage
 Assert-Contract ($htmlPathDiagnostics.Count -eq 0) $htmlPathMessage
 Assert-Contract ($stylePathDiagnostics.Count -eq 0) $stylePathMessage
+Assert-Contract ($mathDelimiterDiagnostics.Count -eq 0) $mathDelimiterMessage
 
 $normalizedSkillText = [regex]::Replace($skillText, '\s+', ' ')
 $markdownOnlyPolicy = 'Canonical teaching artifacts are Obsidian-compatible Markdown only.'

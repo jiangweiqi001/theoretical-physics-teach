@@ -4,6 +4,10 @@
 
 Every new symbol must be defined before first use in prose or equations, regardless of whether its origin/provenance is `Source / crosswalk / defined here`. Complete every required field below before writing any later section. Include each decorated or indexed form as its own entry whenever a hat, bar, star, boldface, subscript, or superscript changes the meaning, type, domain, or convention.
 
+This exact leading section is also mandatory for every response-only finished Note or preview. Use $...$ for inline LaTeX and $$...$$ for display LaTeX. Never use backslash-parenthesis or backslash-bracket math delimiters in canonical or response-only Note content.
+
+When continuing an existing lesson, do not repeat completed content. Before first use of any new symbol in added prose or formulas, display or apply a patch to the leading notation section that completes every symbol-definition field. Apply that notation patch before the content patch; in response-only output, show it first without claiming a canonical write.
+
 - **Stable Lesson ID:** L-000001
 - **Canonical lesson Obsidian link:** [[lessons/L-000001]]
 
@@ -44,6 +48,16 @@ Record all sign, metric, Fourier-transform, normalization, natural-unit, boundar
 |  |  |  |  |
 
 Before proceeding, verify that every symbol used below has a complete entry above. A crosswalk or source link does not waive the before-first-use definition requirement; state the lesson-local meaning whenever ambiguity is possible.
+
+### Pre-delivery symbol inventory audit
+
+Perform a symbol inventory audit before delivery.
+
+- [ ] Inventory every glyph used in prose, inline mathematics, display mathematics, tables, and checks.
+- [ ] Confirm each glyph and every meaning-changing indexed or decorated form has a complete local definition above before first use.
+- [ ] Confirm each definition includes glyph/read-as, type, domain/index range, meaning, units/dimensions, source or origin anchor, local convention, and decoration meanings.
+- [ ] For a continued lesson, confirm the leading-notation patch appears or was applied before the first added use; do not reteach completed content.
+- [ ] Confirm all mathematics uses the required dollar-delimited LaTeX forms.
 
 ## Mission connection and prerequisites
 
@@ -140,6 +154,13 @@ Set exactly one state:
 - **Code bridge state:** Active, Blocked — awaiting Q-001 — [[OPEN-QUESTIONS#Q-001]], or N/A — implementation not a mission target
 
 Only an Active section continues below. A Git repository uses a commit as its immutable revision anchor. An independent file, chat excerpt, or inline pseudocode first becomes a workspace read-only snapshot registered in `MATERIALS.md`, with snapshot path, content hash, received date, and block/algorithm-step locator. Never reject usable non-Git material merely because it has no commit, and never invent a commit.
+
+Before any theoretical mapping, display the anchor state:
+
+- **Immutable-anchor status:** registered Git commit or snapshot anchor; or `Unassigned — supplied excerpt; snapshot registration pending`
+- **Temporary visible excerpt/block locator, when pending:**
+
+When the pending sentinel is required in response-only output, the mapping is provisional and no canonical Code Map exists. Do not invent a stable key, snapshot path, hash, or registration.
 
 Every lesson-local Code Map ID includes the stable Lesson ID, for example `CMAP-L-000001-001`, and is canonical only inside this lesson. It has a version, lifecycle status, and supersession links. Once an Evidence record links a Code Map ID, do not rewrite that ID's stable meaning; retain it and create a new local Code Map ID with bidirectional supersession fields. Complete architecture fields before line-level commentary.
 
@@ -367,7 +388,7 @@ Copy this schema into `execution-records/RUN-000001.md`:
 | --- | --- | --- | --- | --- |
 | RUN-000001-E1 | Observed execution evidence or Computed execution evidence |  |  |  |
 
-Without a Run ID plus canonical link, do not claim that code was executed, outputs matched, or convergence was observed or computed.
+Without a canonical Run record and inspected output, a filename or pseudocode supports only the intended output or interface. State `No execution or validation claim is made.` Without a Run ID plus canonical link, do not claim that code was executed, outputs matched, or convergence was observed or computed.
 
 ### Execution Record references in this lesson
 

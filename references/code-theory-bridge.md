@@ -12,6 +12,8 @@ Only `Active` continues through this protocol. Do not turn `Blocked` into `N/A` 
 
 Register the code or pseudocode in an immutable keyed version record in `MATERIALS.md` before mapping it. Git material uses the exact commit as its immutable revision anchor; a branch name or mutable working tree is insufficient. For an independent file, chat excerpt, or inline pseudocode, first save a workspace read-only snapshot and record its path, hash algorithm and digest, received date, and exact block/algorithm-step locator. Do not reject non-Git material for lacking a commit and never invent one.
 
+Before any theoretical mapping of inline or non-Git pseudocode, display `Immutable-anchor status` explicitly. Use the registered snapshot path, hash, received date, and block locator when they exist. In a response-only context where no real snapshot can be written, display `Unassigned — supplied excerpt; snapshot registration pending` plus the temporary visible excerpt/block locator. The resulting explanation or mapping is provisional, not a canonical Code Map. Never invent a snapshot path, content hash, stable key, or registration.
+
 Separate claims as follows:
 
 - **Source:** syntax, control flow, constants, calls, data shapes, or behavior directly visible at an immutable commit-or-snapshot anchor;
@@ -74,6 +76,8 @@ The canonical global map records its map version, immutable commit-or-snapshot a
 ## 5. Validate without overclaiming
 
 Distinguish code inspection, successful execution, numerical agreement, convergence evidence, and physical proof. A run can show only what happened for its immutable revision anchor, inputs, environment, precision, and tolerances. Passing tests or matching a benchmark does not prove the underlying physical model, approximations, regime of validity, or uniqueness of interpretation.
+
+Without a canonical Run record and direct inspection of its output artifacts, a filename, function name, or pseudocode is not evidence of a successful numerical calculation. Describe only the intended output or interface, and state `No execution or validation claim is made.` Do not relabel an intended result as Observed execution evidence or Computed execution evidence.
 
 Use the append-only `execution-records/INDEX.md` and immutable `execution-records/RUN-000001.md`-style records defined by the copy-ready `LESSON.md` schema. Allocate a never-reused Run ID from all `registered`, `superseded`, and `tombstone` events. Record status/supersession, immutable revision or snapshot anchor, exact command, environment, precision/tolerances, inputs/parameters, raw output artifact paths and hashes, convergence sequence, acceptance criteria, outcome/discrepancy, and remaining non-claims. Corrections use a new Run ID; do not rewrite an old Run.
 

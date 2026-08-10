@@ -45,10 +45,10 @@ The six complete display names are:
 
 - `same object, different notation`
 - `same notation, different object`
-- `shifted or rescaled convention`
-- `approximation-dependent correspondence`
+- `equivalent only under stated assumptions`
+- `alternative approximation or renormalization scheme`
+- `apparent contradiction requiring resolution`
 - `historical or pedagogical restatement`
-- `unresolved or genuinely conflicting`
 
 | Relation ID | Controlled classification | Relation status | Role in this synthesis |
 | --- | --- | --- | --- |

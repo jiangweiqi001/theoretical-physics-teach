@@ -42,10 +42,10 @@ Use exactly one of these six complete display names:
 
 - `same object, different notation`
 - `same notation, different object`
-- `shifted or rescaled convention`
-- `approximation-dependent correspondence`
+- `equivalent only under stated assumptions`
+- `alternative approximation or renormalization scheme`
+- `apparent contradiction requiring resolution`
 - `historical or pedagogical restatement`
-- `unresolved or genuinely conflicting`
 
 | Relation ID | Left entry ID | Right entry ID | Controlled classification | Status |
 | --- | --- | --- | --- | --- |

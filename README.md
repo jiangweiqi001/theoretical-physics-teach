@@ -89,6 +89,7 @@ Git material is anchored to an exact commit. Non-Git files, chat excerpts, and i
 
 ## Limitations
 
+- Canonical teaching artifacts are Obsidian-compatible Markdown only. The skill does not create HTML, CSS, JavaScript, or browser-dependent lessons, and it requires no website or browser presentation.
 - This skill supplements rather than replaces the original materials, independent calculation, or expert review. Its output is not a guarantee of correctness.
 - It does not invent missing equations, citations, conventions, code behavior, or evidence. Unavailable or conflicting evidence remains explicitly unresolved.
 - It does not silently reconcile contradictory notation, assumptions, approximations, or results.

@@ -1,6 +1,6 @@
 # Code-Theory Bridge Protocol
 
-Use this protocol only when supplied material contains code, pseudocode, a numerical/reproducibility method, or the learner's target explicitly includes implementation. Otherwise mark the lesson section not applicable and do not manufacture a code track.
+Use this protocol only when the learner has supplied or explicitly included in the course scope code, pseudocode, a numerical algorithm, or reproducibility material. Such material is required: an implementation target alone does not activate the bridge. If implementation is a target but no such material is available yet, record the missing material and evidence needed in `OPEN-QUESTIONS.md`, mark the lesson section as awaiting material or not applicable, and do not construct a code map.
 
 ## 1. Pin evidence and establish scope
 

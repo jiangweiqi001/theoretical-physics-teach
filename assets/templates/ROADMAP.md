@@ -37,7 +37,7 @@ Copy this keyed block for each stable Phase ID.
 
 #### P-001 exact source anchors
 
-| Source ID | Version | Exact location | Role | Provenance |
+| Source ID | Stable version key | Exact location | Role | Provenance |
 | --- | --- | --- | --- | --- |
 |  |  |  | Phase premise, target, or comparison | Source, Reconstructed, Inference, or Unresolved |
 

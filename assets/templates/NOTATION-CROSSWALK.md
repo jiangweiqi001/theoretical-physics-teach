@@ -27,7 +27,7 @@ Copy the following subsection for every source-local symbol or meaning-changing 
 | Physical meaning |  |
 | Units or dimensions |  |
 | Stable source ID | S1 |
-| Source version |  |
+| Stable source version key | S1-V001 |
 | Exact source location |  |
 | Sign, metric, Fourier-transform, normalization, natural-unit, boundary, and operator conventions |  |
 | Meaning of hats, bars, stars, boldface, subscripts, and superscripts |  |
@@ -47,7 +47,7 @@ Every notation entry directly records each relevant cross-source relation. Copy 
 | Relation to symbol or object in another source | Briefly state what this notation entry is related to |
 | Relation ID + canonical Obsidian link | REL-000001 — [[SYNTHESIS#REL-000001]] |
 | Counterpart endpoint type | Notation entry, physical object, assumption, method, claim, result, theorem, or code object |
-| Counterpart stable ID or canonical source anchor | Stable ID; or source ID, version, exact location, role, and provenance |
+| Counterpart stable ID or canonical source anchor | Stable ID; or source ID, stable version key, exact location, role, and provenance |
 | Counterpart Notation Entry ID, when applicable |  |
 | Assumptions under which the relation holds | Brief assumption map plus [[SYNTHESIS#REL-000001]] |
 | Canonical authority | The Relation heading [[SYNTHESIS#REL-000001]] is canonical; if this brief record conflicts with it, update this record to match `SYNTHESIS.md` |

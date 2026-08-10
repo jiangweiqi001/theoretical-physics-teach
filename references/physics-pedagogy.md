@@ -4,15 +4,17 @@ Use this protocol for diagnostics, lessons, clarification, review, and mastery d
 
 ## 1. Resume before teaching
 
-Before every teaching action, read `CURRENT-STATE.md`, the active lesson, and the latest linked immutable Evidence record. Open the referenced roadmap phase, Concept Nodes/Edges, source anchors, notation entries, Relations, Synthesis entries, Reviews, and Code Maps needed for the next action. Resume at the recorded first unfinished equation, proof step, code operation, or conceptual obstacle; do not restart or silently skip ahead.
+Before every teaching action, read `CURRENT-STATE.md`, the active lesson when one exists, and the latest linked immutable Evidence record when one exists. Open the referenced roadmap phase, Concept Nodes/Edges, source anchors, notation entries, Relations, Synthesis entries, Reviews, Code Maps, and Run records needed for the next action. Resume at the recorded first unfinished equation, proof step, code operation, or conceptual obstacle; do not restart or silently skip ahead.
 
-`CURRENT-STATE.md` owns only the current active snapshot. It must identify the exact stop point, last completed intermediate step, first unfinished implication, obstacle, required anchors, latest evidence, and one next action. Historical transitions belong only to Evidence instances.
+On first bootstrap, `CURRENT-STATE.md`, an active lesson, or prior Evidence may not exist. Initialize the required canonical documents and an atomic current snapshot from the mission and registered materials; write `None yet — bootstrap` instead of inventing lesson or Evidence links. Material intake, agent explanation, and planning without a learner response, self-report, or attempt update the canonical documents and current snapshot but do not create Evidence.
+
+`CURRENT-STATE.md` owns only the current active snapshot. It must identify the exact stop point, last completed intermediate step, first unfinished implication, obstacle, required anchors, latest evidence when one exists, and one next action. Evidence-caused historical transitions belong only to Evidence instances; bootstrap or administrative snapshot replacement without learner evidence does not invent history.
 
 ## 2. Diagnose one dependency at a time
 
 Ask exactly one prerequisite question and test exactly one evidence category per diagnostic entry. Before asking, allocate a new Diagnostic ID in `BASELINE.md`, append its active index row, and create its keyed entry with the exact question. A learner saying "I do not know" locates the starting dependency; it is not failure.
 
-After the answer, allocate the next Evidence ID through the append-only `learning-records/INDEX.md` and create its immutable instance. Complete the active diagnostic once, link both Evidence ID and canonical Obsidian link, then finalize or confirm it. Never reopen a finalized entry; corrections receive a new Diagnostic ID that supersedes it.
+After the answer, allocate the next Evidence ID through the append-only `learning-records/INDEX.md` and create its immutable instance. Complete the active diagnostic once, link both Evidence ID and canonical Obsidian link, then finalize or confirm it. Never reopen a finalized entry; corrections receive a new Diagnostic ID that supersedes it. If the learner supplied only self-report or a response with no performance opportunity, record `No observable attempt elicited` and level 0 rather than inferring capability.
 
 Keep these evidence channels separate:
 
@@ -32,7 +34,7 @@ Immediately after the level-1 title, the first content level-2 heading must be e
 
 Before a new symbol appears anywhere else in prose or equations, complete its lesson-local definition there: stable local symbol ID, exact glyph and reading, mathematical type, domain, index range, physical meaning, units/dimensions, origin/provenance and exact anchor, local convention, and the meaning of all hats, bars, stars, boldface, subscripts, and superscripts. A source or crosswalk link does not waive the local definition. Add meaning-changing decorated or indexed forms separately. If a later edit needs a new symbol, update this leading section first.
 
-After notation, follow the canonical `LESSON.md` order: mission connection and prerequisites; exact anchors and provenance; one physical question; complete derivation or proof; interpretation and checks; conditional comparison/code map; exercises; mastery check and next dependency. Preserve source-local symbols and pair the learner's explanatory language with the source-language technical term at first use.
+After notation, follow the canonical `LESSON.md` order: mission connection and prerequisites; exact anchors and provenance; one physical question; complete derivation or proof; interpretation and checks; conditional comparison/code map; exercises; mastery check and next dependency. Preserve source-local symbols and pair the learner's explanatory language with the source-language technical term at first use. Add a new first-use bilingual term or a term whose meaning is source-dependent to `GLOSSARY.md`; that file owns terminology definitions and ambiguity records, while the lesson links the relevant term in context.
 
 ## 4. Close every calculation and implication
 
@@ -60,7 +62,7 @@ Use `level 0 - not yet demonstrated / insufficient evidence` when no positive ma
 
 These capabilities are not a mandatory linear ladder. Assess only the mission target and its stated observable criterion. Recognition, rereading, confidence, an unlinked ID, or success after undisclosed assistance cannot satisfy an evidence gate.
 
-Create one immutable `learning-records/EV-000001.md`-style instance per attempt, with a never-reused ID registered in the append-only index. Record source anchors, unaided work, self-report, ordered hints/assistance, the target-specific judgment, capabilities not demonstrated, remaining gap, and every state change caused by the evidence. Corrections use a new Evidence ID and link the superseded record.
+Create one immutable `learning-records/EV-000001.md`-style instance only when the learner supplied a response, self-report, or attempt, with a never-reused ID registered in the append-only index. Record source anchors, unaided work or `No observable attempt elicited`, self-report, ordered hints/assistance, the target-specific judgment, capabilities not demonstrated, remaining gap, and every state change caused by the evidence. Corrections use a new Evidence ID and link the superseded record. Never fabricate learner Evidence merely to document material intake, an agent explanation, or planning.
 
 Do not mark a Mission target, Roadmap phase, Concept Node, or Review complete unless a linked Evidence ID and canonical Obsidian link demonstrate that exact observable criterion. A Review uses retrieval, a limiting-case check, short derivation/proof, source translation, or implementation validation; rereading alone is not completion.
 
@@ -68,11 +70,11 @@ Do not mark a Mission target, Roadmap phase, Concept Node, or Review complete un
 
 Chat is never canonical memory. After every substantive exchange, perform one coherent writeback:
 
-1. patch the active lesson when the explanation belongs to its dependency; otherwise create and link a new prerequisite lesson;
-2. update canonical notation, source, Relation, Synthesis, Open Question, or Code Map records affected by the exchange;
-3. update `CONCEPT-MAP.md` only for the current canonical nodes/edges, and `ROADMAP.md` only for phase ordering, targets, exit criteria, and status;
-4. create and index the immutable Evidence record for the attempt, including the prior-to-new snapshot transition;
-5. add or update `REVIEW-QUEUE.md` for demonstrated weakness, especially recognition without reconstruction;
-6. atomically replace `CURRENT-STATE.md` with the exact new resume point and one next observable action.
+1. when teaching content changed, patch the active lesson if it belongs to that dependency, otherwise create and link a new prerequisite lesson; for intake or planning with no teaching content, do not invent a lesson;
+2. update canonical notation, terminology/ambiguity in `GLOSSARY.md`, source, Relation, Synthesis, Open Question, Code Map, or Run records affected by the exchange;
+3. update `CONCEPT-MAP.md` only for current canonical nodes/edges, `ROADMAP.md` only for phase ordering/targets/exit criteria/status, and `MISSION.md` only for mission targets and completion rows; change a Mission completion row only when target scope changes or linked Evidence satisfies its exact criterion;
+4. only if the learner supplied a response, self-report, or attempt, create and index the immutable Evidence record and record its prior-to-new snapshot transition;
+5. only when demonstrated weakness exists, add or update `REVIEW-QUEUE.md`, especially for recognition without reconstruction;
+6. atomically replace `CURRENT-STATE.md` with the exact new resume point and one next observable action, whether or not an Evidence record was created.
 
-Canonical ownership is strict: lessons own teaching content and checks; `CONCEPT-MAP.md` owns nodes and prerequisite edges; Evidence instances own historical learner evidence and state transitions; `CURRENT-STATE.md` owns only the live snapshot; `REVIEW-QUEUE.md` owns review state. Link stable IDs instead of copying history, graph definitions, Relation assumptions, or active-state data into lessons. Validate affected local links before ending the teaching turn.
+Canonical ownership is strict: lessons own teaching content and checks; `MISSION.md` owns mission targets and completion rows; `GLOSSARY.md` owns terminology definitions and ambiguity records; `CONCEPT-MAP.md` owns nodes and prerequisite edges; Evidence instances own historical learner evidence and evidence-caused state transitions; `CURRENT-STATE.md` owns only the live snapshot; `REVIEW-QUEUE.md` owns review state. Link stable IDs instead of copying history, graph definitions, Relation assumptions, or active-state data into lessons. Validate affected local links before ending the teaching turn.

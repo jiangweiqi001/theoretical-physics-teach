@@ -12,7 +12,7 @@ Use stable synthesis IDs such as `Y-001`. The narrow index is for navigation; ea
 
 ## Relation registry
 
-Relations use typed endpoints, so neither endpoint is required to be a notation entry. Each endpoint type must be exactly one of: `notation entry`, `physical object`, `assumption`, `method`, `claim`, `result`, `theorem`, or `code object`. Each endpoint records a stable ID or a canonical source anchor; record both when both exist.
+Relations use typed endpoints. Except where the selected Relation type imposes the stricter notation gate below, neither endpoint is generally required to be a notation entry. Each endpoint type must be exactly one of: `notation entry`, `physical object`, `assumption`, `method`, `claim`, `result`, `theorem`, or `code object`. Each endpoint records a stable ID or a canonical source anchor; record both when both exist.
 
 Use exactly one of these six complete Relation types:
 
@@ -27,7 +27,7 @@ No shorthand or alternative taxonomy value is valid as a Relation type. Put fine
 
 Minimum endpoint compatibility rules:
 
-- `same object, different notation` and `same notation, different object` require at least one endpoint of type `notation entry`; never use `same notation, different object` when neither endpoint is notation.
+- `same object, different notation` and `same notation, different object` require both endpoints to be `notation entry` records. Each endpoint must identify its Notation Entry ID and its own Source ID, stable version key, and exact location. Never use either notation Relation type for a non-notation endpoint.
 - `equivalent only under stated assumptions` requires comparable objects, claims, results, theorems, methods, or code objects and a complete canonical assumption map.
 - `alternative approximation or renormalization scheme` permits method, assumption, claim, result, physical-object, or code-object endpoints and requires the differing approximation or scheme to be identified.
 - `apparent contradiction requiring resolution` requires endpoints that express conflicting claims, results, theorems, or source statements and records the evidence needed for resolution.
@@ -60,19 +60,19 @@ Copy this subsection for every stable Relation ID.
 
 - **Endpoint type:** notation entry, physical object, assumption, method, claim, result, theorem, or code object
 - **Stable ID, when available:**
-- **Canonical source anchor, when no stable ID exists or provenance is needed:** source ID, version, exact location, role, and provenance
+- **Canonical source anchor, required for notation endpoints and whenever provenance is needed:** source ID, stable version key, exact location, role, and provenance
 - **Canonical Obsidian link, when available:**
 
 ##### Right endpoint
 
 - **Endpoint type:** notation entry, physical object, assumption, method, claim, result, theorem, or code object
 - **Stable ID, when available:**
-- **Canonical source anchor, when no stable ID exists or provenance is needed:** source ID, version, exact location, role, and provenance
+- **Canonical source anchor, required for notation endpoints and whenever provenance is needed:** source ID, stable version key, exact location, role, and provenance
 - **Canonical Obsidian link, when available:**
 
 ##### Relation evidence anchors
 
-| Source ID | Version | Exact location | Role | Provenance |
+| Source ID | Stable version key | Exact location | Role | Provenance |
 | --- | --- | --- | --- | --- |
 |  |  |  | Left endpoint, right endpoint, assumption, or comparison | Source, Reconstructed, Inference, or Unresolved |
 
@@ -83,7 +83,6 @@ Copy the following subsection for each object, physical problem, or theorem comp
 ### Y-001
 
 - **Object or problem:**
-- **Hamiltonian, action, ensemble, observable, theorem, or code scope:**
 - **Question this comparison answers:**
 
 #### Source record S1
@@ -93,13 +92,21 @@ Copy this source-record subsection once per compared source.
 | Field | Value |
 | --- | --- |
 | Stable source ID | S1 |
-| Version |  |
+| Stable version key | S1-V001 |
+| Immutable revision anchor | Git commit; or read-only snapshot path, content hash, and received date |
 | Exact location |  |
 | Role in comparison |  |
 | Provenance | Source, Reconstructed, Inference, or Unresolved |
+| System and degrees of freedom |  |
+| Hamiltonian, action, or theorem basis |  |
+| Ensemble and physical state |  |
+| Boundary and initial conditions |  |
+| Symmetries, conservation laws, and symmetry assumptions |  |
 | Source-local assumptions, not a Relation definition |  |
 | Method |  |
-| Approximation, regulator, expansion parameter, or limit |  |
+| Approximation, regulator or renormalization scheme, expansion parameter, or limit |  |
+| Discretization and truncation |  |
+| Observable, theorem, or implementation target |  |
 | Result or conclusion |  |
 | Validity regime |  |
 

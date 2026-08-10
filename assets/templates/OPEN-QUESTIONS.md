@@ -1,6 +1,6 @@
 # Open Questions
 
-Do not invent missing equations, citations, conventions, or code behavior. Record unavailable evidence and unresolved conflicts here.
+Do not invent missing equations, citations, conventions, or code behavior. This file is the exclusive canonical owner of availability-gap details and lifecycle as well as unresolved conflicts. A missing candidate material may receive a Question ID before it has a Source ID.
 
 Use stable Open Question IDs and a narrow index. Put all source locations in the repeatable anchor table inside the keyed question entry.
 
@@ -19,6 +19,10 @@ Copy this subsection for every question, gap, contradiction, or ambiguity.
 - **Question ID:** Q-001
 - **Unresolved question, gap, contradiction, or ambiguity:**
 - **Status:** Open, blocked, awaiting source, testing, or resolved
+- **Candidate material description, when not registered:**
+- **Stable Source ID, if assigned:** leave blank or write `Pending — not assigned` when none exists
+- **Stable version key, if assigned:**
+- **Availability summary mirrored in MATERIALS, when registered:** Full, partial, metadata-only, or unavailable
 - **Missing evidence:**
 - **Next verification:**
 - **Blocking work:**
@@ -27,9 +31,9 @@ Copy this subsection for every question, gap, contradiction, or ambiguity.
 
 Add one row for every premise, conflicting statement, missing location, or resolving passage.
 
-| Source ID | Version | Exact location | Role | Provenance |
-| --- | --- | --- | --- | --- |
-|  |  |  | Premise, conflict, missing evidence, or resolution | Source, Reconstructed, Inference, or Unresolved |
+| Source ID or pending candidate | Stable version key | Immutable revision anchor, when available | Exact location or expected locator | Role | Provenance |
+| --- | --- | --- | --- | --- | --- |
+| Pending candidate is allowed |  | Git commit; or snapshot path, content hash, and received date | Page, section, equation, theorem, block, algorithm step, file, function, or line | Premise, conflict, missing evidence, or resolution | Source, Reconstructed, Inference, or Unresolved |
 
 #### Resolution, when available
 

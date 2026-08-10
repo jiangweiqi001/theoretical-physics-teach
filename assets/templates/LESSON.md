@@ -32,14 +32,14 @@ Copy the following two-column table for every new symbol. Escape a literal verti
 | Physical meaning |  |
 | Units or dimensions |  |
 | Origin/provenance | `Source / crosswalk / defined here` |
-| Origin anchor | Stable source ID plus exact location; Notation Entry ID; or lesson-local heading and step |
+| Origin anchor | Stable source ID, stable version key, and exact location; Notation Entry ID; or lesson-local heading and step |
 | Local convention | Sign, metric, Fourier-transform, normalization, natural-unit, boundary-condition, and operator choices |
 | Meaning of hats, bars, stars, boldface, subscripts, and superscripts |  |
 | Definition status | Incomplete or complete |
 
 Record all sign, metric, Fourier-transform, normalization, natural-unit, boundary-condition, and operator conventions that affect this lesson:
 
-| Convention | Local choice | Stable source ID and exact location | Consequence for formulas or interpretation |
+| Convention | Local choice | Stable source ID, stable version key, and exact location | Consequence for formulas or interpretation |
 | --- | --- | --- | --- |
 |  |  |  |  |
 
@@ -55,7 +55,7 @@ Before proceeding, verify that every symbol used below has a complete entry abov
 
 ## Exact source anchors and provenance
 
-| Claim, equation, proof step, or code operation | Provenance label | Stable source ID | Version | Exact page, section, equation, theorem, appendix, figure, or code location |
+| Claim, equation, proof step, or code operation | Provenance label | Stable source ID | Stable version key | Exact page, section, equation, theorem, appendix, figure, or code location |
 | --- | --- | --- | --- | --- |
 |  | Source, Reconstructed, Inference, or Unresolved |  |  |  |
 
@@ -131,20 +131,28 @@ Never claim equivalence without following the assumption map owned only by the c
 
 ## Code–theory map
 
-Trigger this section only when supplied material includes code, pseudocode, numerical methods, or reproducibility instructions. Otherwise write `Not applicable — no supplied code or numerical material`.
+Set exactly one state:
 
-Every lesson-local Code Map ID must include this lesson's stable ID as the prefix, for example `CMAP-L-000001-001`, and is canonical only inside this lesson. Complete the architecture-level map before adding line-level commentary.
+- `Active` — implementation is a mission target and supplied or explicitly in-scope code, pseudocode, numerical-algorithm, or reproducibility material is available;
+- `Blocked — awaiting Q-ID` — implementation is a mission target but required material is missing; link its canonical Open Question, create no Code Map, keep the Mission completion row `Required / Open`, and keep the Roadmap phase blocked;
+- `N/A — implementation not a mission target` — do not create a Code Map even if incidental code exists.
 
-A map shared by multiple lessons is not lesson-local. Create its canonical file as `reference/code-maps/CMAP-GLOBAL-0001.md`, register it in `reference/code-maps/INDEX.md`, and place only its ID plus Obsidian link in the lesson instance. Never copy a shared architecture map into a lesson.
+- **Code bridge state:** Active, Blocked — awaiting Q-001 — [[OPEN-QUESTIONS#Q-001]], or N/A — implementation not a mission target
+
+Only an Active section continues below. A Git repository uses a commit as its immutable revision anchor. An independent file, chat excerpt, or inline pseudocode first becomes a workspace read-only snapshot registered in `MATERIALS.md`, with snapshot path, content hash, received date, and block/algorithm-step locator. Never reject usable non-Git material merely because it has no commit, and never invent a commit.
+
+Every lesson-local Code Map ID includes the stable Lesson ID, for example `CMAP-L-000001-001`, and is canonical only inside this lesson. It has a version, lifecycle status, and supersession links. Once an Evidence record links a Code Map ID, do not rewrite that ID's stable meaning; retain it and create a new local Code Map ID with bidirectional supersession fields. Complete architecture fields before line-level commentary.
+
+A map shared by multiple lessons is canonical at `reference/code-maps/CMAP-GLOBAL-0001.md`, registered in `reference/code-maps/INDEX.md`, and only linked from ordinary lesson instances. Never copy a shared architecture map into a lesson.
 
 ### Shared global Code Map registry protocol
 
-These are copy-ready creation rules for the canonical registry and global map file. A completed lesson does not embed the populated registry row or global architecture fields; it fills only the reference table below.
+These copy-ready schemas are used only to bootstrap the registry or first shared map when the canonical files do not exist. An ordinary lesson does not reproduce them or embed populated shared fields; it fills only `Shared Code Map references in this lesson`.
 
 #### Global Code Map ID allocation and append-only index
 
 1. If `reference/code-maps/INDEX.md` does not exist, create it with the schema below and no data rows.
-2. Read every index event, find the largest numeric suffix ever used by an active, superseded, or tombstoned global map, add one, and zero-pad to four digits. Begin with `CMAP-GLOBAL-0001` when the index has no events.
+2. Read every index event, find the largest numeric suffix ever present in any `registered`, `superseded`, or `tombstone` event, add one, and zero-pad to four digits. Begin with `CMAP-GLOBAL-0001` when the index has no events.
 3. Never reuse a Code Map ID, including after supersession, deletion, failure, or tombstone.
 4. Create `reference/code-maps/CMAP-GLOBAL-0001.md` and append its `registered` event to the index.
 5. The index is append-only: never edit or delete an earlier event. Append lifecycle events for supersession or tombstone. A replacement receives a new Code Map ID, records `Supersedes`, and the prior canonical file records `Superseded-by`.
@@ -152,7 +160,7 @@ These are copy-ready creation rules for the canonical registry and global map fi
 
 The `reference/code-maps/INDEX.md` event-row schema is:
 
-| Event date and sequence | Code Map ID | Canonical Obsidian link | Map version | Code commit | Status event | Supersedes ID | Superseded-by ID | Tombstone reason |
+| Event date and sequence | Code Map ID | Canonical Obsidian link | Map version | Immutable revision anchor | Status event | Supersedes ID | Superseded-by ID | Tombstone reason |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 |  | CMAP-GLOBAL-0001 | [[reference/code-maps/CMAP-GLOBAL-0001]] |  |  | registered, superseded, or tombstone |  |  |  |
 
@@ -173,25 +181,71 @@ Copy this schema into `reference/code-maps/CMAP-GLOBAL-0001.md`, not into a less
 | Theoretical object, equation, functional, action, or algorithm |  |
 | Theory source anchors and provenance |  |
 | Assumptions and controlled approximations |  |
-| Code repository and version |  |
-| Code commit |  |
+| Code material Source ID, stable version key, and repository/snapshot identity |  |
+| Immutable revision-anchor kind | Git commit or workspace read-only snapshot |
+| Git commit, when applicable |  |
+| Snapshot path, content hash, and received date, when applicable |  |
+| Snapshot block or algorithm-step locator, when applicable |  |
 | Architecture entry points | Repository, package, module, or executable locations |
 | Modules and data flow |  |
+| Major arrays/objects: owner, domain, units, shape, storage order, and index meanings |  |
 | Inputs and their physical meaning and units |  |
-| Outputs and their physical meaning and units |  |
-| Discretization |  |
+| Outputs: physical meaning, units, normalization, and downstream consumer |  |
+| Discretization, basis, grids, measure, and weights |  |
 | Truncation |  |
 | Regulator |  |
+| Boundary and initial conditions |  |
+| Symmetry reductions and partner maps |  |
 | Convergence and numerical-stability checks |  |
 | Validation observables and expected behavior |  |
+| Execution Record IDs and canonical links |  |
 | Line-level mapping IDs or links |  |
 | What the code cannot establish or what must not be claimed |  |
 
+#### Canonical global line-map schema and lifecycle
+
+Inside each canonical global map, keep an append-only line-map event index. Allocate `CMAP-GLOBAL-0001-L0001` by reading every prior `registered`, `superseded`, or `tombstone` event and incrementing the largest suffix. Never reuse an ID. A changed stable mapping receives a new line-map ID, links `Supersedes`, updates the prior keyed record's `Superseded-by`, and appends the lifecycle event. Tombstones remain permanently reserved.
+
+| Event date and sequence | Global line-map ID | Line-map version | Status event | Supersedes ID | Superseded-by ID | Tombstone reason |
+| --- | --- | --- | --- | --- | --- | --- |
+|  | CMAP-GLOBAL-0001-L0001 |  | registered, superseded, or tombstone |  |  |  |
+
+Copy this keyed record inside the canonical global map for every global line-map ID:
+
+##### CMAP-GLOBAL-0001-L0001
+
+| Field | Canonical value |
+| --- | --- |
+| Global line-map ID | CMAP-GLOBAL-0001-L0001 |
+| Parent Code Map ID | CMAP-GLOBAL-0001 |
+| Line-map version |  |
+| Status | Active, superseded, or tombstoned |
+| Supersedes global line-map ID |  |
+| Superseded-by global line-map ID |  |
+| Tombstone reason, when applicable |  |
+| Theoretical step or object |  |
+| Theory source anchor and provenance |  |
+| Assumptions used at this step |  |
+| Immutable revision-anchor kind | Git commit or workspace read-only snapshot |
+| Git commit, when applicable |  |
+| Snapshot path, content hash, received date, and block/algorithm-step locator, when applicable |  |
+| File and exact line/range, when applicable |  |
+| Function, class, module, or pseudocode block |  |
+| Code symbol, array, or object |  |
+| Owner, units, domain, shape, storage order, and indices |  |
+| Numerical operation |  |
+| Basis/grid/measure/weights and boundary treatment realized here |  |
+| Discretization, truncation, regulator, and symmetry/partner maps realized here |  |
+| Inputs |  |
+| Outputs, normalization, and consumer |  |
+| Execution Record, convergence, or validation link |  |
+| What this line mapping does not justify claiming |  |
+
 ### Shared Code Map references in this lesson
 
-| Code Map ID | Canonical Obsidian link | Role in this lesson |
-| --- | --- | --- |
-| CMAP-GLOBAL-0001 | [[reference/code-maps/CMAP-GLOBAL-0001]] |  |
+| Code Map ID | Map version | Canonical Obsidian link | Role in this lesson |
+| --- | --- | --- | --- |
+| CMAP-GLOBAL-0001 |  | [[reference/code-maps/CMAP-GLOBAL-0001]] |  |
 
 ### Architecture-level map
 
@@ -201,26 +255,39 @@ Copy this schema into `reference/code-maps/CMAP-GLOBAL-0001.md`, not into a less
 | --- | --- |
 | Map ID | CMAP-L-000001-001 |
 | Canonical scope | Lesson-local in L-000001 — [[lessons/L-000001]] |
+| Map version |  |
+| Status | Active, superseded, or tombstoned |
+| Supersedes Code Map ID |  |
+| Superseded-by Code Map ID |  |
+| Tombstone reason, when applicable |  |
 | Theoretical object, equation, functional, action, or algorithm |  |
 | Theory source anchors and provenance |  |
 | Assumptions and controlled approximations |  |
-| Code commit |  |
+| Code material Source ID, stable version key, and repository/snapshot identity |  |
+| Immutable revision-anchor kind | Git commit or workspace read-only snapshot |
+| Git commit, when applicable |  |
+| Snapshot path, content hash, and received date, when applicable |  |
+| Snapshot block or algorithm-step locator, when applicable |  |
 | Architecture entry points | Repository, package, module, or executable locations |
 | Modules and data flow |  |
+| Major arrays/objects: owner, domain, units, shape, storage order, and index meanings |  |
 | Inputs and their physical meaning and units |  |
-| Outputs and their physical meaning and units |  |
-| Discretization |  |
+| Outputs: physical meaning, units, normalization, and downstream consumer |  |
+| Discretization, basis, grids, measure, and weights |  |
 | Truncation |  |
 | Regulator |  |
+| Boundary and initial conditions |  |
+| Symmetry reductions and partner maps |  |
 | Convergence and numerical-stability checks |  |
 | Validation observables and expected behavior |  |
+| Execution Record IDs and canonical links |  |
 | What the code cannot establish or what must not be claimed |  |
 
 ### Line-level mappings
 
-Add these only after the architecture-level map is complete. Use exact commit-pinned locations.
+Add these only after the architecture-level map is complete. Use its immutable revision anchor; a commit is conditional on Git material.
 
-| Line map ID | Architecture map ID | Theory anchor | Commit | File and line range | Code symbol or array |
+| Line map ID | Architecture map ID | Theory anchor | Immutable revision anchor | File/line or snapshot block | Code symbol or array |
 | --- | --- | --- | --- | --- | --- |
 | CMAP-L-000001-001-L1 | CMAP-L-000001-001 |  |  |  |  |
 
@@ -230,21 +297,83 @@ Add these only after the architecture-level map is complete. Use exact commit-pi
 | --- | --- |
 | Line map ID | CMAP-L-000001-001-L1 |
 | Architecture map ID | CMAP-L-000001-001 |
+| Line-map version |  |
+| Status | Active, superseded, or tombstoned |
+| Supersedes line-map ID |  |
+| Superseded-by line-map ID |  |
 | Theoretical step or object |  |
 | Theory source anchor and provenance |  |
 | Assumptions used at this step |  |
-| Code commit |  |
-| File |  |
-| Exact line or line range |  |
-| Function, class, or module |  |
+| Immutable revision-anchor kind | Git commit or workspace read-only snapshot |
+| Git commit, when applicable |  |
+| Snapshot path, content hash, received date, and block/algorithm-step locator, when applicable |  |
+| File and exact line/range, when applicable |  |
+| Function, class, module, or pseudocode block |  |
 | Code symbol or array |  |
-| Units, shape, indices, and domain |  |
+| Owner, units, domain, shape, storage order, and indices |  |
 | Numerical operation |  |
-| Discretization, truncation, or regulator realized here |  |
+| Basis/grid/measure/weights and boundary treatment realized here |  |
+| Discretization, truncation, regulator, and symmetry/partner maps realized here |  |
 | Inputs |  |
-| Outputs |  |
-| Convergence or validation link |  |
+| Outputs, normalization, and consumer |  |
+| Execution Record, convergence, or validation link |  |
 | What this line mapping does not justify claiming |  |
+
+### Execution evidence registry protocol
+
+Source provenance remains exactly Source, Reconstructed, Inference, or Unresolved. Execution evidence is an orthogonal classification used only for run-dependent claims:
+
+- `Observed execution evidence` — directly captured command, log, raw output, or immutable output artifact from a Run record;
+- `Computed execution evidence` — a derived metric, comparison, fit, convergence estimate, or post-processed quantity whose inputs and method are anchored in that Run record.
+
+Use the following copy-ready schemas only to bootstrap `execution-records/INDEX.md` or a Run record when they do not exist. Ordinary lessons only link Run IDs.
+
+1. Read the entire append-only index, increment the largest suffix ever present in a `registered`, `superseded`, or `tombstone` event, and zero-pad to six digits; begin with `RUN-000001`.
+2. Never reuse a Run ID. Create `execution-records/RUN-000001.md`, append its `registered` event, and keep its command, environment, inputs, and output payload immutable.
+3. The index is append-only: never edit or delete an earlier event. A correction or invalidated run uses a new Run ID with bidirectional supersession links. Only lifecycle status and supersession metadata may be completed on the prior record; its execution payload never changes. A tombstoned ID remains indexed with its reason.
+
+| Event date and sequence | Run ID | Canonical Obsidian link | Status event | Immutable revision anchor | Supersedes Run ID | Superseded-by Run ID | Tombstone reason |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+|  | RUN-000001 | [[execution-records/RUN-000001]] | registered, superseded, or tombstone |  |  |  |  |
+
+Copy this schema into `execution-records/RUN-000001.md`:
+
+| Field | Canonical value |
+| --- | --- |
+| Run ID | RUN-000001 |
+| Canonical path and Obsidian link | `execution-records/RUN-000001.md`; [[execution-records/RUN-000001]] |
+| Status | Active, superseded, or tombstoned |
+| Supersedes Run ID |  |
+| Superseded-by Run ID |  |
+| Tombstone reason, when applicable |  |
+| Date/time |  |
+| Code Map IDs and canonical links |  |
+| Immutable revision-anchor kind | Git commit or workspace read-only snapshot |
+| Git commit, when applicable |  |
+| Snapshot path, content hash, received date, and block/algorithm-step locator, when applicable |  |
+| Exact command and working directory |  |
+| Environment, dependencies, hardware, and random seed |  |
+| Numeric precision and solver tolerances |  |
+| Inputs and parameters, with units |  |
+| Raw log/output artifact paths and content hashes |  |
+| Convergence sequence or stability diagnostic |  |
+| Validation observable and acceptance criteria |  |
+| Outcome, discrepancy, uncertainty, and tolerance |  |
+| Non-claims and unresolved limitations |  |
+
+#### Execution evidence items
+
+| Item ID | Class | Claim | Artifact/field anchor | Computation method, when applicable |
+| --- | --- | --- | --- | --- |
+| RUN-000001-E1 | Observed execution evidence or Computed execution evidence |  |  |  |
+
+Without a Run ID plus canonical link, do not claim that code was executed, outputs matched, or convergence was observed or computed.
+
+### Execution Record references in this lesson
+
+| Run ID | Canonical Obsidian link | Claim supported |
+| --- | --- | --- |
+| RUN-000001 | [[execution-records/RUN-000001]] |  |
 
 ## Exercises
 

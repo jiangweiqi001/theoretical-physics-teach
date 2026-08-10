@@ -1,6 +1,6 @@
 # Learning Record
 
-This file is a copy template, not the canonical history file. Each canonical evidence instance has the exact path pattern `learning-records/EV-000001.md`; the global index is `learning-records/INDEX.md`. Evidence instances are the exclusive canonical owner of historical learner evidence: unaided responses, self-report, hints, assisted work, mastery judgments, and evidence-caused state changes.
+This file is a copy template, not the canonical history file. Each canonical evidence instance has the exact path pattern `learning-records/EV-000001.md`; the global index is `learning-records/INDEX.md`. Evidence instances are the exclusive canonical owner of historical learner evidence: unaided responses, self-report, hints, assisted work, mastery judgments, and evidence-caused state changes. Create one only when the learner supplied a response, self-report, or attempt; material intake, agent explanation, and planning alone do not create Evidence.
 
 ## Evidence ID allocation and index
 
@@ -36,13 +36,15 @@ The `learning-records/INDEX.md` row schema is:
 
 Add one row for every source premise, comparison, or reconstructed step used in this evidence judgment.
 
-| Source ID | Version | Exact location | Role | Provenance |
+| Source ID | Stable version key | Exact location | Role | Provenance |
 | --- | --- | --- | --- | --- |
 |  |  |  | Task premise, learner citation, comparison, or evaluator basis | Source, Reconstructed, Inference, or Unresolved |
 
 ## Unaided response
 
 Record the learner's first response verbatim before any hint, correction, worked example, or source reveal:
+
+If the learner gave self-report or conversational context but no observable performance was requested, write `No observable attempt elicited` under work shown and assign level 0; do not infer a positive capability.
 
 - Time or source access allowed:
 - Work shown without assistance:
@@ -99,6 +101,14 @@ Reference maps by stable ID and canonical Obsidian link; do not copy their conte
 | --- | --- | --- | --- |
 | CMAP-L-000001-001 | [[lessons/L-000001#CMAP-L-000001-001]] | Lesson-local |  |
 | CMAP-GLOBAL-0001 | [[reference/code-maps/CMAP-GLOBAL-0001]] | Shared architecture |  |
+
+## Execution record references
+
+Reference runtime claims by immutable Run ID and canonical link. Execution records do not replace learner Evidence and do not change the four source-provenance labels.
+
+| Run ID | Canonical Obsidian link | Execution evidence class | Role in this learner evidence |
+| --- | --- | --- | --- |
+| RUN-000001 | [[execution-records/RUN-000001]] | Observed execution evidence or Computed execution evidence |  |
 
 ## Next observable check
 

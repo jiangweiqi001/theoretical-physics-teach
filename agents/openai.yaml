@@ -1,0 +1,5 @@
+interface:
+  display_name: "Theoretical Physics Math Teach"
+  short_description: "Study theory sources with rigorous derivations"
+policy:
+  allow_implicit_invocation: false

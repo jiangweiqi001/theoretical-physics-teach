@@ -14,6 +14,8 @@ Material changes include:
 - Markdown-only artifacts;
 - multi-source notation and synthesis;
 - resumable state;
-- conversation writeback;
+- coherent in-place conversation writeback;
 - evidence-based mastery; and
-- optional code mapping.
+- option-first diagnostic checkpoints;
+- optional code mapping; and
+- read-only Obsidian workspace validation.

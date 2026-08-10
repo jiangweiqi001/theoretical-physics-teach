@@ -1,0 +1,36 @@
+name: validate
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  contracts:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Static skill contract
+        shell: pwsh
+        run: ./tests/static-contract.ps1
+      - name: Bootstrap template contract
+        shell: pwsh
+        run: ./tests/bootstrap-contract.ps1
+      - name: Behavioral scenario isolation
+        shell: pwsh
+        run: ./tests/scenario-contract.ps1
+      - name: Accepted behavioral output contract
+        shell: pwsh
+        run: ./tests/green-contract.ps1
+      - name: Workspace validator unit tests
+        shell: pwsh
+        run: python -m unittest tests.test_validate_workspace -v
+      - name: Whitespace check
+        shell: pwsh
+        run: git diff --check

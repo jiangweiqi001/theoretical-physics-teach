@@ -95,6 +95,7 @@ $requiredPaths = @(
     'README.md'
     'LICENSE'
     'NOTICE.md'
+    '.github/workflows/validate.yml'
     'scripts/validate_workspace.py'
     'tests/test_validate_workspace.py'
     'tests/scenario-contract.ps1'
@@ -501,6 +502,19 @@ Assert-Contract (
     $readmeText.IndexOf([char]0x9225, [System.StringComparison]::Ordinal) -lt 0 -and
     $readmeText.IndexOf([char]0x701B, [System.StringComparison]::Ordinal) -lt 0
 ) 'README.md contains no replacement character or known Chinese mojibake'
+
+foreach ($requiredPublicationPhrase in @(
+    'Read the paper. Preserve the notation. Finish the derivation. Resume exactly where you stopped.'
+    '## Why this skill exists'
+    '## What happens when you say "this step is unclear"'
+    '## A serious paper-reading workflow'
+    '## Stateless summary vs. this skill'
+    'v0.2.0'
+)) {
+    Assert-Contract (
+        $readmeText.Contains($requiredPublicationPhrase)
+    ) "README.md contains verified publication content: $requiredPublicationPhrase"
+}
 
 $licenseText = Get-RepositoryText 'LICENSE'
 Assert-Contract (

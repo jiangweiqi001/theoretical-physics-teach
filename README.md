@@ -1,10 +1,35 @@
 # theoretical-physics-math-teach
 
+> Read the paper. Preserve the notation. Finish the derivation. Resume exactly where you stopped.
+
 `theoretical-physics-math-teach` is an independent Agent Skill created, maintained, and published by [jiangweiqi001](https://github.com/jiangweiqi001). This repository is its canonical development and release line. It is configured as an explicit-only skill in Codex for sustained study of theoretical physics from user-supplied papers, textbooks, lecture notes, and related implementation material.
 
 It is physics-first: pure mathematics is introduced to support a physical theory, derivation, proof, structural comparison, or implementation, and may be expanded when that physical dependency needs more detail. The skill is source-driven and multi-source. It preserves each source's notation, records explicit translations and assumptions between sources, and writes durable, Obsidian-compatible Markdown lessons with long, step-by-step derivations when needed.
 
 Codex does not activate the skill automatically because `agents/openai.yaml` disables implicit invocation. Invoke it with the exact `$theoretical-physics-math-teach` mention, for example “用 `$theoretical-physics-math-teach` 学这些论文”. In ChatGPT, type `@` and select the skill from the picker.
+
+## Why this skill exists
+
+Theoretical-physics papers are rarely difficult because of one isolated formula. The difficulty is the chain: a convention introduced ten pages earlier, a skipped contour step, a regulator removed in a particular order, a symbol reused differently by another paper, and a numerical loop that only makes sense after the approximation is reconstructed.
+
+A stateless summary can describe that chain. It cannot reliably remember which link you personally understand, which sign still bothers you, or which explanation must become part of the permanent lesson. This skill treats paper study as an evolving research notebook: sources stay anchored, notation stays local, derivations stay auditable, and every substantive clarification is written back into the Note where it logically belongs.
+
+中文简介：这是一个面向理论物理论文精读的长期教学 skill。它不追求把论文快速概括完，而是帮助你保留原文符号、补全推导、跨论文比较，并从上次卡住的公式继续学习。
+
+## A serious paper-reading workflow
+
+```mermaid
+flowchart LR
+    A["Supplied papers, books, and notes"] --> B["Versioned source anchors"]
+    B --> C["Source-local notation and crosswalks"]
+    C --> D["Complete derivation in Obsidian Markdown"]
+    D --> E["Option-first checkpoint"]
+    E --> F["Learner evidence and exact resume state"]
+    F --> D
+    D --> G["Optional pinned code-theory bridge"]
+```
+
+The loop matters: the next session does not restart the chapter. It reopens the exact Note heading or equation block, reads the last demonstrated boundary, and continues with one next action.
 
 ## Who this is for
 
@@ -28,6 +53,33 @@ Pure mathematics is included when it supports a theoretical-physics dependency a
 - Resumes from the exact recorded obstacle and writes substantive clarifications back to the canonical workspace.
 - Advances mastery only from observable learner evidence, not confidence, recognition, or rereading alone.
 
+## What happens when you say "this step is unclear"
+
+The explanation is not allowed to disappear into chat history. The skill:
+
+1. reads the complete active Note and exact resume state;
+2. finds the first sentence or equation that depends on the missing idea;
+3. updates the leading notation section before introducing new symbols;
+4. inserts the explanation at that point and rewrites both surrounding transitions;
+5. removes stale pause text, duplicate work, and local contradictions;
+6. repairs affected numbering, provenance, Note links, and the final checkpoint; and
+7. records the new exact section or block link in `CURRENT-STATE.md`.
+
+The finished Note should read as if the clarification had been designed there from the start—not like a transcript pasted onto the end.
+
+## Stateless summary vs. this skill
+
+| Need | Stateless paper summary | `theoretical-physics-math-teach` |
+| --- | --- | --- |
+| Paper notation | Often normalized for convenience | Preserved per source, with explicit crosswalks |
+| Derivation depth | Usually compresses intermediate work | No Note length cap and no skipped calculation or logic steps |
+| “I do not understand this step” | Explanation remains in chat | Explanation is integrated coherently into the canonical Note |
+| Next session | Depends on conversation memory | Reopens an exact Note heading or equation block |
+| Multiple papers | Summarizes each independently | Records assumptions, relations, conflicts, and regimes across sources |
+| Assessment | Often asks generic review questions | Defaults to one diagnostic option/true-false item, then produced work when required |
+| Mastery | May infer understanding from agreement | Advances only from observable learner evidence |
+| Code | May describe a plausible implementation | Uses only trustworthy corresponding material and separates inspection from execution claims |
+
 ## How this differs from the earlier PR-oriented prototype
 
 The earlier [PR-oriented prototype](https://github.com/jiangweiqi001/skills/commit/14a2dc2) was a two-file change on a fork of the general-purpose upstream `teach` skill. It mainly replaced HTML lessons with Obsidian-compatible Markdown and added limited guidance for notation-heavy physics and mathematics. The earlier prototype did not become an upstream pull request.
@@ -39,14 +91,14 @@ This independent project turns that initial experiment into a dedicated theoreti
 - It maintains explicit notation crosswalks, six classified kinds of cross-source relation, assumptions, validity regimes, and unresolved conflicts.
 - It records an exact resume point, immutable learner evidence, mastery gates, source versions, and stable source anchors across sessions.
 - It includes a code–theory bridge with equation-to-code provenance and explicit non-claims when code has not actually been run or validated.
-- It ships static, bootstrap, extraction-isolation, and behavioral scenario tests for the teaching contracts.
+- It ships static, bootstrap, extraction-isolation, behavioral scenario, and read-only workspace validation tests for the teaching contracts.
 - It follows the general Agent Skills package structure, adds Codex metadata, and is released and maintained from this repository.
 
 The current project, architecture, templates, protocols, tests, releases, and ongoing maintenance belong to this independent repository. The earlier fork branch is historical context, not this repository's release lineage.
 
 ## Installation
 
-Codex is the primary tested environment. Its personal skills directory is `$HOME/.agents/skills`; on Windows, the equivalent is `%USERPROFILE%\.agents\skills`. After the repository is published, clone the complete public repository there.
+Codex is the primary tested environment. Its personal skills directory is `$HOME/.agents/skills`; on Windows, the equivalent is `%USERPROFILE%\.agents\skills`. Clone the complete public repository there.
 
 PowerShell:
 
@@ -66,6 +118,16 @@ git clone https://github.com/jiangweiqi001/theoretical-physics-math-teach.git "$
 Alternatively, invoke `$skill-installer` in Codex and ask it to install the skill from `https://github.com/jiangweiqi001/theoretical-physics-math-teach`. You may also download the repository and copy the entire `theoretical-physics-math-teach` folder into the personal skills directory. Keep the root `SKILL.md`, `references/`, `assets/`, and metadata together.
 
 For another Agent Skills-compatible tool, place the entire repository folder in that tool's skills directory and confirm that it discovers the root `SKILL.md`. `agents/openai.yaml` is Codex-specific display and invocation-policy metadata; the Markdown instructions and supporting files are portable, but another host must provide or be configured with an equivalent explicit-only policy. If it cannot, automatic invocation behavior is not guaranteed there.
+
+### Updating an existing installation
+
+If the installed folder is a Git clone:
+
+```powershell
+git -C "$env:USERPROFILE\.agents\skills\theoretical-physics-math-teach" pull --ff-only
+```
+
+Otherwise, download the new release and copy its files over the existing skill folder without deleting your separate learning workspace. Course Notes must never live inside the installed skill directory.
 
 ## Quick start
 
@@ -91,6 +153,32 @@ define every new symbol before use, and show the complete derivations without a
 length cap or skipped steps.
 ```
 
+### What an Obsidian-native lesson looks like
+
+The canonical artifact is ordinary Markdown—not a generated webpage:
+
+```markdown
+# Lesson L-000004 — Free retarded propagator
+
+## Notation and conventions
+
+- $\xi_k=\varepsilon_k-\mu$ is the band energy measured from the chemical potential.
+
+## Complete derivation
+
+With the paper's Fourier convention,
+
+$$
+G_0^R(k,\omega)=\frac{1}{\omega-\xi_k+i0^+}.
+$$
+
+^eq-free-retarded-propagator
+
+Continue from [[lessons/L-000004-free-retarded-propagator#^eq-free-retarded-propagator|the exact propagator equation]], or review [[lessons/L-000003-fourier-transform#Convergence factor|why the regulator is removed last]].
+```
+
+For multi-line work, the skill uses `\begin{aligned}...\end{aligned}` inside `$$...$$`. It does not hide a derivation in a code fence or a fragile Markdown table.
+
 ## Workspace artifacts
 
 | Path | Purpose |
@@ -111,9 +199,44 @@ The workspace may also include baseline diagnostics, a concept map, glossary, re
 
 ## Optional code-theory bridge
 
-The code bridge is used only when implementation is a learning target and the supplied materials include code, pseudocode, numerical algorithms, or reproducibility instructions. It maps equations and approximations to code locations, variables, units, discretization, truncation, inputs, outputs, validation observables, and non-claims.
+The code bridge is used only when implementation is a learning target and trustworthy corresponding material exists: an official or author-associated open-source repository at a pinned commit, a user-supplied immutable snapshot, or anchored pseudocode sufficient for the mapping. It does not invent generic code for a paper that has no corresponding implementation.
+
+Theory comes first. The optional final implementation section then traces each physical quantity through:
+
+```text
+source equation → approximation → discretization → code variable
+→ units/domain/shape/indices → initialization/update → output → validation observable
+```
+
+Pedagogical pseudocode is labeled **Reconstructed** and linked to the pinned implementation steps from which it was derived. Each loop or solver step is explained as a physical accumulation, contraction, propagation, update, or self-consistency operation.
 
 Git material is anchored to an exact commit. Non-Git files, chat excerpts, and inline pseudocode are first saved as read-only workspace snapshots with a recorded hash, received date, and exact locator. Without a linked Run record, the skill does not claim that code ran, results agreed, or a computation converged.
+
+## Assessment without fake mastery
+
+Initial diagnosis, ordinary checks, and the end of every learner-facing Note default to one multiple-choice or true/false item at a time. Distractors are designed around specific misconceptions rather than filler, and the correct position is varied.
+
+An option answer can locate a sign, convention, assumption, limiting case, or next-step boundary. It cannot by itself prove that the learner can reconstruct a derivation. When the target is a proof, calculation, cross-source translation, or implementation explanation, the skill follows with the smallest necessary produced-work task and records assisted work separately from unaided work.
+
+## Validation
+
+The repository ships deterministic contracts for package structure, inert bootstrap templates, evaluator isolation, accepted behavioral outputs, and real-workspace Markdown links. Run them from the repository root:
+
+```powershell
+./tests/static-contract.ps1
+./tests/bootstrap-contract.ps1
+./tests/scenario-contract.ps1
+./tests/green-contract.ps1
+python -m unittest tests.test_validate_workspace -v
+```
+
+Validate a learning workspace without modifying it:
+
+```powershell
+python scripts/validate_workspace.py "D:\Obsidian\many-body-course"
+```
+
+The validator detects unresolved Note, heading, and block links; duplicate block IDs; forbidden math delimiters; obvious code-fenced mathematics; and non-Markdown canonical lesson/reference artifacts. It does not compile LaTeX or prove mathematical correctness, so the skill separately audits notation dependencies, derivations, assumptions, dimensions, limits, symmetries, and physical interpretation.
 
 ## Limitations
 
@@ -135,4 +258,6 @@ This is an independent project and is not endorsed by Matt Pocock. See [NOTICE.m
 
 ## Version
 
-Current release: `v0.1.1`.
+Current release: `v0.2.0`.
+
+If this workflow helps you turn a difficult paper into a notebook you can actually continue, consider starring the repository so more theoretical-physics learners can find it.

@@ -74,3 +74,4 @@ if ($Section -in @('Publication', 'All')) {
 
 if ($failures.Count -gt 0) { exit 1 }
 Write-Output 'Theoretical-physics-only rebrand contract passed.'
+exit 0

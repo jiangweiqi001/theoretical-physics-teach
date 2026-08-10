@@ -159,7 +159,7 @@ $instructionText = ($instructionFiles | ForEach-Object {
 }) -join [Environment]::NewLine
 
 Assert-Contract (
-    -not [regex]::IsMatch($instructionText, '(?i)<\s*/?\s*(?:html|script|style|div|body|head|link)\b')
+    -not [regex]::IsMatch($instructionText, '(?i)</?[A-Za-z][A-Za-z0-9-]*(?:\s[^>]*)?\s*/?>')
 ) 'skill instructions and templates contain no forbidden HTML markup tags'
 Assert-Contract (
     -not [regex]::IsMatch($instructionText, '(?i)\b(?:lessons|references?)[/\\][^\s)\]>]*\.html\b')
@@ -168,14 +168,15 @@ Assert-Contract (
     -not [regex]::IsMatch($instructionText, '(?i)\b(?:lessons|references?)[/\\][^\s)\]>]*\.(?:css|js)\b')
 ) 'skill instructions and templates contain no canonical lesson or reference CSS/JavaScript paths'
 
-$positiveBrowserRequirementLines = @($instructionText -split '\r?\n' | Where-Object {
+$instructionClauses = @($instructionText -split '(?:;|[.!?](?=\s|$)|\r?\n)+')
+$positiveBrowserRequirementClauses = @($instructionClauses | Where-Object {
     $hasPositiveVerb = $_ -match '(?i)\b(?:must|should|need(?:s)?\s+to|require(?:s|d)?|create|write|build|render|open|launch|serve|load|use)\b'
-    $mentionsBrowserTechnology = $_ -match '(?i)\b(?:CSS|JavaScript|JS|browser(?:-only)?)\b'
+    $mentionsBrowserTechnology = $_ -match '(?i)\b(?:HTML|CSS|JavaScript|JS|browser(?:-only)?)\b'
     $isClearlyNegative =
         $_ -match '(?i)\b(?:do not|does not|don''t|never|not required|without requiring|forbid(?:s|den)?|prohibit(?:s|ed)?)\b' -or
         $_ -match '(?i)\b(?:must|should|need(?:s)?(?:\s+to)?)\s+not\b' -or
         $_ -match '(?i)\bnot\s+(?:create|write|build|render|open|launch|serve|load|use)\b' -or
-        $_ -match '(?i)\b(?:no|without)\b.{0,80}\b(?:CSS|JavaScript|JS|browser(?:-only)?)\b'
+        $_ -match '(?i)\b(?:no|without)\b.{0,80}\b(?:HTML|CSS|JavaScript|JS|browser(?:-only)?)\b'
     $isClearlyOptional =
         $_ -match '(?i)\boptional\b' -or
         $_ -match '(?i)\bseparate\b.{0,80}\b(?:artifact|request|project|website)\b' -or
@@ -184,8 +185,8 @@ $positiveBrowserRequirementLines = @($instructionText -split '\r?\n' | Where-Obj
     $hasPositiveVerb -and $mentionsBrowserTechnology -and -not ($isClearlyNegative -or $isClearlyOptional)
 })
 Assert-Contract (
-    $positiveBrowserRequirementLines.Count -eq 0
-) 'lessons do not require CSS, JavaScript, or a browser'
+    $positiveBrowserRequirementClauses.Count -eq 0
+) 'lessons do not require HTML, CSS, JavaScript, or a browser'
 
 $noticeText = Get-RepositoryText 'NOTICE.md'
 Assert-Contract (

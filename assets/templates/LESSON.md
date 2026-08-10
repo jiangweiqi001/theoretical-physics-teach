@@ -186,6 +186,8 @@ Set exactly one state:
 
 Only an Active section continues below. A Git repository uses a commit as its immutable revision anchor. An independent file, chat excerpt, or inline pseudocode first becomes a workspace read-only snapshot registered in `MATERIALS.md`, with snapshot path, content hash, received date, and block/algorithm-step locator. Never reject usable non-Git material merely because it has no commit, and never invent a commit.
 
+Use corresponding implementation material only when it is official or author-associated open-source code at a pinned commit, a user-supplied immutable snapshot, or anchored pseudocode sufficient for the mapping. If authorized discovery finds no paper-linked, author-linked, project-official, or official-documentation repository, do not substitute unrelated code. When this section is N/A, omit the entire code section from the instantiated learner-facing Note. When it is Blocked, keep only the concise blocker and canonical Open Question link; do not expose the Active schemas below.
+
 Before any theoretical mapping, display the anchor state:
 
 - **Immutable-anchor status:** registered Git commit or snapshot anchor; or `Unassigned — supplied excerpt; snapshot registration pending`
@@ -334,6 +336,16 @@ Copy this keyed record inside the canonical global map for every global line-map
 | Validation observables and expected behavior |  |
 | Execution Record IDs and canonical links |  |
 | What the code cannot establish or what must not be claimed |  |
+
+### Physical quantity derivation chains
+
+Add one row for every physical quantity used by the algorithm. Do not merge distinct quantities merely because one array stores them at different stages.
+
+| Physical quantity and theory anchor | Derivation, approximation, or reconstruction | Discretized representation | Code variable or array | Units and domain | Shape, storage order, and indices | Initialization and update rule | Output destination and consumer | Validation observable and Run-linked claim boundary |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+|  |  |  |  |  |  |  |  |  |
+
+When pedagogical pseudocode is useful, label it **Reconstructed**, link every operation back to its pinned code step, and state every rename or simplification. Never present reconstructed pseudocode as literal source code or execution evidence.
 
 ### Line-level mappings
 

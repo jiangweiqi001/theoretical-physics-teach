@@ -44,16 +44,18 @@ If response-only was not explicitly requested, ask for the workspace and stop.
 
 - For any source or multi-source action, including adding, replacing, registering, citing, comparing, or discovering unavailable material, read all of `references/source-workflow.md` before acting.
 - For a diagnostic, lesson, clarification, prerequisite, review, or mastery decision, read all of `references/physics-pedagogy.md` before acting.
-- Use `references/code-theory-bridge.md` only when implementation is a mission target and user-supplied or explicitly in-scope code, pseudocode, numerical-algorithm, or reproducibility material is available.
+- Use `references/code-theory-bridge.md` only when implementation is a mission target and trustworthy corresponding implementation material is available or required but missing.
 - Treat `assets/templates/` as copy sources and schemas. Do not paste their full contents into chat or duplicate their canonical records elsewhere.
 
 Apply the code bridge gate exactly:
 
-- `Active`: implementation is a mission target and the required supplied material is available. Read `references/code-theory-bridge.md`; only this state may create a Code Map.
+- `Active`: implementation is a mission target and the available corresponding material is official or author-associated open-source code at a pinned commit, a user-supplied immutable snapshot, or anchored pseudocode sufficient for the mapping. Read `references/code-theory-bridge.md`; only this state may create a Code Map.
 - `Blocked`: implementation is a mission target but the material is missing. Create or link a canonical Open Question, create no Code Map, keep the Mission completion row open, and block the dependent Roadmap phase.
 - `N/A`: implementation is not a mission target, even if incidental code exists. Create no Code Map.
 
 Do not convert `Blocked` to `N/A` merely because evidence has not arrived.
+
+Use corresponding implementation material only when it is official or author-associated open-source code at a pinned commit, a user-supplied immutable snapshot, or anchored pseudocode sufficient for the mapping. If the user authorizes discovery, search only paper-linked, author-linked, project-official, or official-documentation repositories; never substitute unrelated code. When code understanding is optional and no trustworthy corresponding material exists, omit the learner-facing code section and use `N/A`. Never invent code or pseudocode to make a lesson appear complete.
 
 ## Teaching workflow
 

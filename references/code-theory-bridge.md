@@ -8,6 +8,10 @@ Apply this three-state gate before mapping:
 
 Only `Active` continues through this protocol. Do not turn `Blocked` into `N/A` merely because material has not arrived.
 
+Use corresponding implementation material only when it is official or author-associated open-source code at a pinned commit, a user-supplied immutable snapshot, or anchored pseudocode sufficient for the mapping.
+
+If the user authorizes targeted discovery, search only repositories linked by the paper, its authors, the named project, or official documentation. Verify the relationship before registration and pin the exact commit before a canonical Code Map. Do not substitute an unrelated implementation merely because it solves a similar equation. If implementation is optional and no trustworthy corresponding material is available, use `N/A` and omit the learner-facing code section. If implementation is required, keep `Blocked` and its Open Question. Never invent code or pseudocode to complete the section.
+
 ## 1. Pin evidence and establish scope
 
 Register the code or pseudocode in an immutable keyed version record in `MATERIALS.md` before mapping it. Git material uses the exact commit as its immutable revision anchor; a branch name or mutable working tree is insufficient. For an independent file, chat excerpt, or inline pseudocode, first save a workspace read-only snapshot and record its path, hash algorithm and digest, received date, and exact block/algorithm-step locator. Do not reject non-Git material for lacking a commit and never invent one.
@@ -37,9 +41,15 @@ Complete an architecture-level map before line-by-line commentary. Identify:
 6. discretization, basis and grids, integration/summation measure and weights, truncation, cutoff/regulator, boundary/initial conditions, and symmetry reductions or partner maps;
 7. convergence and numerical-stability tests, validation observables and expected behavior, and explicit non-claims.
 
+For every physical quantity, record a complete derivation chain: theoretical definition and exact anchor; source derivation, controlled approximation, or explicit reconstruction; discretized representation; code variable or array; units and domain; shape, storage order, and index meanings; initialization and update rule; output destination and downstream consumer; and validation observable plus the claim it cannot support without a Run. Do not hide a quantity inside a general architecture paragraph.
+
 Only then add exact immutable-revision line mappings. Each line map connects one theoretical step or object to a commit/file/line/function anchor or snapshot/hash/date/block anchor, code symbol or array, owner, units, domain, shape, storage order, indices, numerical operation, inputs, normalized outputs and consumer, realized basis/grid/measure/weights, boundary treatment, discretization/truncation/regulator, symmetry/partner maps, and its Run/convergence/validation link. Never substitute a filename-level association for this mapping.
 
 ## 3. Explain numerical and pseudocode operations physically
+
+Present implementation only after the physical theory it realizes. Use this explanatory order: physical problem and source equation; assumptions and approximations; basis, discretization, grids, measures, weights, cutoffs, regulators, boundaries, and symmetry reductions; anchored pedagogical pseudocode; loop-by-loop or solver-step physical meaning; intended outputs; then validation evidence and non-claims.
+
+Pedagogical pseudocode reconstructed from anchored implementation must be labeled **Reconstructed**, cite the exact pinned code steps from which it was derived, and distinguish renamed or simplified operations from literal source. It is not an additional Source anchor and is not execution evidence.
 
 For every loop, vectorized operation, or solver step, state the physical quantity accumulated or updated and connect it to the corresponding term in the theory expression. Verify explicitly:
 

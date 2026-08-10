@@ -1,6 +1,6 @@
 # Physics Pedagogy Protocol
 
-Use this protocol for diagnostics, lessons, clarification, review, and mastery decisions. Teach physics first. Introduce pure mathematics only when a physical theory, derivation, proof, structural comparison, or implementation depends on it, and state that exact downstream physical use.
+Use this protocol for diagnostics, lessons, clarification, review, and mastery decisions in theoretical physics. Introduce a formal prerequisite only when the physical theory, derivation, proof, structural comparison, or implementation depends on it, and state that exact physical use.
 
 ## 1. Resume before teaching
 
@@ -78,7 +78,7 @@ For each non-trivial transition:
 
 Do not hide work behind brevity phrases. If a missing step is a separate dependency, state it precisely and link its prerequisite lesson; do not compress it into a parenthesis.
 
-For physics, explain the physical meaning of each important term, mechanism, and observable, then perform applicable dimensional/unit, limiting-case, symmetry/conservation, sign, normalization, and boundary-condition checks. State what the result does not establish. For a pure-mathematics prerequisite, replace physical interpretation and dimensional checks with hypotheses, proof structure, edge cases/counterexamples, and the exact downstream physical use.
+For physics, explain the physical meaning of each important term, mechanism, and observable, then perform applicable dimensional/unit, limiting-case, symmetry/conservation, sign, normalization, and boundary-condition checks. State what the result does not establish. When a theorem or proof step is required by the physical argument, add its hypotheses, complete proof structure, edge cases or counterexamples, and exact role in that argument without replacing the physical interpretation and checks.
 
 ## 5. Design diagnostic checkpoints
 

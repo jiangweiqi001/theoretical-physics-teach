@@ -6,7 +6,7 @@
 
 ## Concept nodes
 
-| Node ID | Physical concept or supporting mathematics | Scope | Exact source anchors | Mastery level | Status | Supporting Evidence ID + Obsidian link | Lesson path |
+| Node ID | Physical concept or physics-required formal prerequisite | Scope | Exact source anchors | Mastery level | Status | Supporting Evidence ID + Obsidian link | Lesson path |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | {{CONCEPT_NODE_ID}} |  |  |  | Level 0, interpretation, reconstruction, synthesis, implementation, or blank | PENDING, not started, active, blocked, review, or complete |  |  |
 

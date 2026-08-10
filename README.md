@@ -6,7 +6,7 @@
 
 `theoretical-physics-teach` is an independent Agent Skill created, maintained, and published by [jiangweiqi001](https://github.com/jiangweiqi001). This repository is its canonical development and release line. It is configured as an explicit-only skill in Codex for sustained study of theoretical physics from user-supplied papers, textbooks, lecture notes, and related implementation material.
 
-It is physics-first: pure mathematics is introduced to support a physical theory, derivation, proof, structural comparison, or implementation, and may be expanded when that physical dependency needs more detail. The skill is source-driven and multi-source. It preserves each source's notation, records explicit translations and assumptions between sources, and writes durable, Obsidian-compatible Markdown lessons with long, step-by-step derivations when needed.
+It is source-driven and multi-source. It preserves each source's notation, records explicit translations and assumptions between sources, and writes durable, Obsidian-compatible Markdown lessons with long, step-by-step derivations when needed. Formal tools and proof steps are developed inside the physical argument that requires them.
 
 Codex does not activate the skill automatically because `agents/openai.yaml` disables implicit invocation. Invoke it with the exact `$theoretical-physics-teach` mention, for example “用 `$theoretical-physics-teach` 学这些论文”. In ChatGPT, type `@` and select the skill from the picker.
 
@@ -37,13 +37,13 @@ The loop matters: the next session does not restart the chapter. It reopens the 
 
 This skill is primarily for students, independent learners, and researchers who want to understand the theory in one or more theoretical-physics sources, not merely obtain a short summary. It is particularly suitable when you need to:
 
-- work through condensed-matter field theory, quantum field theory, many-body theory, renormalization-group arguments, or related mathematical prerequisites;
+- work through condensed-matter field theory, quantum field theory, many-body theory, renormalization-group arguments, and the formal prerequisites required by those theories;
 - read several papers or chapters together even when they use conflicting notation, conventions, approximations, or energy variables;
 - see long derivations with every algebraic and logical transition made explicit;
 - maintain a durable Obsidian learning workspace that can resume from the exact unresolved step; or
 - connect equations and approximations to supplied pseudocode or research code without inventing execution results.
 
-Pure mathematics is included when it supports a theoretical-physics dependency and can be developed in full depth when needed. This is not positioned as a general-purpose tutor for every subject or as a quick paper-summarization skill.
+This project is for theoretical physics only. Formal tools, theorem statements, and proof steps are developed when a physical argument requires them; they are not presented as a separate curriculum or audience. This is not a quick paper-summarization skill.
 
 ## What it does
 
@@ -84,7 +84,7 @@ The finished Note should read as if the clarification had been designed there fr
 
 ## How this differs from the earlier PR-oriented prototype
 
-The earlier [PR-oriented prototype](https://github.com/jiangweiqi001/skills/commit/14a2dc2) was a two-file change on a fork of the general-purpose upstream `teach` skill. It mainly replaced HTML lessons with Obsidian-compatible Markdown and added limited guidance for notation-heavy physics and mathematics. The earlier prototype did not become an upstream pull request.
+The earlier [PR-oriented prototype](https://github.com/jiangweiqi001/skills/commit/14a2dc2) was a two-file change on a fork of the general-purpose upstream `teach` skill. It mainly replaced HTML lessons with Obsidian-compatible Markdown and added limited guidance for notation-heavy physics. The earlier prototype did not become an upstream pull request.
 
 This independent project turns that initial experiment into a dedicated theoretical-physics learning system:
 
@@ -247,7 +247,7 @@ The validator detects unresolved Note, heading, and block links; duplicate block
 - It does not invent missing equations, citations, conventions, code behavior, or evidence. Unavailable or conflicting evidence remains explicitly unresolved.
 - It does not silently reconcile contradictory notation, assumptions, approximations, or results.
 - Mastery and completion require observable evidence of the stated capability; confidence or recognition alone is insufficient.
-- Pure mathematics serves an identified physical dependency, although that supporting treatment can be expanded as far as the dependency requires.
+- Formal prerequisites are taught only within an identified physical dependency and remain tied to that physical use.
 - It remains explicit-only and will not start merely because a conversation happens to mention theoretical physics.
 
 ## License and attribution

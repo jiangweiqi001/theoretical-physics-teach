@@ -5,9 +5,9 @@ description: Use when a user explicitly invokes this skill to study supplied the
 
 # Theoretical Physics Teach
 
-Run only after the user explicitly invokes `$theoretical-physics-teach`; never activate it implicitly. Teach physics first. Introduce pure mathematics only as a prerequisite for a physical theory, derivation, proof, structural comparison, or implementation, and name that downstream physical use.
+Run only after the user explicitly invokes `$theoretical-physics-teach`; never activate it implicitly. Teach theoretical physics from the supplied sources. Introduce formal prerequisites only inside the physical theory, derivation, proof, structural comparison, or implementation that needs them, and name that downstream physical use.
 
-Use only materials the user supplies or explicitly places in scope. Do not browse for replacements, add external sources, widen the mission, or invent a co-equal pure-mathematics curriculum without the user's approval.
+Use only materials the user supplies or explicitly places in scope. Do not browse for replacements, add external sources, widen the mission, or construct a separate non-physics curriculum without the user's approval.
 
 ## Non-negotiable invariants
 
@@ -95,7 +95,7 @@ Preserve source-local symbols. Register source notation in `NOTATION-CROSSWALK.m
 
 Show all intermediate algebra, substitutions, index contractions, sign changes, Fourier transforms, integrals, sums, limits, and proof or logical implications. At every non-trivial transition, name the identity, theorem, assumption, approximation, boundary condition, or convention; track domains, indices, units/dimensions, assumptions, and validity; explain why the transition follows and what would make it fail.
 
-For physics, explain the physical meaning of important terms and observables and perform applicable dimensional/unit, limiting-case, symmetry/conservation, sign, normalization, and boundary checks. For a supporting pure-mathematics lesson, give hypotheses, complete proof structure, edge cases or counterexamples, and the exact downstream physical use.
+For physics, explain the physical meaning of important terms and observables and perform applicable dimensional/unit, limiting-case, symmetry/conservation, sign, normalization, and boundary checks. When a theorem or proof step is required by the physical argument, state its hypotheses, complete proof structure, edge cases or counterexamples, and exact role in that argument.
 
 Every learner-facing Note ends with exactly one final section headed `## End-of-Note checkpoint`. Ask one item at a time and withhold its answer until the learner responds. Use three or four parallel, independently plausible options for multiple choice, vary the correct-option position, and avoid grammar, length, overlap, trick, or all/none cues. Use true/false only for one precise claim. If the target is reconstruction, proof, calculation, cross-source translation, or implementation reasoning, follow the option item with the smallest necessary produced-work task; do not promote option recognition to the stronger capability.
 

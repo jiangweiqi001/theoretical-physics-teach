@@ -21,7 +21,7 @@ Register complete version, path, and availability details in `MATERIALS.md` befo
 These statements describe background, familiarity, or confidence. They are planning context, not demonstrated prerequisite evidence.
 
 - Physics background reported by the learner:
-- Mathematics background reported by the learner:
+- Formal prerequisites relevant to the physical learning targets, reported by the learner:
 - Computational background reported by the learner:
 - Topics the learner reports recognizing but not reconstructing independently:
 - Confidence or comfort reported:

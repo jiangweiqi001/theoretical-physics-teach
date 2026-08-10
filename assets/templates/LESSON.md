@@ -112,7 +112,7 @@ Do not teach from an unavailable passage. Move missing evidence to `OPEN-QUESTIO
 - Explain why this question is needed for the mission:
 - State the system, observable, and regime being considered:
 
-For a pure-mathematics prerequisite, state the theorem or proof question and its exact downstream physical use.
+When a theorem or proof step is required by the physical argument, state the theorem or proof question and its exact role in that argument.
 
 ## Complete derivation or proof
 
@@ -160,7 +160,7 @@ Number each derivation or proof step. Add as many steps as required; never repla
 | Symmetry or conservation law |  |  |  |
 | Sign, normalization, or boundary condition |  |  |  |
 
-For a pure-mathematics prerequisite, replace physical interpretation and dimensional checks with hypotheses, proof structure, edge cases, counterexamples, and downstream physical use.
+When a theorem or proof step is required by the physical argument, add hypotheses, proof structure, edge cases, counterexamples, and its exact role without replacing physical interpretation and dimensional checks.
 
 ## Cross-source comparison
 

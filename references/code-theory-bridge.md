@@ -46,8 +46,11 @@ For every loop, vectorized operation, or solver step, state the physical quantit
 - array shape/order and the correspondence between mathematical and storage indices;
 - symmetry maps and partner maps such as momentum, frequency, spin, band, or lattice-site partners;
 - boundary behavior, periodic wrapping, offsets, and whether each mapped index is in range;
+- for every finite index truncation, the actual included endpoints and an elementwise or algebraic proof that each required involution/partner map sends the discrete set back into itself; the word `symmetric` alone is not a closure check;
 - that contractions, paired indices, input/output domains, and update dependencies close consistently;
 - the approximations, regulator/cutoff, and truncation realized by the operation.
+
+For example, Python `range(-Nw, Nw)` is the discrete set $\{-Nw,\ldots,Nw-1\}$. Under the fermionic partner map $m\mapsto -m-1$, $m=-Nw$ maps to $Nw-1$ and $m=Nw-1$ maps to $-Nw$. More generally, $-Nw\le m\le Nw-1$ implies $-Nw\le -m-1\le Nw-1$, and applying the map twice returns $m$, so the set is closed under this involution. Re-run this closure proof whenever the range, endpoint convention, truncation, or partner map changes.
 
 If the map cannot be checked from supplied material, label the affected statement Unresolved and record the missing evidence.
 

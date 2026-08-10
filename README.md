@@ -260,6 +260,6 @@ This is an independent project and is not endorsed by Matt Pocock. See [NOTICE.m
 
 ## Version
 
-Current release: `v0.2.0`.
+Current release: `v0.3.0`.
 
-If this workflow helps you turn a difficult paper into a notebook you can actually continue, consider starring the repository so more theoretical-physics learners can find it.
+This maintained release line is dedicated to sustained, source-driven theoretical-physics study in Obsidian.

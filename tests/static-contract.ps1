@@ -509,7 +509,7 @@ foreach ($requiredPublicationPhrase in @(
     '## What happens when you say "this step is unclear"'
     '## A serious paper-reading workflow'
     '## Stateless summary vs. this skill'
-    'v0.2.0'
+    'v0.3.0'
 )) {
     Assert-Contract (
         $readmeText.Contains($requiredPublicationPhrase)

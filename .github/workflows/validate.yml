@@ -16,6 +16,9 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - name: Theoretical-physics-only identity contract
+        shell: pwsh
+        run: ./tests/rebrand-contract.ps1 -Section All
       - name: Static skill contract
         shell: pwsh
         run: ./tests/static-contract.ps1

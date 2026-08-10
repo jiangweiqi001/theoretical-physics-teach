@@ -1,38 +1,34 @@
-# Baseline Diagnostic Entry
+# Baseline Diagnostics
 
-Use one entry for one prerequisite question and one evidence category only. Create another entry before asking another diagnostic question.
+This file is an append-only diagnostic index. Never overwrite, reorder, or delete a historical diagnostic entry. If an entry needs correction, append a new entry with a new stable Diagnostic ID and reference the superseded ID.
 
-## Diagnostic scope
+Each entry contains one prerequisite question and one evidence category only. The canonical verbatim response, hints, and demonstrated evidence live under the referenced Evidence ID in `LEARNING-RECORD.md`.
 
-- Question ID:
-- Prerequisite being tested:
-- Evidence category: explanation, derivation, proof, or computation
-- Related mission target:
-- Source anchor, when applicable:
+## Diagnostic index
 
-## One question
+| Diagnostic ID | Date | Session | Prerequisite | Evidence ID | Status |
+| --- | --- | --- | --- | --- | --- |
+| D-001 |  |  |  | EV-001 | Active, superseded, or confirmed |
 
-Record the single question exactly as asked:
+Copy the following level-2 section for every new diagnostic. Change the stable ID and append it after earlier entries.
 
-## Learner response
+## D-001
 
-Record the response verbatim, including an explicit statement that the learner does not know.
-
-## Observed evidence
-
-- What the response demonstrates without assistance:
-- What was recognized but not independently produced:
-- What was not demonstrated:
-- Do not treat confidence or familiarity as performance evidence.
-
-## Prerequisite implication
-
-- Earliest dependency that should be taught or reviewed:
-- Roadmap or concept-map change:
-- Next single diagnostic question, if another is needed:
-
-## Confidence
-
-- Confidence in this evidence classification: low, medium, or high
-- Reason for that confidence:
-- Learner self-report, recorded separately from observed evidence:
+- **Diagnostic ID:** D-001
+- **Date:**
+- **Session:**
+- **Evidence ID:** EV-001
+- **Supersedes Diagnostic ID, if any:**
+- **Prerequisite being tested:**
+- **Evidence category:** explanation, derivation, proof, or computation
+- **Related mission target:**
+- **Source anchors:** reference the repeatable anchor table in Evidence ID EV-001 when applicable
+- **One question, exactly as asked:**
+- **Learner response:** link to the verbatim unaided response in Evidence ID EV-001; do not duplicate it here
+- **Observed evidence:** link to the mastery judgment in Evidence ID EV-001; do not duplicate historical evidence here
+- **Prerequisite implication:**
+- **Concept Node IDs or Edge IDs affected:**
+- **Next single diagnostic question, if needed:** create a new Diagnostic ID before asking it
+- **Confidence in this diagnostic implication:** low, medium, or high
+- **Reason for confidence:**
+- **Learner self-report:** link or summarize separately; never treat it as demonstrated evidence

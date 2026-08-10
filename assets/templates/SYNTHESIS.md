@@ -2,26 +2,56 @@
 
 Compare physical objects and conclusions without flattening source-local notation or hiding incompatible assumptions.
 
-## Objects and problems
+Use stable synthesis IDs such as `Y-001`. The narrow index is for navigation; each keyed synthesis entry contains the comparison details.
 
-| Synthesis ID | Physical object or problem | Source ID and exact anchor | Hamiltonian, action, ensemble, observable, or theorem scope |
+## Synthesis index
+
+| Synthesis ID | Object or problem | Source IDs | Status |
 | --- | --- | --- | --- |
-| Y1 |  |  |  |
+| Y-001 |  |  | Draft, verified, disputed, or blocked |
 
-## Assumption, method, and result comparison
+## Synthesis entries
 
-| Synthesis ID | Source ID and exact anchor | Assumptions | Method | Approximation, regulator, expansion parameter, or limit | Result or conclusion | Validity regime | Relation classification | Evidence status |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Y1 |  |  |  |  |  |  | Same object different notation, same notation different object, conditionally equivalent, alternative scheme, apparent contradiction, or restatement | Source, Reconstructed, Inference, or Unresolved |
+Copy the following subsection for each object, physical problem, or theorem comparison.
 
-## Assumption maps for claimed relations
+### Y-001
 
-| Relation | Starting statement | Assumptions required | Translation or derivation steps | Resulting statement | What fails outside the regime |
-| --- | --- | --- | --- | --- | --- |
-|  |  |  |  |  |  |
+- **Object or problem:**
+- **Hamiltonian, action, ensemble, observable, theorem, or code scope:**
+- **Question this comparison answers:**
 
-## Disagreements and non-comparability
+#### Source record S1
 
-| Sources | Apparent disagreement | Whether the objects and regimes match | Missing evidence | Resolution status |
-| --- | --- | --- | --- | --- |
-|  |  |  |  |  |
+Copy this source-record subsection once per compared source.
+
+| Field | Value |
+| --- | --- |
+| Stable source ID | S1 |
+| Version |  |
+| Exact location |  |
+| Role in comparison |  |
+| Provenance | Source, Reconstructed, Inference, or Unresolved |
+| Assumptions |  |
+| Method |  |
+| Approximation, regulator, expansion parameter, or limit |  |
+| Result or conclusion |  |
+| Validity regime |  |
+
+#### Relation references
+
+Every row must reference a Relation ID owned by `NOTATION-CROSSWALK.md`. Repeat its classification exactly from the controlled set; do not create a synthesis-local synonym.
+
+| Relation ID | Controlled classification | Relation status | Role in this synthesis |
+| --- | --- | --- | --- |
+| REL-001 | `equivalent`, `convention-only`, `approximation`, `incompatible`, or `unresolved` |  |  |
+
+#### Assumption map and result
+
+- **Starting source statements:**
+- **Assumptions required for the relation:**
+- **Translation, comparison, or derivation steps:**
+- **Compared result:**
+- **Shared validity regime, if any:**
+- **What fails or becomes non-comparable outside that regime:**
+- **Missing evidence or open-question IDs:**
+- **Synthesis status:** Draft, verified, disputed, or blocked

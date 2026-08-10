@@ -1,20 +1,25 @@
 # Current Learning State
 
-Read this file, the active lesson, and the latest learning record before teaching. Resume at the exact recorded step; do not restart the topic.
+This file is the canonical active snapshot only. Read it, the active lesson, and the latest Evidence ID before teaching. Resume at the exact recorded step; do not restart the topic.
+
+Replace this snapshot atomically after each substantive exchange. Never append history here. `LEARNING-RECORD.md` is the exclusive owner of the prior-to-new snapshot transition and historical learner evidence.
 
 ## Active phase and lesson
 
+- Snapshot updated at date and session:
 - Roadmap phase:
 - Active lesson path:
-- Active concept-map node:
+- Active Concept Node IDs:
+- Active prerequisite Edge IDs:
 - Current mastery target:
 
-## Exact source anchor
+## Source anchors
 
-- Stable source ID:
-- Version:
-- Page, section, equation, figure, appendix, theorem, or code location:
-- Provenance label: Source, Reconstructed, Inference, or Unresolved
+Add one row for every source needed to resume safely.
+
+| Source ID | Version | Exact location | Role | Provenance |
+| --- | --- | --- | --- | --- |
+|  |  |  | Active premise, equation, proof, convention, comparison, or code | Source, Reconstructed, Inference, or Unresolved |
 
 ## Exact resume point
 
@@ -28,19 +33,21 @@ Read this file, the active lesson, and the latest learning record before teachin
 - Missing prerequisite, convention, evidence, or operation:
 - Why progress stopped here:
 
-## Resolved obstacle and canonical writeback
+## Resolution incorporated into this snapshot
 
-- Obstacle resolved in the latest exchange:
-- Explanation or evidence that resolved it:
-- Active lesson section patched, or new prerequisite lesson linked:
-- Concept-map, notation, synthesis, review, or learning-record files updated:
+- Most recently resolved obstacle label:
+- Canonical Evidence ID containing the explanation and demonstrated evidence:
+- Active lesson path and heading where teaching content was patched, or linked prerequisite lesson:
+- Resulting change to this active snapshot:
+- Related Concept Node IDs, Edge IDs, Notation Entry IDs, Relation IDs, Synthesis IDs, Review IDs, or Open Question IDs:
 
-## Last demonstrated evidence
+Do not copy the explanation, learner response, hints, or state-change history into this snapshot.
 
-- Latest learning-record path:
-- Unaided performance demonstrated:
-- Hints required:
-- Current mastery level supported by the evidence:
+## Current evidence links
+
+- Latest Evidence IDs:
+- Current mastery level supported by those Evidence IDs:
+- Active Review IDs:
 
 ## Next action
 
@@ -48,9 +55,3 @@ Read this file, the active lesson, and the latest learning record before teachin
 - File and section to open first:
 - Expected observable evidence:
 - Blocking unavailable evidence, if any:
-
-## State update log
-
-| Date and session | Previous resume point | New exact resume point | Reason for change |
-| --- | --- | --- | --- |
-|  |  |  |  |

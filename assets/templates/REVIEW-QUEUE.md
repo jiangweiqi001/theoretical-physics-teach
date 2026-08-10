@@ -2,14 +2,30 @@
 
 Prioritize demonstrated weaknesses, especially material the learner recognizes but cannot reconstruct. Use retrieval or reconstruction rather than rereading alone.
 
-## Queue
+Use level 0 — not yet demonstrated / insufficient evidence — when no positive claim is supported. The four positive capability levels, interpretation, reconstruction, synthesis, and implementation, are not necessarily linear. Evaluate only the capability and evidence required by the review target.
 
-| Review ID | Target concept, derivation, proof, or translation | Current mastery level | Failed or weak evidence | Review method | Due condition | Result | Next state change |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| R1 |  | Interpretation, reconstruction, synthesis, or implementation |  | Retrieval, limiting-case check, short derivation, proof step, or source translation | Date, session count, or prerequisite event | Pending |  |
+## Review index
 
-## Review result details
+| Review ID | Target Node IDs | Current mastery level | Due condition | Status |
+| --- | --- | --- | --- | --- |
+| R-001 |  | Level 0, interpretation, reconstruction, synthesis, or implementation | Date, session count, or prerequisite event | Pending, scheduled, completed, or retired |
 
-| Review ID | Unaided response | Hints required | Evidence demonstrated | Remaining gap | Learning-record path |
-| --- | --- | --- | --- | --- | --- |
-|  |  |  |  |  |  |
+## Review entries
+
+Copy this subsection for each stable Review ID.
+
+### R-001
+
+- **Review ID:** R-001
+- **Target concept, derivation, proof, translation, or implementation:**
+- **Target Concept Node IDs:**
+- **Target capability and observable criterion:**
+- **Current mastery level:** level 0 — not yet demonstrated / insufficient evidence; interpretation; reconstruction; synthesis; or implementation
+- **Failed or weak Evidence IDs:**
+- **Why review is due:**
+- **Review method:** retrieval, limiting-case check, short derivation, proof step, source translation, or implementation validation
+- **Due condition:**
+- **Result Evidence IDs:** leave blank until a new `LEARNING-RECORD.md` entry records the attempt
+- **Result mastery level:** reference the judgment in the Result Evidence IDs; do not duplicate the response or hints here
+- **Remaining-gap Evidence IDs:**
+- **Status:** Pending, scheduled, completed, or retired

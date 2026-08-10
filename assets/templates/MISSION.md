@@ -14,12 +14,23 @@
 
 Register complete version, path, and availability details in `MATERIALS.md` before teaching from a source.
 
-## Prior knowledge
+## Learner self-report
 
-- Physics already demonstrated:
-- Mathematics already demonstrated:
-- Computational knowledge already demonstrated:
-- Topics recognized but not yet reconstructed independently:
+These statements describe background, familiarity, or confidence. They are planning context, not demonstrated prerequisite evidence.
+
+- Physics background reported by the learner:
+- Mathematics background reported by the learner:
+- Computational background reported by the learner:
+- Topics the learner reports recognizing but not reconstructing independently:
+- Confidence or comfort reported:
+
+## Diagnostically demonstrated prerequisites
+
+Every demonstrated-prerequisite claim must cite one or more canonical Evidence IDs from `LEARNING-RECORD.md`. If no Evidence ID supports the claim, record it above as self-report or leave it undemonstrated.
+
+| Prerequisite capability | Evidence IDs | Demonstrated unaided performance | Date or session |
+| --- | --- | --- | --- |
+|  | EV-001 |  |  |
 
 ## Constraints
 

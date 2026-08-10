@@ -10,10 +10,14 @@ permissions:
 
 jobs:
   contracts:
-    runs-on: windows-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-latest, ubuntu-latest]
+    runs-on: ${{ matrix.os }}
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
           python-version: '3.12'
       - name: Theoretical-physics-only identity contract
@@ -31,9 +35,18 @@ jobs:
       - name: Accepted behavioral output contract
         shell: pwsh
         run: ./tests/green-contract.ps1
-      - name: Workspace validator unit tests
+      - name: Normative workspace example contract
         shell: pwsh
-        run: python -m unittest tests.test_validate_workspace -v
+        run: ./tests/example-contract.ps1
+      - name: Python unit tests
+        shell: pwsh
+        run: python -X utf8 -m unittest discover -s tests -v
+      - name: Public documentation links
+        shell: pwsh
+        run: python -X utf8 scripts/check_markdown_links.py README.md README.zh-CN.md CHANGELOG.md docs/architecture.md docs/walkthrough.md
+      - name: Runtime package build
+        shell: pwsh
+        run: python -X utf8 scripts/build_skill_package.py --output dist/theoretical-physics-teach-v0.4.0.zip
       - name: Whitespace check
         shell: pwsh
         run: git diff --check

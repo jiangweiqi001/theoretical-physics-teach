@@ -1,5 +1,6 @@
 interface:
   display_name: "Theoretical Physics Teach"
   short_description: "Study theory sources with rigorous derivations"
+  default_prompt: "Use $theoretical-physics-teach with my supplied theoretical-physics sources and an external learning workspace."
 policy:
   allow_implicit_invocation: false

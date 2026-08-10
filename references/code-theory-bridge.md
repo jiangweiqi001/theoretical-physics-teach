@@ -68,20 +68,13 @@ If the map cannot be checked from supplied material, label the affected statemen
 
 ## 4. Use canonical Code Map identities
 
-A map used only by one lesson is canonical inside that lesson. Its ID includes the stable Lesson ID, for example `CMAP-L-000001-001`; its line IDs extend it, for example `CMAP-L-000001-001-L1`. Record map version, status, `Supersedes`, and `Superseded-by`. After an Evidence record links an ID, its stable meaning is immutable: retain it and create a new ID for a correction or new revision. Complete architecture fields before line records. Link the local ID from state and Evidence records; do not present it as shared.
+For every newly allocated map, instantiate `assets/templates/CODE-MAP.md` at `reference/code-maps/{stable-code-map-id}.md`. Register it in `reference/code-maps/INDEX.md` and link it from each lesson that teaches the mapping. The lesson owns the learner-facing explanation; the external Code Map owns identity, architecture, quantity chains, operation maps, lifecycle, and Run links. Do not copy the canonical payload into the lesson.
 
-A map shared by multiple lessons is canonical at `reference/code-maps/CMAP-GLOBAL-0001.md`, registered in `reference/code-maps/INDEX.md`, and only linked from ordinary lessons. The embedded `LESSON.md` shared schemas are used only for first bootstrap when the registry/map does not exist; never copy a populated shared architecture map into each lesson.
+Read the complete append-only index before allocation. Allocate one greater than the largest suffix ever present in any `registered`, `superseded`, or `tombstone` event. Never reuse an ID after supersession, deletion, failure, or tombstone. Create the canonical map file before appending its `registered` event. A correction or changed stable meaning receives a new ID and bidirectional supersession links; never silently rewrite an Evidence-linked identity.
 
-For a global ID:
+Existing Code Maps embedded in pre-v0.4 lessons remain valid canonical legacy records. Do not migrate or overwrite them automatically. When such a map needs a new stable revision, create an external map with a new ID, record the relationship explicitly, and retain the old lesson record for historical links.
 
-1. create the index with the canonical `LESSON.md` event schema if it does not exist;
-2. read every `registered`, `superseded`, or `tombstone` event and allocate one greater than the largest suffix ever present, zero-padded to four digits;
-3. never reuse an ID after supersession, deletion, failure, or tombstone;
-4. create the canonical map file, then append its `registered` event; never edit or delete an earlier index event;
-5. supersession allocates a new ID, records `Supersedes` in the replacement, records `Superseded-by` in the prior canonical file, and appends the lifecycle event;
-6. tombstone by appending an event with a reason; retain the ID permanently.
-
-The canonical global map records its map version, immutable commit-or-snapshot anchor, and complete architecture fields. Its append-only global line-map index uses `CMAP-GLOBAL-0001-L0001`-style IDs and the same exact `registered`, `superseded`, or `tombstone` event enumeration. Global line mappings have their own versions, status, supersession links, complete copy-ready records, and never-reused IDs as defined in `LESSON.md`. If code or theory changes invalidate stable meaning, supersede rather than silently rewrite it.
+Use the complete copy-ready index, architecture, physical-quantity, operation-map, lifecycle, and audit schemas in `assets/templates/CODE-MAP.md`. Do not reproduce those schemas in an ordinary lesson.
 
 ## 5. Validate without overclaiming
 
@@ -89,6 +82,6 @@ Distinguish code inspection, successful execution, numerical agreement, converge
 
 Without a canonical Run record and direct inspection of its output artifacts, a filename, function name, or pseudocode is not evidence of a successful numerical calculation. Describe only the intended output or interface, and state `No execution or validation claim is made.` Do not relabel an intended result as Observed execution evidence or Computed execution evidence.
 
-Use the append-only `execution-records/INDEX.md` and immutable `execution-records/RUN-000001.md`-style records defined by the copy-ready `LESSON.md` schema. Allocate a never-reused Run ID from all `registered`, `superseded`, and `tombstone` events. Record status/supersession, immutable revision or snapshot anchor, exact command, environment, precision/tolerances, inputs/parameters, raw output artifact paths and hashes, convergence sequence, acceptance criteria, outcome/discrepancy, and remaining non-claims. Corrections use a new Run ID; do not rewrite an old Run.
+Only after a real execution produces inspectable output, instantiate `assets/templates/RUN-RECORD.md` at `execution-records/{stable-run-id}.md`. Use its append-only index and immutable payload rules. Allocate a never-reused Run ID from all `registered`, `superseded`, and `tombstone` events. Record status and supersession, immutable revision or snapshot anchor, exact command, environment, precision and tolerances, inputs and parameters, raw output artifact paths and hashes, convergence sequence, acceptance criteria, outcome or discrepancy, and remaining non-claims. Corrections use a new Run ID; do not rewrite an old Run.
 
 For each runtime claim, link the Run ID and canonical record, then label the evidence item `Observed execution evidence` or `Computed execution evidence`. Without a Run anchor, do not claim that execution occurred, results matched, or convergence was observed or computed. If verification was not performed, say so explicitly.

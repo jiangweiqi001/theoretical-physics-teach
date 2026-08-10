@@ -192,12 +192,12 @@ The current code evaluates that value directly, so no frequency-array bounds are
 
 4. **Regenerate momentum points and weights together.** Preserve the integration domain, the \((2\pi)^{-3}\) normalization, symmetry multiplicities, and any ultraviolet or Brillouin-zone boundary treatment. Compare successively refined quadratures at the same physical \(\mathbf q\) and \(n\).
 
-5. **Verify how \(\xi(\mathbf k+\mathbf q)\) handles boundaries.**  
+5. **Verify how \(\xi(\mathbf k+\mathbf q)\) handles boundaries.**
    **Unresolved from the supplied material:** it is not stated whether momentum space is continuum or a Brillouin zone, whether \(\mathbf k+\mathbf q\) must be folded periodically, or whether interpolation is used. That must be established before changing either grid.
 
 6. **Treat the external momentum grid separately from the integration grid.** `q_points` need no integration weights here. Adding or moving them changes only where the response is sampled, but may expose new interpolation or boundary requirements in `xi(k + q)`.
 
-7. **Remove the infrared regulator by convergence, not by interpretation.**  
+7. **Remove the infrared regulator by convergence, not by interpretation.**
    **Source — S1, section 4:** \(\kappa_{\mathrm{IR}}\) is numerical, not physical. At the current value, momenta comparable to or below \(0.02\ \mathrm{\AA}^{-1}\) are strongly regulator-dependent. At \(\mathbf q=0\),
 
    \[

@@ -395,7 +395,7 @@ Without looking back, state where each source places the Fermi surface and give 
 
 Starting from \(p_0-E_p\), reproduce every step leading to \(\omega-\xi_k\), then state the additional self-energy condition required for the interacting denominators to match.
 
-**Success criterion:** the derivation explicitly uses \(p_0=\omega+\mu\), \(E_p=\varepsilon_k\), and \(\xi_k=\varepsilon_k-\mu\), followed by  
+**Success criterion:** the derivation explicitly uses \(p_0=\omega+\mu\), \(E_p=\varepsilon_k\), and \(\xi_k=\varepsilon_k-\mu\), followed by
 \(\mathcal\Sigma(p,\omega+\mu)=\Sigma(k,\omega)\).
 
 ## Mastery check and next dependency

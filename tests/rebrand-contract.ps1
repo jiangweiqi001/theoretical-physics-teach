@@ -65,7 +65,10 @@ if ($Section -in @('Scope', 'All')) {
 }
 
 if ($Section -in @('Publication', 'All')) {
-    Assert-Rebrand ($readme.Contains('Current release: `v0.3.0`.')) 'README names v0.3.0'
+    Assert-Rebrand ($readme.Contains('Current release: `v0.4.0`.')) 'README names v0.4.0'
+    Assert-Rebrand (
+        Test-Path -LiteralPath (Join-Path $repoRoot 'README.zh-CN.md') -PathType Leaf
+    ) 'Chinese README exists'
     Assert-Rebrand (
         -not [regex]::IsMatch($readme, '(?i)\b(?:star|starring)\s+(?:this\s+|the\s+)?repository\b')
     ) 'README contains no repository-star request'

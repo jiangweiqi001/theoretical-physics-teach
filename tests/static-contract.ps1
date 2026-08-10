@@ -92,13 +92,25 @@ $requiredPaths = @(
     'assets/templates/NOTES.md'
     'assets/templates/LESSON.md'
     'assets/templates/LEARNING-RECORD.md'
+    'assets/templates/CODE-MAP.md'
+    'assets/templates/RUN-RECORD.md'
     'README.md'
+    'README.zh-CN.md'
+    'CHANGELOG.md'
+    'docs/architecture.md'
+    'docs/walkthrough.md'
     'LICENSE'
     'NOTICE.md'
     '.github/workflows/validate.yml'
+    '.github/dependabot.yml'
     'scripts/validate_workspace.py'
+    'scripts/check_markdown_links.py'
+    'scripts/build_skill_package.py'
     'tests/test_validate_workspace.py'
+    'tests/test_check_markdown_links.py'
+    'tests/test_build_skill_package.py'
     'tests/scenario-contract.ps1'
+    'tests/example-contract.ps1'
     'tests/scenarios/04-coherent-clarification-writeback.md'
     'tests/scenarios/05-conditional-code-explanation.md'
 )
@@ -132,6 +144,10 @@ $openAiMetadata = Get-RepositoryText 'agents/openai.yaml'
 Assert-Contract (
     [regex]::IsMatch($openAiMetadata, '(?m)^\s*allow_implicit_invocation:\s*false\s*$')
 ) 'agents/openai.yaml disables implicit invocation'
+Assert-Contract (
+    $openAiMetadata.Contains('default_prompt:') -and
+    $openAiMetadata.Contains('$theoretical-physics-teach')
+) 'agents/openai.yaml provides an explicit default prompt'
 
 foreach ($requiredSkillPhrase in @(
     'CURRENT-STATE.md'
@@ -165,6 +181,14 @@ $defineBeforeUsePattern = '(?is)\b(?:define(?:s|d)? every new symbol|every new s
 Assert-Contract (
     [regex]::IsMatch($lessonTemplate, $defineBeforeUsePattern)
 ) 'LESSON.md requires every new symbol to be defined before use'
+Assert-Contract (
+    $lessonTemplate.Contains('Canonical Code Map links') -and
+    $lessonTemplate.Contains('Canonical Run record links')
+) 'LESSON.md keeps concise external code-record links'
+Assert-Contract (
+    -not $lessonTemplate.Contains('Global Code Map ID allocation and append-only index') -and
+    -not $lessonTemplate.Contains('Execution evidence registry protocol')
+) 'LESSON.md excludes optional registry bootstrap schemas'
 
 $coherentWritebackPolicy = 'A coherent writeback must make the Note read as if the clarification had been designed in place from the start.'
 $detachedAppendixPolicy = 'Do not append a detached chat transcript or clarification appendix.'
@@ -509,7 +533,7 @@ foreach ($requiredPublicationPhrase in @(
     '## What happens when you say "this step is unclear"'
     '## A serious paper-reading workflow'
     '## Stateless summary vs. this skill'
-    'v0.3.0'
+    'v0.4.0'
 )) {
     Assert-Contract (
         $readmeText.Contains($requiredPublicationPhrase)

@@ -4,16 +4,18 @@ Use this protocol whenever material is added, replaced, cited, compared, or foun
 
 ## 1. Register before use
 
-1. Read all of `MATERIALS.md` before allocating an ID. Give every paper, book, note set, repository, dataset, or other supplied material one stable Source ID such as `S1`.
+1. Read all of `MATERIALS.md` before allocating an ID. Give every paper, book, note set, repository, dataset, or other supplied material one stable Source ID such as `S1`. Copy a stable version key only from its canonical keyed record in `MATERIALS.md`; never infer that a source is already registered or invent a key because a source or excerpt was mentioned.
 2. Never renumber, recycle, or silently repurpose a Source ID. Under it, allocate an immutable keyed version record such as `S1-V001`. A content change creates a new version record; a materially different artifact receives a new Source ID. Never overwrite an earlier version record or change an existing anchor to point at new content.
 3. Complete the keyed version record before teaching from it: bibliographic identity, material type, edition/version label, immutable revision anchor, original path or URL, mission role, addressability, availability summary with Open Question link when needed, and trust/access notes. Keep indexes narrow; the keyed version record is canonical.
 4. Check that the recorded path resolves and that the portion required for the current task is actually readable. Classify availability as full, partial, metadata-only, or unavailable; a filename or citation alone is not evidence that its contents are available.
 
 An immutable revision anchor is mandatory but is not synonymous with a Git commit. Use the commit for Git material. For an independent file, chat-supplied excerpt, or inline pseudocode, first save a workspace read-only snapshot and record its path, hash algorithm and digest, received date, and block/algorithm-step locator. Do not reject non-Git evidence for lacking a commit and never fabricate one.
 
+In a simulated, read-only, or response-only context where a supplied excerpt is visible but no canonical material record can be read or written, use the exact version-key sentinel `Unassigned — supplied excerpt; snapshot registration pending`. Record a temporary session anchor such as the supplied excerpt plus its visible block, equation, or paragraph locator, and list snapshot registration as pending. Do not invent a stable key, snapshot path, or content hash, and do not claim that persistent anchoring is complete. Safe explanation of the visible excerpt may continue with this limitation stated.
+
 ## 2. Anchor every material-dependent statement
 
-Use the stable Source ID, stable version key, and immutable revision anchor on every anchor. Make the location precise enough for another agent to reopen the same evidence:
+Use the stable Source ID, stable version key, and immutable revision anchor read from their canonical `MATERIALS.md` record on every persisted anchor. Use the pending sentinel and temporary session anchor above when registration cannot actually be completed. Make the location precise enough for another agent to reopen the same evidence:
 
 - print material: page plus section, equation, theorem, lemma, appendix, table, or figure identifier;
 - addressable notes: heading/section plus equation or paragraph locator;

@@ -34,11 +34,11 @@ The `learning-records/INDEX.md` row schema is:
 
 ## Source anchors
 
-Add one row for every source premise, comparison, or reconstructed step used in this evidence judgment.
+Add one row for every source premise, comparison, or reconstructed step used in this evidence judgment. Copy every stable version key from the canonical keyed record in `MATERIALS.md`; never infer prior registration. If only a supplied excerpt is visible and registration cannot be completed in the current context, write `Unassigned — supplied excerpt; snapshot registration pending` or link the corresponding Open Question, and record the temporary session/excerpt locator. Do not invent a key, hash, or path.
 
 | Source ID | Stable version key | Exact location | Role | Provenance |
 | --- | --- | --- | --- | --- |
-|  |  |  | Task premise, learner citation, comparison, or evaluator basis | Source, Reconstructed, Inference, or Unresolved |
+|  |  |  | Task premise, learner citation, comparison, diagnostic premise, or evidence-assessment premise | Source, Reconstructed, Inference, or Unresolved |
 
 ## Unaided response
 

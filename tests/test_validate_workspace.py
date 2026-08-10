@@ -33,6 +33,12 @@ class WorkspaceValidationTests(unittest.TestCase):
     def test_non_markdown_lesson_artifact_fails(self) -> None:
         self.assertIn("non-markdown-artifact", self.issue_codes("invalid"))
 
+    def test_lesson_first_h2_must_be_notation_and_conventions(self) -> None:
+        self.assertIn("lesson-first-h2", self.issue_codes("invalid"))
+
+    def test_lesson_final_h2_must_be_end_checkpoint(self) -> None:
+        self.assertIn("lesson-final-h2", self.issue_codes("invalid"))
+
 
 if __name__ == "__main__":
     unittest.main()

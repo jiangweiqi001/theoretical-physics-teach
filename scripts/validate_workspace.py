@@ -8,6 +8,7 @@ import re
 
 WIKILINK_RE = re.compile(r"\[\[([^\]]+)\]\]")
 HEADING_RE = re.compile(r"^\s{0,3}#{1,6}\s+(.+?)\s*$")
+LEVEL_TWO_HEADING_RE = re.compile(r"^\s{0,3}##\s+(.+?)\s*$")
 BLOCK_RE = re.compile(r"(?:^|\s)\^([A-Za-z0-9-]+)\s*$")
 FENCE_RE = re.compile(r"^\s*(`{3,}|~{3,})(.*)$")
 FORBIDDEN_MATH_RE = re.compile(r"\\[()\[\]]")
@@ -167,6 +168,41 @@ def check_math_and_blocks(note: IndexedNote, issues: list[Issue]) -> None:
                 seen_blocks[block_id] = line_number
 
 
+def check_lesson_structure(root: Path, note: IndexedNote, issues: list[Issue]) -> None:
+    lessons_root = (root / "lessons").resolve()
+    try:
+        note.path.relative_to(lessons_root)
+    except ValueError:
+        return
+
+    level_two_headings: list[tuple[int, str]] = []
+    for line_number, line in enumerate(note.lines, start=1):
+        match = LEVEL_TWO_HEADING_RE.match(line)
+        if match:
+            level_two_headings.append(
+                (line_number, match.group(1).rstrip("#").rstrip())
+            )
+
+    if not level_two_headings or level_two_headings[0][1] != "Notation and conventions":
+        issues.append(
+            Issue(
+                note.relative_path,
+                level_two_headings[0][0] if level_two_headings else 1,
+                "lesson-first-h2",
+                "first lesson H2 must be exactly 'Notation and conventions'",
+            )
+        )
+    if not level_two_headings or level_two_headings[-1][1] != "End-of-Note checkpoint":
+        issues.append(
+            Issue(
+                note.relative_path,
+                level_two_headings[-1][0] if level_two_headings else 1,
+                "lesson-final-h2",
+                "final lesson H2 must be exactly 'End-of-Note checkpoint'",
+            )
+        )
+
+
 def _candidate_paths(root: Path, current: IndexedNote, target: str) -> tuple[Path, ...]:
     normalized_target = target.replace("\\", "/").strip()
     target_path = Path(normalized_target)
@@ -270,6 +306,7 @@ def validate_workspace(root: Path) -> list[Issue]:
     check_canonical_artifacts(root, issues)
     for note in notes.values():
         check_math_and_blocks(note, issues)
+        check_lesson_structure(root, note, issues)
         check_wikilinks(root, note, notes, issues)
     return sorted(
         issues,

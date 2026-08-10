@@ -1,5 +1,7 @@
 # theoretical-physics-math-teach
 
+[![validate](https://github.com/jiangweiqi001/theoretical-physics-math-teach/actions/workflows/validate.yml/badge.svg)](https://github.com/jiangweiqi001/theoretical-physics-math-teach/actions/workflows/validate.yml)
+
 > Read the paper. Preserve the notation. Finish the derivation. Resume exactly where you stopped.
 
 `theoretical-physics-math-teach` is an independent Agent Skill created, maintained, and published by [jiangweiqi001](https://github.com/jiangweiqi001). This repository is its canonical development and release line. It is configured as an explicit-only skill in Codex for sustained study of theoretical physics from user-supplied papers, textbooks, lecture notes, and related implementation material.

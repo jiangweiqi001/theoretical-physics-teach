@@ -1,11 +1,11 @@
 ---
-name: theoretical-physics-math-teach
+name: theoretical-physics-teach
 description: Use when a user explicitly invokes this skill to study supplied theoretical-physics papers, textbooks, lecture notes, or associated code across multiple sessions.
 ---
 
-# Theoretical Physics Math Teach
+# Theoretical Physics Teach
 
-Run only after the user explicitly invokes `$theoretical-physics-math-teach`; never activate it implicitly. Teach physics first. Introduce pure mathematics only as a prerequisite for a physical theory, derivation, proof, structural comparison, or implementation, and name that downstream physical use.
+Run only after the user explicitly invokes `$theoretical-physics-teach`; never activate it implicitly. Teach physics first. Introduce pure mathematics only as a prerequisite for a physical theory, derivation, proof, structural comparison, or implementation, and name that downstream physical use.
 
 Use only materials the user supplies or explicitly places in scope. Do not browse for replacements, add external sources, widen the mission, or invent a co-equal pure-mathematics curriculum without the user's approval.
 

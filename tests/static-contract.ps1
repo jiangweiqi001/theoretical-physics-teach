@@ -122,7 +122,7 @@ if ($frontmatterMatch.Success) {
 }
 
 $expectedDescription = 'Use when a user explicitly invokes this skill to study supplied theoretical-physics papers, textbooks, lecture notes, or associated code across multiple sessions.'
-$namePattern = '(?m)^name:\s*theoretical-physics-math-teach\s*$'
+$namePattern = '(?m)^name:\s*theoretical-physics-teach\s*$'
 $descriptionPattern = '(?m)^description:\s*["'']?' + [regex]::Escape($expectedDescription) + '["'']?\s*$'
 
 Assert-Contract ([regex]::IsMatch($skillFrontmatter, $namePattern)) 'SKILL.md frontmatter has the exact skill name'
@@ -487,7 +487,7 @@ foreach ($requiredReadmePhrase in @(
 }
 $chineseInvocationExample = -join @(
     [char]0x7528
-    ' `$theoretical-physics-math-teach` '
+    ' `$theoretical-physics-teach` '
     [char]0x5B66
     [char]0x8FD9
     [char]0x4E9B

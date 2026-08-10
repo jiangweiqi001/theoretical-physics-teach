@@ -1,5 +1,5 @@
 interface:
-  display_name: "Theoretical Physics Math Teach"
+  display_name: "Theoretical Physics Teach"
   short_description: "Study theory sources with rigorous derivations"
 policy:
   allow_implicit_invocation: false

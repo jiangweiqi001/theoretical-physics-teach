@@ -110,6 +110,42 @@ class SkillPackageTests(unittest.TestCase):
                 ),
             )
 
+    def test_packaged_readmes_explain_root_level_archive_installation(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            temporary = Path(directory)
+            archive = temporary / "skill.zip"
+            extracted = temporary / "extracted"
+
+            build_package(REPO_ROOT, archive)
+            with zipfile.ZipFile(archive) as package:
+                package.extractall(extracted)
+
+            english = (extracted / "README.md").read_text(encoding="utf-8")
+            chinese = (extracted / "README.zh-CN.md").read_text(encoding="utf-8")
+            self.assertIn(
+                "create a `theoretical-physics-teach` directory and extract the archive contents into that directory",
+                english,
+            )
+            self.assertIn(
+                "先创建 `theoretical-physics-teach` 文件夹，再把压缩包中的全部内容直接解压到该文件夹",
+                chinese,
+            )
+
+    def test_packaged_readmes_distinguish_runtime_validation_from_development_tests(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            temporary = Path(directory)
+            archive = temporary / "skill.zip"
+            extracted = temporary / "extracted"
+
+            build_package(REPO_ROOT, archive)
+            with zipfile.ZipFile(archive) as package:
+                package.extractall(extracted)
+
+            english = (extracted / "README.md").read_text(encoding="utf-8")
+            chinese = (extracted / "README.zh-CN.md").read_text(encoding="utf-8")
+            self.assertIn("In a development clone", english)
+            self.assertIn("在开发仓库克隆中", chinese)
+
 
 if __name__ == "__main__":
     unittest.main()

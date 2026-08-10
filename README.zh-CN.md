@@ -163,7 +163,7 @@ mkdir -p "$HOME/.agents/skills"
 git clone https://github.com/jiangweiqi001/theoretical-physics-teach.git "$HOME/.agents/skills/theoretical-physics-teach"
 ```
 
-也可以使用 `$skill-installer` 从本仓库安装，或下载 GitHub Release 中的 runtime-only ZIP 后解压到个人 skills 目录。
+也可以使用 `$skill-installer` 从本仓库安装，或下载 GitHub Release 中的 runtime-only ZIP。发布包把运行时文件直接放在压缩包根部：请先创建 `theoretical-physics-teach` 文件夹，再把压缩包中的全部内容直接解压到该文件夹，并将它放入个人 skills 目录。
 
 ### 升级 Git clone
 
@@ -191,7 +191,7 @@ git -C "$env:USERPROFILE\.agents\skills\theoretical-physics-teach" pull --ff-onl
 
 ## 验证与发布包
 
-仓库在 Windows 和 Ubuntu 上运行静态合同、bootstrap 合同、行为场景、规范示例、文档链接、workspace validator 和 runtime package 测试。
+在开发仓库克隆中，Windows 和 Ubuntu 都会运行静态合同、bootstrap 合同、行为场景、规范示例、文档链接、workspace validator 和 runtime package 测试。
 
 本地验证：
 
@@ -209,6 +209,8 @@ python -X utf8 -m unittest discover -s tests -v
 ```powershell
 python -X utf8 scripts/validate_workspace.py "D:\Obsidian\UEG场论\学习"
 ```
+
+runtime-only 发布包保留这个只读 workspace validator，但有意不包含开发测试和发布包构建脚本。
 
 构建干净发布包：
 

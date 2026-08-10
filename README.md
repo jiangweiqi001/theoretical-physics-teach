@@ -151,7 +151,7 @@ mkdir -p "$HOME/.agents/skills"
 git clone https://github.com/jiangweiqi001/theoretical-physics-teach.git "$HOME/.agents/skills/theoretical-physics-teach"
 ```
 
-Alternatively, invoke `$skill-installer` in Codex and ask it to install the skill from `https://github.com/jiangweiqi001/theoretical-physics-teach`. You may also download the runtime-only ZIP attached to the latest GitHub Release and extract its `theoretical-physics-teach` folder into the personal skills directory. Keep the root `SKILL.md`, `references/`, `assets/`, and metadata together.
+Alternatively, invoke `$skill-installer` in Codex and ask it to install the skill from `https://github.com/jiangweiqi001/theoretical-physics-teach`. You may also download the runtime-only ZIP attached to the latest GitHub Release. The archive stores runtime files at its root: create a `theoretical-physics-teach` directory and extract the archive contents into that directory under your personal skills directory. Keep the root `SKILL.md`, `references/`, `assets/`, and metadata together.
 
 For another Agent Skills-compatible tool, place the entire repository folder in that tool's skills directory and confirm that it discovers the root `SKILL.md`. `agents/openai.yaml` is Codex-specific display and invocation-policy metadata; the Markdown instructions and supporting files are portable, but another host must provide or be configured with an equivalent explicit-only policy. If it cannot, automatic invocation behavior is not guaranteed there.
 
@@ -260,7 +260,7 @@ An option answer can locate a sign, convention, assumption, limiting case, or ne
 
 ## Validation
 
-The repository ships deterministic contracts for package structure, inert bootstrap templates, evaluator isolation, accepted behavioral outputs, and real-workspace Markdown links. Run them from the repository root:
+In a development clone, the repository ships deterministic contracts for package structure, inert bootstrap templates, evaluator isolation, accepted behavioral outputs, and real-workspace Markdown links. Run the full suite from the repository root:
 
 ```powershell
 ./tests/static-contract.ps1
@@ -276,6 +276,8 @@ Validate a learning workspace without modifying it:
 ```powershell
 python -X utf8 scripts/validate_workspace.py "D:\Obsidian\many-body-course"
 ```
+
+The runtime-only release ZIP includes this read-only workspace validator, but intentionally excludes the development tests and package builder.
 
 Build the deterministic runtime-only release ZIP:
 

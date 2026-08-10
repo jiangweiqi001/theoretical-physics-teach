@@ -409,6 +409,36 @@ Assert-Contract (
     $noticeText.IndexOf('mattpocock/skills', [System.StringComparison]::OrdinalIgnoreCase) -ge 0
 ) 'NOTICE.md identifies mattpocock/skills'
 
+$readmeText = Get-RepositoryText 'README.md'
+foreach ($requiredReadmePhrase in @(
+    'an independent Agent Skill created, maintained, and published by [jiangweiqi001](https://github.com/jiangweiqi001)'
+    '## Who this is for'
+    '## How this differs from the earlier PR-oriented prototype'
+    'The earlier prototype did not become an upstream pull request.'
+    'The current project, architecture, templates, protocols, tests, releases, and ongoing maintenance belong to this independent repository.'
+)) {
+    Assert-Contract (
+        $readmeText.Contains($requiredReadmePhrase)
+    ) "README.md states project identity or audience boundary: $requiredReadmePhrase"
+}
+$chineseInvocationExample = -join @(
+    [char]0x7528
+    ' `$theoretical-physics-math-teach` '
+    [char]0x5B66
+    [char]0x8FD9
+    [char]0x4E9B
+    [char]0x8BBA
+    [char]0x6587
+)
+Assert-Contract (
+    $readmeText.Contains($chineseInvocationExample)
+) 'README.md contains the intact Chinese explicit-invocation example'
+Assert-Contract (
+    -not $readmeText.Contains([char]0xFFFD) -and
+    $readmeText.IndexOf([char]0x9225, [System.StringComparison]::Ordinal) -lt 0 -and
+    $readmeText.IndexOf([char]0x701B, [System.StringComparison]::Ordinal) -lt 0
+) 'README.md contains no replacement character or known Chinese mojibake'
+
 $licenseText = Get-RepositoryText 'LICENSE'
 Assert-Contract (
     $licenseText.Contains('Copyright (c) 2026 Matt Pocock')

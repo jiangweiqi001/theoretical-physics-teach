@@ -1,10 +1,22 @@
 # theoretical-physics-math-teach
 
-`theoretical-physics-math-teach` is configured as an explicit-only skill in Codex for sustained study of theoretical physics from user-supplied papers, textbooks, lecture notes, and related implementation material.
+`theoretical-physics-math-teach` is an independent Agent Skill created, maintained, and published by [jiangweiqi001](https://github.com/jiangweiqi001). This repository is its canonical development and release line. It is configured as an explicit-only skill in Codex for sustained study of theoretical physics from user-supplied papers, textbooks, lecture notes, and related implementation material.
 
 It is physics-first: pure mathematics is introduced to support a physical theory, derivation, proof, structural comparison, or implementation, and may be expanded when that physical dependency needs more detail. The skill is source-driven and multi-source. It preserves each source's notation, records explicit translations and assumptions between sources, and writes durable, Obsidian-compatible Markdown lessons with long, step-by-step derivations when needed.
 
 Codex does not activate the skill automatically because `agents/openai.yaml` disables implicit invocation. Invoke it with the exact `$theoretical-physics-math-teach` mention, for example “用 `$theoretical-physics-math-teach` 学这些论文”. In ChatGPT, type `@` and select the skill from the picker.
+
+## Who this is for
+
+This skill is primarily for students, independent learners, and researchers who want to understand the theory in one or more theoretical-physics sources, not merely obtain a short summary. It is particularly suitable when you need to:
+
+- work through condensed-matter field theory, quantum field theory, many-body theory, renormalization-group arguments, or related mathematical prerequisites;
+- read several papers or chapters together even when they use conflicting notation, conventions, approximations, or energy variables;
+- see long derivations with every algebraic and logical transition made explicit;
+- maintain a durable Obsidian learning workspace that can resume from the exact unresolved step; or
+- connect equations and approximations to supplied pseudocode or research code without inventing execution results.
+
+Pure mathematics is included when it supports a theoretical-physics dependency and can be developed in full depth when needed. This is not positioned as a general-purpose tutor for every subject or as a quick paper-summarization skill.
 
 ## What it does
 
@@ -15,6 +27,22 @@ Codex does not activate the skill automatically because `agents/openai.yaml` dis
 - Shows intermediate algebra, transforms, integrals, sums, sign changes, assumptions, and logical implications without imposing a Note length cap or skipping derivation steps.
 - Resumes from the exact recorded obstacle and writes substantive clarifications back to the canonical workspace.
 - Advances mastery only from observable learner evidence, not confidence, recognition, or rereading alone.
+
+## How this differs from the earlier PR-oriented prototype
+
+The earlier [PR-oriented prototype](https://github.com/jiangweiqi001/skills/commit/14a2dc2) was a two-file change on a fork of the general-purpose upstream `teach` skill. It mainly replaced HTML lessons with Obsidian-compatible Markdown and added limited guidance for notation-heavy physics and mathematics. The earlier prototype did not become an upstream pull request.
+
+This independent project turns that initial experiment into a dedicated theoretical-physics learning system:
+
+- It provides a complete canonical workspace with 14 maintained Markdown templates instead of patching two files in a general teaching skill.
+- It treats multiple papers, textbooks, lecture notes, and code sources as one study corpus while preserving each source's local notation.
+- It maintains explicit notation crosswalks, six classified kinds of cross-source relation, assumptions, validity regimes, and unresolved conflicts.
+- It records an exact resume point, immutable learner evidence, mastery gates, source versions, and stable source anchors across sessions.
+- It includes a code–theory bridge with equation-to-code provenance and explicit non-claims when code has not actually been run or validated.
+- It ships static, bootstrap, extraction-isolation, and behavioral scenario tests for the teaching contracts.
+- It follows the general Agent Skills package structure, adds Codex metadata, and is released and maintained from this repository.
+
+The current project, architecture, templates, protocols, tests, releases, and ongoing maintenance belong to this independent repository. The earlier fork branch is historical context, not this repository's release lineage.
 
 ## Installation
 
@@ -99,10 +127,12 @@ Git material is anchored to an exact commit. Non-Git files, chat excerpts, and i
 
 ## License and attribution
 
-This project is an MIT-licensed derivative of Matt Pocock's [`teach` skill](https://github.com/mattpocock/skills/tree/84fdeffd12f2ee307994d1eb6feb48173b6e0502/skills/productivity/teach) from [`mattpocock/skills`](https://github.com/mattpocock/skills). The upstream copyright notice is retained alongside the copyright for this project's original additions.
+This independent project is authored, maintained, and published by [jiangweiqi001](https://github.com/jiangweiqi001). Its present theoretical-physics architecture, workspace model, templates, protocols, tests, releases, and ongoing development are maintained here.
+
+Some initial material was adapted from Matt Pocock's MIT-licensed [`teach` skill](https://github.com/mattpocock/skills/tree/84fdeffd12f2ee307994d1eb6feb48173b6e0502/skills/productivity/teach) in [`mattpocock/skills`](https://github.com/mattpocock/skills). The upstream copyright and license notice are retained as required; this legal attribution does not make this repository an upstream-managed project or a pending patch to `teach`.
 
 This is an independent project and is not endorsed by Matt Pocock. See [NOTICE.md](NOTICE.md) for the derivative-work notice and [LICENSE](LICENSE) for the MIT terms.
 
 ## Version
 
-Initial release: `v0.1.0`.
+Current release: `v0.1.1`.

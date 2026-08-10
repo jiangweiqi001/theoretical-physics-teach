@@ -59,7 +59,7 @@ $theoretical-physics-teach
 
 这个 Skill 把上述状态变成可检查、可链接、可恢复的 Markdown 文件。
 
-完整工作流和示例见 [端到端学习演示](docs/walkthrough.md)，canonical 所有权见 [架构说明](docs/architecture.md)。
+完整工作流和示例见 [端到端学习演示](https://github.com/jiangweiqi001/theoretical-physics-teach/blob/main/docs/walkthrough.md)，canonical 所有权见 [架构说明](https://github.com/jiangweiqi001/theoretical-physics-teach/blob/main/docs/architecture.md)。
 
 ## 断点续学
 
@@ -79,7 +79,7 @@ $theoretical-physics-teach
 [[lessons/L-000004-free-retarded-propagator#^resume-regulated-integral]]
 ```
 
-仓库中的 [retarded-propagator 示例](examples/retarded-propagator/CURRENT-STATE.md) 展示了完整状态。
+仓库中的 [retarded-propagator 示例](https://github.com/jiangweiqi001/theoretical-physics-teach/blob/main/examples/retarded-propagator/CURRENT-STATE.md) 展示了完整状态。
 
 ## 对话回写与全文连贯性
 
@@ -231,4 +231,4 @@ python -X utf8 scripts/build_skill_package.py --output dist/theoretical-physics-
 
 这不表示本项目由上游维护或得到 Matt Pocock 背书。详见 [NOTICE.md](NOTICE.md) 和 [LICENSE](LICENSE)。
 
-当前版本：`v0.4.0`。完整变更见 [CHANGELOG.md](CHANGELOG.md)。
+当前版本：`v0.4.0`。完整变更见 [CHANGELOG.md](https://github.com/jiangweiqi001/theoretical-physics-teach/blob/main/CHANGELOG.md)。

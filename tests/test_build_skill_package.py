@@ -6,6 +6,7 @@ import unittest
 import zipfile
 
 from scripts.build_skill_package import build_package
+from scripts.check_markdown_links import check_markdown_links
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
@@ -90,6 +91,24 @@ class SkillPackageTests(unittest.TestCase):
             self.assertEqual("", result.stdout)
             self.assertEqual("", result.stderr)
             self.assertEqual(0, result.returncode)
+
+    def test_packaged_readme_relative_links_resolve_inside_package(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            temporary = Path(directory)
+            archive = temporary / "skill.zip"
+            extracted = temporary / "extracted"
+
+            build_package(REPO_ROOT, archive)
+            with zipfile.ZipFile(archive) as package:
+                package.extractall(extracted)
+
+            self.assertEqual(
+                [],
+                check_markdown_links(
+                    extracted,
+                    [Path("README.md"), Path("README.zh-CN.md")],
+                ),
+            )
 
 
 if __name__ == "__main__":

@@ -21,8 +21,8 @@ Codex does not activate the skill automatically because `agents/openai.yaml` dis
 - [Workspace artifacts](#workspace-artifacts)
 - [Optional code-theory bridge](#optional-code-theory-bridge)
 - [Validation](#validation)
-- [Architecture](docs/architecture.md) and [end-to-end walkthrough](docs/walkthrough.md)
-- [Release history](CHANGELOG.md)
+- [Architecture](https://github.com/jiangweiqi001/theoretical-physics-teach/blob/main/docs/architecture.md) and [end-to-end walkthrough](https://github.com/jiangweiqi001/theoretical-physics-teach/blob/main/docs/walkthrough.md)
+- [Release history](https://github.com/jiangweiqi001/theoretical-physics-teach/blob/main/CHANGELOG.md)
 
 ## Five-minute start
 
@@ -40,7 +40,7 @@ Preserve each source's notation, diagnose one prerequisite at a time, and write
 complete Obsidian Markdown lessons with exact resume state.
 ```
 
-The first run creates only missing canonical workspace files. A later run reads the mission, atomic current state, active lesson, and latest evidence before continuing. See the validator-backed [retarded-propagator example](examples/retarded-propagator/MISSION.md) for the complete lifecycle.
+The first run creates only missing canonical workspace files. A later run reads the mission, atomic current state, active lesson, and latest evidence before continuing. See the validator-backed [retarded-propagator example](https://github.com/jiangweiqi001/theoretical-physics-teach/blob/main/examples/retarded-propagator/MISSION.md) for the complete lifecycle.
 
 ## Why this skill exists
 
@@ -65,7 +65,7 @@ flowchart LR
 
 The loop matters: the next session does not restart the chapter. It reopens the exact Note heading or equation block, reads the last demonstrated boundary, and continues with one next action.
 
-The current owner graph and compatibility boundary are documented in [Architecture](docs/architecture.md). The [exact-resume walkthrough](docs/walkthrough.md) shows a learner reporting one unclear step and the resulting in-place Note rewrite.
+The current owner graph and compatibility boundary are documented in [Architecture](https://github.com/jiangweiqi001/theoretical-physics-teach/blob/main/docs/architecture.md). The [exact-resume walkthrough](https://github.com/jiangweiqi001/theoretical-physics-teach/blob/main/docs/walkthrough.md) shows a learner reporting one unclear step and the resulting in-place Note rewrite.
 
 ## Who this is for
 
@@ -307,4 +307,4 @@ This is an independent project and is not endorsed by Matt Pocock. See [NOTICE.m
 
 Current release: `v0.4.0`.
 
-This maintained release line is dedicated to sustained, source-driven theoretical-physics study in Obsidian. See [CHANGELOG.md](CHANGELOG.md) for compatibility and release details.
+This maintained release line is dedicated to sustained, source-driven theoretical-physics study in Obsidian. See [CHANGELOG.md](https://github.com/jiangweiqi001/theoretical-physics-teach/blob/main/CHANGELOG.md) for compatibility and release details.

@@ -28,8 +28,10 @@ When the user explicitly requests a response-only finished Note, preview, or exa
 
 - State `Provisional response-only artifact; no canonical write performed.`
 - If a supplied excerpt cannot be registered or snapshotted, use the exact pending sentinel `Unassigned — supplied excerpt; snapshot registration pending`, give the visible session/excerpt locator, and do not invent a Source ID, version key, path, hash, or registration.
+- Only after reading the complete canonical index may you allocate a stable ID. Absence from the prompt is not evidence that an index is empty. When the applicable complete index cannot actually be read, exact response-only patches must use inert type-specific placeholders such as `{{LESSON_ID_PENDING}}`, `{{EVIDENCE_ID_PENDING}}`, `{{SOURCE_ID_PENDING}}`, `{{RELATION_ID_PENDING}}`, `{{NOTATION_ID_PENDING}}`, `{{CODE_MAP_ID_PENDING}}`, and `{{RUN_ID_PENDING}}`, with no live Obsidian link.
 - Follow every Note, notation, mathematics, provenance, and code non-claim rule below. Show the exact canonical patches that would be applied, but do not imply that any file changed.
 - State `Canonical writeback is not complete.` Never claim the conversation writeback or resume state was persisted.
+- Do not claim that a canonical record was created.
 
 If response-only was not explicitly requested, ask for the workspace and stop.
 
@@ -72,7 +74,9 @@ For every newly created lesson or Note, including a response-only finished Note 
 
 Define every new symbol there before its first use in prose or equations. Complete the exact glyph and reading, mathematical type, domain, index ranges, physical meaning, units or dimensions, origin/provenance and exact anchor, local sign/metric/Fourier/normalization/natural-unit/boundary/operator conventions, and the meaning of hats, bars, stars, boldface, subscripts, and superscripts. Define meaning-changing decorated or indexed forms separately. A source or crosswalk link never waives the local definition.
 
-When continuing an existing lesson, resume at the recorded point without reteaching completed content. Before first use of any new symbol in added prose or formulas, display or apply a patch to the leading notation section that completes every symbol-definition field. Apply that notation patch before the content patch when canonical writing is available; in response-only output, show the notation patch first. Perform a symbol inventory audit before delivery.
+First use includes symbols inside another symbol's definition, domain, units, anchor, convention, or example cell. Order notation entries by dependency. Every symbol used inside an entry must resolve to an earlier complete entry, or be defined completely at that point in the same cell without introducing another undefined glyph. Define standard functions and constants at first use, individually or in a clearly grouped mathematical primitives entry. Meaning-changing decorated or indexed forms still require separate entries.
+
+When continuing an existing lesson, resume at the recorded point without reteaching completed content. Before first use of any new symbol in added prose or formulas, display or apply a patch to the leading notation section that completes every symbol-definition field. Apply that notation patch before the content patch when canonical writing is available; in response-only output, show the notation patch first. Perform a symbol inventory audit before delivery. Recursively scan prose, inline and display mathematics, tables, and the notation definitions themselves in dependency order; repair newly exposed dependencies and scan again. Repeat the inventory scan until no undefined glyph remains.
 
 Preserve source-local symbols. Register source notation in `NOTATION-CROSSWALK.md`; place general cross-source Relations and their assumption maps in `SYNTHESIS.md`. Use exactly the six complete Relation types defined in `references/source-workflow.md`; do not shorten them or invent another type. Never claim equivalence without the canonical assumption map and its validity conditions.
 

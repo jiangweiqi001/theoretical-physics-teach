@@ -16,8 +16,11 @@ Stateful teaching requires the real user-designated workspace. When the user exp
 
 - state `Provisional response-only artifact; no canonical write performed.`;
 - use `Unassigned — supplied excerpt; snapshot registration pending` plus a visible temporary locator when a supplied excerpt cannot be registered or snapshotted, and invent no Source ID, version key, path, hash, or registration;
+- Only after reading the complete canonical index may you allocate a stable ID. Absence from the prompt is not evidence that an index is empty. If the complete applicable index cannot actually be read, use inert placeholders such as `{{LESSON_ID_PENDING}}`, `{{EVIDENCE_ID_PENDING}}`, `{{SOURCE_ID_PENDING}}`, `{{RELATION_ID_PENDING}}`, `{{NOTATION_ID_PENDING}}`, `{{CODE_MAP_ID_PENDING}}`, and `{{RUN_ID_PENDING}}`, with no live Obsidian link;
 - show the exact lesson, leading-notation, and state patches that would be written while leaving canonical ownership unchanged;
 - state `Canonical writeback is not complete.` and make no persistence or exact-resume claim.
+
+Do not claim that a canonical record was created. All allocation instructions below are canonical-workspace instructions and require the relevant complete index to have been read; provisional response-only delivery never treats a prompt-omitted index as empty.
 
 If response-only delivery was not explicit, ask for the workspace and stop rather than silently downgrading a stateful course turn.
 
@@ -45,9 +48,11 @@ Immediately after the level-1 title, the first content level-2 heading must be e
 
 Before a new symbol appears anywhere else in prose or equations, complete its lesson-local definition there: stable local symbol ID, exact glyph and reading, mathematical type, domain, index range, physical meaning, units/dimensions, origin/provenance and exact anchor, local convention, and the meaning of all hats, bars, stars, boldface, subscripts, and superscripts. A source or crosswalk link does not waive the local definition. Add meaning-changing decorated or indexed forms separately. If a later edit needs a new symbol, update this leading section first.
 
+First use includes symbols inside another symbol's definition, domain, units, anchor, convention, or example cell. Order notation entries by dependency. A symbol inside an entry must resolve to an earlier complete entry or be defined completely in the same cell without introducing another undefined glyph. Define a standard function or constant at first use, either individually or in a clearly grouped mathematical primitives entry. Meaning-changing decorated or indexed forms still receive separate entries.
+
 Use $...$ for inline LaTeX and $$...$$ for display LaTeX. Never use backslash-parenthesis or backslash-bracket math delimiters in a canonical Note or response-only Note preview.
 
-When continuing an existing lesson, do not reteach completed content. Before first use of any new symbol in added prose or formulas, display or apply a patch to the leading notation section that completes every symbol-definition field. Apply the notation patch before the content patch when writing canonically; show it first in response-only output. Perform a symbol inventory audit before delivery. Check every prose and formula glyph against the leading section, including indices and meaning-changing decorations; fix missing or incomplete definitions before delivery.
+When continuing an existing lesson, do not reteach completed content. Before first use of any new symbol in added prose or formulas, display or apply a patch to the leading notation section that completes every symbol-definition field. Apply the notation patch before the content patch when writing canonically; show it first in response-only output. Perform a symbol inventory audit before delivery. Recursively scan prose, inline and display mathematics, tables, definition/domain/unit/anchor/convention/example cells, indices, and meaning-changing decorations in dependency order. Each repair may introduce another glyph, so rescan from the leading section. Repeat the inventory scan until no undefined glyph remains.
 
 After notation, follow the canonical `LESSON.md` order: mission connection and prerequisites; exact anchors and provenance; one physical question; complete derivation or proof; interpretation and checks; conditional comparison/code map; exercises; mastery check and next dependency. Preserve source-local symbols and pair the learner's explanatory language with the source-language technical term at first use. Add a new first-use bilingual term or a term whose meaning is source-dependent to `GLOSSARY.md`; that file owns terminology definitions and ambiguity records, while the lesson links the relevant term in context.
 

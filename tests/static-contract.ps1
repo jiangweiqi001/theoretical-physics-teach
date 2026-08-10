@@ -188,6 +188,25 @@ foreach ($requiredResponseOnlyPedagogyPhrase in @(
     ) "physics-pedagogy.md states response-only policy: $requiredResponseOnlyPedagogyPhrase"
 }
 
+$provisionalIdPolicies = @(
+    'Only after reading the complete canonical index may you allocate a stable ID.'
+    'Absence from the prompt is not evidence that an index is empty.'
+    '{{EVIDENCE_ID_PENDING}}'
+    'no live Obsidian link'
+    'Do not claim that a canonical record was created.'
+)
+foreach ($provisionalIdTarget in @(
+    @{ Name = 'SKILL.md'; Text = $skillText }
+    @{ Name = 'references/physics-pedagogy.md'; Text = $pedagogyText }
+    @{ Name = 'assets/templates/LESSON.md'; Text = $lessonTemplate }
+)) {
+    foreach ($provisionalIdPolicy in $provisionalIdPolicies) {
+        Assert-Contract (
+            $provisionalIdTarget.Text.Contains($provisionalIdPolicy)
+        ) "$($provisionalIdTarget.Name) states provisional ID policy: $provisionalIdPolicy"
+    }
+}
+
 $notationContinuationPolicy = 'Before first use of any new symbol in added prose or formulas, display or apply a patch to the leading notation section that completes every symbol-definition field.'
 $symbolInventoryPolicy = 'Perform a symbol inventory audit before delivery.'
 foreach ($notationPolicyTarget in @(
@@ -205,6 +224,24 @@ Assert-Contract (
     $lessonTemplate.Contains('### Pre-delivery symbol inventory audit') -and
     $lessonTemplate.Contains($symbolInventoryPolicy)
 ) 'LESSON.md contains an explicit pre-delivery symbol inventory checklist'
+
+$recursiveNotationPolicies = @(
+    'First use includes symbols inside another symbol''s definition, domain, units, anchor, convention, or example cell.'
+    'Order notation entries by dependency.'
+    'clearly grouped mathematical primitives entry'
+    'Repeat the inventory scan until no undefined glyph remains.'
+)
+foreach ($recursiveNotationTarget in @(
+    @{ Name = 'SKILL.md'; Text = $skillText }
+    @{ Name = 'references/physics-pedagogy.md'; Text = $pedagogyText }
+    @{ Name = 'assets/templates/LESSON.md'; Text = $lessonTemplate }
+)) {
+    foreach ($recursiveNotationPolicy in $recursiveNotationPolicies) {
+        Assert-Contract (
+            $recursiveNotationTarget.Text.Contains($recursiveNotationPolicy)
+        ) "$($recursiveNotationTarget.Name) states recursive notation policy: $recursiveNotationPolicy"
+    }
+}
 
 $pendingSourceSentinel = 'Unassigned — supplied excerpt; snapshot registration pending'
 $executionNonClaimPolicy = 'No execution or validation claim is made.'

@@ -4,7 +4,11 @@
 
 Every new symbol must be defined before first use in prose or equations, regardless of whether its origin/provenance is `Source / crosswalk / defined here`. Complete every required field below before writing any later section. Include each decorated or indexed form as its own entry whenever a hat, bar, star, boldface, subscript, or superscript changes the meaning, type, domain, or convention.
 
+First use includes symbols inside another symbol's definition, domain, units, anchor, convention, or example cell. Order notation entries by dependency. A symbol inside an entry must resolve to an earlier complete entry or be defined completely in the same cell without introducing another undefined glyph. Define each standard function or constant at first use, or define related primitives in a clearly grouped mathematical primitives entry. Meaning-changing decorated or indexed forms still require separate entries.
+
 This exact leading section is also mandatory for every response-only finished Note or preview. Use $...$ for inline LaTeX and $$...$$ for display LaTeX. Never use backslash-parenthesis or backslash-bracket math delimiters in canonical or response-only Note content.
+
+Only after reading the complete canonical index may you allocate a stable ID. Absence from the prompt is not evidence that an index is empty. In provisional response-only output, replace every concrete sample ID below with inert type-specific placeholders such as `{{LESSON_ID_PENDING}}`, `{{EVIDENCE_ID_PENDING}}`, `{{SOURCE_ID_PENDING}}`, `{{RELATION_ID_PENDING}}`, `{{NOTATION_ID_PENDING}}`, `{{CODE_MAP_ID_PENDING}}`, and `{{RUN_ID_PENDING}}`; emit no live Obsidian link. Do not claim that a canonical record was created.
 
 When continuing an existing lesson, do not repeat completed content. Before first use of any new symbol in added prose or formulas, display or apply a patch to the leading notation section that completes every symbol-definition field. Apply that notation patch before the content patch; in response-only output, show it first without claiming a canonical write.
 
@@ -54,10 +58,14 @@ Before proceeding, verify that every symbol used below has a complete entry abov
 Perform a symbol inventory audit before delivery.
 
 - [ ] Inventory every glyph used in prose, inline mathematics, display mathematics, tables, and checks.
+- [ ] Recursively inventory definition, domain, units, anchor, convention, and example cells; order entries so every dependency is defined earlier or completely in the same cell without introducing an undefined glyph.
+- [ ] Define first-use standard functions and constants individually or in a clearly grouped mathematical primitives entry.
 - [ ] Confirm each glyph and every meaning-changing indexed or decorated form has a complete local definition above before first use.
 - [ ] Confirm each definition includes glyph/read-as, type, domain/index range, meaning, units/dimensions, source or origin anchor, local convention, and decoration meanings.
 - [ ] For a continued lesson, confirm the leading-notation patch appears or was applied before the first added use; do not reteach completed content.
 - [ ] Confirm all mathematics uses the required dollar-delimited LaTeX forms.
+
+Repeat the inventory scan until no undefined glyph remains. When a repair introduces another glyph, scan again from the first notation entry through prose, inline and display mathematics, every table, and every definition cell.
 
 ## Mission connection and prerequisites
 

@@ -1,8 +1,10 @@
 # Current Learning State
 
+> Bootstrap placeholder policy: {{...}} are inert schema placeholders, not registered entities. After bootstrap, any unfilled repeated entry or row remains schema-only and explicitly PENDING; it must not be interpreted as a record. A stable ID exists only after the applicable allocation protocol replaces the placeholder.
+
 This file is the canonical active snapshot only. Read it, the active lesson when one exists, and the latest Evidence ID plus Obsidian link when one exists before teaching. On first bootstrap, the active lesson and latest Evidence may legitimately be `None yet`; initialize the snapshot from the mission and registered materials without inventing either link. Resume established work at the exact recorded step; do not restart the topic.
 
-Replace this snapshot atomically after each substantive exchange. Never append history here. Immutable `learning-records/EV-000001.md`-style instances are the exclusive owner of evidence-caused prior-to-new snapshot transitions and historical learner evidence. Material intake, explanation, or planning with no learner response, self-report, or attempt updates this snapshot and relevant canonical documents without creating an Evidence record.
+Replace this snapshot atomically after each substantive exchange. Never append history here. Immutable `learning-records/{{EVIDENCE_ID}}.md`-style instances are the exclusive owner of evidence-caused prior-to-new snapshot transitions and historical learner evidence. Material intake, explanation, or planning with no learner response, self-report, or attempt updates this snapshot and relevant canonical documents without creating an Evidence record.
 
 ## Active phase and lesson
 
@@ -37,7 +39,7 @@ Add one row for every source needed to resume safely.
 
 - Most recently resolved obstacle label:
 - Teaching explanation Lesson ID + section Obsidian link:
-- Supporting Evidence ID + Obsidian link: EV-000001 — [[learning-records/EV-000001]], or `None — no learner response/self-report/attempt`
+- Supporting Evidence ID + Obsidian link: {{EVIDENCE_ID}} — {{OBSIDIAN_LINK}}, or `None — no learner response/self-report/attempt`
 - Resulting change to this active snapshot:
 - Related Concept Node IDs, Edge IDs, Notation Entry IDs, Relation IDs, Synthesis IDs, Review IDs, or Open Question IDs:
 
@@ -45,7 +47,7 @@ Do not copy the explanation, learner response, hints, or state-change history in
 
 ## Current evidence links
 
-- Latest Evidence ID + Obsidian links: EV-000001 — [[learning-records/EV-000001]], or `None yet — bootstrap/no learner evidence`
+- Latest Evidence ID + Obsidian links: {{EVIDENCE_ID}} — {{OBSIDIAN_LINK}}, or `None yet — bootstrap/no learner evidence`
 - Current mastery level supported by those linked records:
 - Active Review IDs:
 
@@ -53,18 +55,18 @@ Do not copy the explanation, learner response, hints, or state-change history in
 
 | Code Map ID | Canonical Obsidian link | Scope | Active role |
 | --- | --- | --- | --- |
-| CMAP-L-000001-001 | [[lessons/L-000001#CMAP-L-000001-001]] | Lesson-local |  |
-| CMAP-GLOBAL-0001 | [[reference/code-maps/CMAP-GLOBAL-0001]] | Shared architecture |  |
+| {{LESSON_CODE_MAP_ID}} | {{OBSIDIAN_LINK}} | Lesson-local |  |
+| {{GLOBAL_CODE_MAP_ID}} | {{OBSIDIAN_LINK}} | Shared architecture |  |
 
 ## Execution record links
 
 | Run ID | Canonical Obsidian link | Active role |
 | --- | --- | --- |
-| RUN-000001 | [[execution-records/RUN-000001]] |  |
+| {{RUN_ID}} | {{OBSIDIAN_LINK}} |  |
 
 ## Next action
 
 - One exact next teaching or retrieval action:
 - File and section to open first:
 - Expected observable evidence:
-- Blocking unavailable evidence, if any: include its Q-ID plus canonical `OPEN-QUESTIONS.md` link
+- Blocking unavailable evidence, if any: include its {{QUESTION_ID}} plus {{OBSIDIAN_LINK}}

@@ -1,5 +1,7 @@
 # Open Questions
 
+> Bootstrap placeholder policy: {{...}} are inert schema placeholders, not registered entities. After bootstrap, any unfilled repeated entry or row remains schema-only and explicitly PENDING; it must not be interpreted as a record. A stable ID exists only after the applicable allocation protocol replaces the placeholder.
+
 Do not invent missing equations, citations, conventions, or code behavior. This file is the exclusive canonical owner of availability-gap details and lifecycle as well as unresolved conflicts. A missing candidate material may receive a Question ID before it has a Source ID.
 
 Use stable Open Question IDs and a narrow index. Put all source locations in the repeatable anchor table inside the keyed question entry.
@@ -8,15 +10,15 @@ Use stable Open Question IDs and a narrow index. Put all source locations in the
 
 | Question ID | Short label | Status | Blocking work |
 | --- | --- | --- | --- |
-| Q-001 |  | Open, blocked, awaiting source, testing, or resolved |  |
+| {{QUESTION_ID}} |  | PENDING, open, blocked, awaiting source, testing, or resolved |  |
 
 ## Question entries
 
 Copy this subsection for every question, gap, contradiction, or ambiguity.
 
-### Q-001
+### {{QUESTION_ID}}
 
-- **Question ID:** Q-001
+- **Question ID:** {{QUESTION_ID}}
 - **Unresolved question, gap, contradiction, or ambiguity:**
 - **Status:** Open, blocked, awaiting source, testing, or resolved
 - **Candidate material description, when not registered:**
@@ -39,6 +41,6 @@ Add one row for every premise, conflicting statement, missing location, or resol
 
 - **Resolution summary:**
 - **Resolving source-anchor rows:**
-- **Related Evidence ID + Obsidian links, if learner evidence changed:** EV-000001 — [[learning-records/EV-000001]]
+- **Related Evidence ID + Obsidian links, if learner evidence changed:** {{EVIDENCE_ID}} — {{OBSIDIAN_LINK}}
 - **Canonical files and stable IDs updated:**
 - **Resolution date:**

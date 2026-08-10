@@ -1,5 +1,7 @@
 # Teaching Notes and Preferences
 
+> Bootstrap placeholder policy: {{...}} are inert schema placeholders, not registered entities. After bootstrap, any unfilled repeated entry or row remains schema-only and explicitly PENDING; it must not be interpreted as a record. A stable ID exists only after the applicable allocation protocol replaces the placeholder.
+
 ## Language preferences
 
 - Primary explanatory language:

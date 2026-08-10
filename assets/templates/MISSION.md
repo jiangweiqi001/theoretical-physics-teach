@@ -1,5 +1,7 @@
 # Learning Mission
 
+> Bootstrap placeholder policy: {{...}} are inert schema placeholders, not registered entities. After bootstrap, any unfilled repeated entry or row remains schema-only and explicitly PENDING; it must not be interpreted as a record. A stable ID exists only after the applicable allocation protocol replaces the placeholder.
+
 ## Physical questions
 
 - Primary physical question:
@@ -10,7 +12,7 @@
 
 | Stable source ID | Title or repository | Intended role | Required portion |
 | --- | --- | --- | --- |
-| S1 |  | Primary source |  |
+| {{SOURCE_ID}} |  | Primary source |  |
 
 Register complete version, path, and availability details in `MATERIALS.md` before teaching from a source.
 
@@ -30,7 +32,7 @@ Every demonstrated-prerequisite claim must cite one or more canonical evidence r
 
 | Prerequisite capability | Evidence ID + Obsidian link | Demonstrated unaided performance | Date or session |
 | --- | --- | --- | --- |
-|  | EV-000001 — [[learning-records/EV-000001]] |  |  |
+|  | {{EVIDENCE_ID}} — {{OBSIDIAN_LINK}} |  |  |
 
 ## Constraints
 
@@ -44,7 +46,7 @@ Every demonstrated-prerequisite claim must cite one or more canonical evidence r
 
 | Target capability ID | Target concept or task | Target capability | Observable performance |
 | --- | --- | --- | --- |
-| T-001 |  | Interpretation, reconstruction, synthesis, or implementation |  |
+| {{TARGET_CAPABILITY_ID}} |  | Interpretation, reconstruction, synthesis, or implementation |  |
 
 ## Completion evidence
 
@@ -52,7 +54,7 @@ Create one row for each capability named in `Target mastery levels`. Mark capabi
 
 | Target capability ID | Target capability | Applicability | Observable criterion | Evidence ID + Obsidian link | Gate status |
 | --- | --- | --- | --- | --- | --- |
-| T-001 | Interpretation | Required or N/A |  | EV-000001 — [[learning-records/EV-000001]] | Open, satisfied, or N/A |
+| {{TARGET_CAPABILITY_ID}} | Interpretation | Required or N/A |  | {{EVIDENCE_ID}} — {{OBSIDIAN_LINK}} | PENDING, satisfied, or N/A |
 
 ### Completion gate
 

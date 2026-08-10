@@ -1,14 +1,16 @@
 # Cross-Source Synthesis
 
+> Bootstrap placeholder policy: {{...}} are inert schema placeholders, not registered entities. After bootstrap, any unfilled repeated entry or row remains schema-only and explicitly PENDING; it must not be interpreted as a record. A stable ID exists only after the applicable allocation protocol replaces the placeholder.
+
 Compare physical objects and conclusions without flattening source-local notation or hiding incompatible assumptions.
 
-Use stable synthesis IDs such as `Y-001`. The narrow index is for navigation; each keyed synthesis entry contains the comparison details. `SYNTHESIS.md` is also the canonical owner of the general Relation registry, including the assumptions required for each Relation to hold; `NOTATION-CROSSWALK.md` remains the owner only of source-local notation entries.
+Use stable synthesis IDs such as `{{SYNTHESIS_ID}}`. The narrow index is for navigation; each keyed synthesis entry contains the comparison details. `SYNTHESIS.md` is also the canonical owner of the general Relation registry, including the assumptions required for each Relation to hold; `NOTATION-CROSSWALK.md` remains the owner only of source-local notation entries.
 
 ## Synthesis index
 
 | Synthesis ID | Object or problem | Source IDs | Status |
 | --- | --- | --- | --- |
-| Y-001 |  |  | Draft, verified, disputed, or blocked |
+| {{SYNTHESIS_ID}} |  |  | PENDING, draft, verified, disputed, or blocked |
 
 ## Relation registry
 
@@ -37,15 +39,15 @@ Minimum endpoint compatibility rules:
 
 | Relation ID | Left endpoint type | Right endpoint type | Relation type | Status |
 | --- | --- | --- | --- | --- |
-| REL-000001 |  |  | One exact six-class display name above | Proposed, verified, disputed, or superseded |
+| {{RELATION_ID}} |  |  | One exact six-class display name above | PENDING, proposed, verified, disputed, or superseded |
 
 ### Relation entries
 
 Copy this subsection for every stable Relation ID.
 
-#### REL-000001
+#### {{RELATION_ID}}
 
-- **Relation ID:** REL-000001
+- **Relation ID:** {{RELATION_ID}}
 - **Relation type:** one exact six-class display name above
 - **Status:** proposed, verified, disputed, or superseded
 - **Assumptions required:**
@@ -80,19 +82,19 @@ Copy this subsection for every stable Relation ID.
 
 Copy the following subsection for each object, physical problem, or theorem comparison.
 
-### Y-001
+### {{SYNTHESIS_ID}}
 
 - **Object or problem:**
 - **Question this comparison answers:**
 
-#### Source record S1
+#### Source record {{SOURCE_ID}}
 
 Copy this source-record subsection once per compared source.
 
 | Field | Value |
 | --- | --- |
-| Stable source ID | S1 |
-| Stable version key | S1-V001 |
+| Stable source ID | {{SOURCE_ID}} |
+| Stable version key | {{SOURCE_VERSION_KEY}} |
 | Immutable revision anchor | Git commit; or read-only snapshot path, content hash, and received date |
 | Exact location |  |
 | Role in comparison |  |
@@ -116,7 +118,7 @@ Reference the canonical Relation registry above. Do not copy endpoint data, type
 
 | Relation ID | Canonical Relation Obsidian link | Role in this synthesis |
 | --- | --- | --- |
-| REL-000001 | [[SYNTHESIS#REL-000001]] |  |
+| {{RELATION_ID}} | {{OBSIDIAN_LINK}} |  |
 
 #### Application map and result
 

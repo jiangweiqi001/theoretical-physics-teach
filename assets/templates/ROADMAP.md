@@ -1,5 +1,7 @@
 # Learning Roadmap
 
+> Bootstrap placeholder policy: {{...}} are inert schema placeholders, not registered entities. After bootstrap, any unfilled repeated entry or row remains schema-only and explicitly PENDING; it must not be interpreted as a record. A stable ID exists only after the applicable allocation protocol replaces the placeholder.
+
 `ROADMAP.md` owns phase ordering, targets, exit criteria, and phase status. It never defines a prerequisite node or edge: reference stable Node IDs and Edge IDs owned by `CONCEPT-MAP.md`.
 
 ## Mastery levels
@@ -16,26 +18,26 @@ The four positive mastery levels are capabilities, not a mandatory linear sequen
 
 | Phase ID | Concept Node IDs | Exact source anchors | Status | Entry anchor |
 | --- | --- | --- | --- | --- |
-| P-001 |  | [[ROADMAP#P-001 exact source anchors]] | Not started, active, blocked, review, or complete | [[ROADMAP#P-001]] |
+| {{PHASE_ID}} |  | {{OBSIDIAN_LINK}} | PENDING, not started, active, blocked, review, or complete | {{OBSIDIAN_LINK}} |
 
 ## Phase entries
 
 Copy this keyed block for each stable Phase ID.
 
-### P-001
+### {{PHASE_ID}}
 
 | Field | Value |
 | --- | --- |
-| Phase ID | P-001 |
+| Phase ID | {{PHASE_ID}} |
 | Phase purpose |  |
 | Concept Node IDs | Resolve only through `CONCEPT-MAP.md` |
 | Prerequisite Edge IDs | Resolve only through `CONCEPT-MAP.md` |
 | Mastery target |  |
 | Observable exit criterion |  |
-| Supporting Evidence ID + Obsidian link | EV-000001 — [[learning-records/EV-000001]] |
+| Supporting Evidence ID + Obsidian link | {{EVIDENCE_ID}} — {{OBSIDIAN_LINK}} |
 | Status | Not started, active, blocked, review, or complete |
 
-#### P-001 exact source anchors
+#### {{PHASE_ID}} exact source anchors
 
 | Source ID | Stable version key | Exact location | Role | Provenance |
 | --- | --- | --- | --- | --- |

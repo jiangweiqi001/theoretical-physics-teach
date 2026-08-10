@@ -165,9 +165,18 @@ Chat is not the canonical memory. When an explanation resolves confusion or expo
 
 Do not create a duplicate lesson merely because the clarification happened in a later session.
 
-### Depth without overload
+### Depth without skipped steps
 
-“Short lesson” means one dependency-sized question, not a shallow explanation. A lesson may contain a detailed derivation. When a second conceptual dependency appears, split it into a linked numbered lesson instead of skipping steps or producing an unstructured chapter.
+A lesson is bounded by one dependency-sized question, not by word count. A Note may be long whenever that is required to close the calculation or logical argument.
+
+- Show intermediate algebra, substitutions, index contractions, Fourier transforms, integrals, sums, limits, and sign changes.
+- State the identity, theorem, approximation, boundary condition, or convention used at each non-trivial transition.
+- Track units, dimensions, domains, and assumptions through the calculation.
+- Explain why every logical implication follows; do not use “obvious”, “similarly”, or “it follows” to conceal a missing step.
+- If a required step belongs to another concept, state the dependency and link a prerequisite Note. Do not compress it into an unexplained citation.
+- A compact summary may follow the full derivation, but never replace it.
+
+When a second conceptual dependency appears, split it into a linked numbered lesson. The split is for conceptual organization, not to shorten or truncate the derivation.
 
 ## Mastery Model
 
@@ -234,6 +243,7 @@ Run realistic prompts without the new skill and record whether the agent:
 
 - normalizes conflicting source notation without a crosswalk;
 - skips unfamiliar derivation steps;
+- compresses algebra or logic behind phrases such as “obvious” or “similarly”;
 - teaches from memory instead of source anchors;
 - creates HTML or browser artifacts;
 - describes code without mapping it to equations and approximations.
@@ -249,6 +259,7 @@ Run the same prompts with the skill and require:
 - stable source IDs and exact source anchors;
 - source-local notation plus explicit crosswalk;
 - prerequisite-aware, stepwise derivations;
+- complete intermediate calculations and explicit logical justifications without a length cap;
 - separation of fact, approximation, disagreement, and inference;
 - conditional code-theory mapping.
 - exact resume behavior and canonical conversation writeback;

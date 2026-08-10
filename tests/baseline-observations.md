@@ -54,7 +54,7 @@ Observed strengths:
 
 - Resumed directly at the regulated integral.
 - Displayed the finite-`T` endpoint, every factor of `i`, the `\eta\to0^+` order, the imaginary part, the delta-function limit, and the `2\pi` normalization.
-- Proposed precise new `CURRENT-STATE.md` and learning-record content.
+- Proposed a new resume boundary and learning-record content.
 - Explicitly said independent reconstruction had not yet been observed.
 
 Observed failures:

@@ -218,7 +218,7 @@ $symbolInventoryPolicy = 'Perform a symbol inventory audit before delivery.'
 $continuationHeadingPolicy = 'The first H2 of that continuation output must still be exactly `## Notation and conventions`.'
 $leftToRightNotationPolicy = 'Audit the notation section from top to bottom and each entry from left to right.'
 $notationGraphPolicy = 'Build the complete symbol-and-code-identifier dependency graph before drafting the notation section, then emit entries in topological order.'
-$oneEntryPolicy = 'Give every source symbol, lesson-local symbol, code identifier, and unit glyph its own entry; only a symbol and its genuinely equivalent code spelling may share an entry.'
+$completeGroupedEntryPolicy = 'A grouped entry is allowed only when it completely defines every member and uses no dependency that is defined later.'
 $historicalEvidencePolicy = 'Preserve each dated prior Evidence boundary explicitly: date, evidence category, exact capability demonstrated, and exact unfinished boundary.'
 foreach ($notationPolicyTarget in @(
     @{ Name = 'SKILL.md'; Text = $skillText }
@@ -240,8 +240,8 @@ foreach ($notationPolicyTarget in @(
         $notationPolicyTarget.Text.Contains($notationGraphPolicy)
     ) "$($notationPolicyTarget.Name) requires a notation dependency graph"
     Assert-Contract (
-        $notationPolicyTarget.Text.Contains($oneEntryPolicy)
-    ) "$($notationPolicyTarget.Name) requires atomic notation entries"
+        $notationPolicyTarget.Text.Contains($completeGroupedEntryPolicy)
+    ) "$($notationPolicyTarget.Name) requires dependency-closed grouped notation entries"
     Assert-Contract (
         $notationPolicyTarget.Text.Contains($historicalEvidencePolicy)
     ) "$($notationPolicyTarget.Name) preserves dated prior Evidence boundaries"
@@ -260,8 +260,8 @@ Assert-Contract (
     $lessonTemplate.Contains($notationGraphPolicy)
 ) 'LESSON.md requires a notation dependency graph'
 Assert-Contract (
-    $lessonTemplate.Contains($oneEntryPolicy)
-) 'LESSON.md requires atomic notation entries'
+    $lessonTemplate.Contains($completeGroupedEntryPolicy)
+) 'LESSON.md requires dependency-closed grouped notation entries'
 Assert-Contract (
     $lessonTemplate.Contains($historicalEvidencePolicy)
 ) 'LESSON.md preserves dated prior Evidence boundaries'

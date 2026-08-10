@@ -55,7 +55,7 @@ Code identifiers, unit glyphs, derived approximants, and error or variation symb
 
 A grouped primitives entry does not waive dependencies: dummy symbols introduced inside it must be defined earlier or eliminated.
 
-Build the complete symbol-and-code-identifier dependency graph before drafting the notation section, then emit entries in topological order. Give every source symbol, lesson-local symbol, code identifier, and unit glyph its own entry; only a symbol and its genuinely equivalent code spelling may share an entry. Put all mathematical primitives needed anywhere in the finished Note before the first dependent entry. Never defer a code identifier to a later grouped row after an earlier entry has already used it.
+Build the complete symbol-and-code-identifier dependency graph before drafting the notation section, then emit entries in topological order. A grouped entry is allowed only when it completely defines every member and uses no dependency that is defined later. Put every source symbol, lesson-local symbol, code identifier, unit glyph, and mathematical primitive needed anywhere in the finished Note before its first dependent entry. Never defer a code identifier to a later grouped row after an earlier entry has already used it.
 
 Use $...$ for inline LaTeX and $$...$$ for display LaTeX. Never use backslash-parenthesis or backslash-bracket math delimiters in a canonical Note or response-only Note preview.
 

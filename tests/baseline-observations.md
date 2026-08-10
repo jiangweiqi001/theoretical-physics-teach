@@ -48,7 +48,7 @@ This is physically careful, but it introduces the comparison before a complete n
 
 ## Scenario 02: exact resume and writeback
 
-Result: **RED — 4/6 core items passed.**
+Result: **RED — 3/6 core items passed.**
 
 Observed strengths:
 
@@ -60,7 +60,8 @@ Observed strengths:
 Observed failures:
 
 1. The response did not provide the patched ending of `lessons/04-retarded-free-propagator.md` and did not remove or replace its stale pause marker. The resolved explanation therefore remained partly outside the canonical lesson.
-2. The new learning record said “The learner correctly stated” the 2026-08-10 convergence claims but did not label them explicitly as current-session self-report, distinct from the unaided `\theta(t)` work demonstrated on 2026-08-09.
+2. It replaced only four `CURRENT-STATE.md` entries, leaving the old resolved `Current obstacle` in place while advancing the resume point. The resulting state would contradict itself.
+3. The new learning record said “The learner correctly stated” the 2026-08-10 convergence claims but did not label them explicitly as current-session self-report, distinct from the unaided `\theta(t)` work demonstrated on 2026-08-09.
 
 Representative quotation:
 
@@ -74,12 +75,12 @@ The state advanced, but the active lesson itself was not patched.
 | Complete transform and spectral derivation | PASS | The raw output evaluates the endpoint, tracks `i`, derives the imaginary part and `2\pi\delta(\omega-\xi_k)`, and checks normalization. |
 | Preserve supplied conventions | PASS | It uses the supplied forward transform and `A=-2\,\mathrm{Im}\,G^R` convention. |
 | Patch active lesson | FAIL | No replacement block for `lessons/04-retarded-free-propagator.md` appears; its stale pause marker is untouched. |
-| Advance canonical state | PASS | It supplies exact replacement entries for `CURRENT-STATE.md` and a next retrieval boundary. |
+| Advance canonical state | FAIL | It supplies a new resume point but leaves the supplied `Current obstacle: why e^{-\eta t}...` field untouched, so the resolved obstacle and advanced state coexist. |
 | Distinguish evidence types | FAIL | The new record says “The learner correctly stated that” but does not label this as 2026-08-10 self-report or carry forward the distinct 2026-08-09 unaided `\theta(t)` evidence. Its later statement that independent reconstruction is unobserved prevents mastery inflation but does not preserve the two evidence categories required by the rubric. |
 
 ## Scenario 03: theory-to-code bridge
 
-Result: **RED — 5/6 core items passed.**
+Result: **RED — 4/6 core items passed.**
 
 Observed strengths:
 
@@ -91,6 +92,7 @@ Observed strengths:
 Observed failures:
 
 1. It counted the 512 frequencies but did not explicitly verify that `m\in[-N_w,N_w-1]` is closed under the fermionic partner map `m\mapsto-m-1`.
+2. It assumed the 12 nonnegative bosonic indices are `n=0,\ldots,11` and computed a largest frequency of `1.728\,\mathrm{eV}`, although the prompt gives only the count and not the index values.
 
 Representative quotation:
 
@@ -105,7 +107,7 @@ This is a useful external-frequency warning, but it does not perform the rubric'
 | Discretization and partner closure | FAIL | It identifies the 512-frequency cutoff but checks `m\mapsto m+n` rather than proving closure under `m\mapsto-m-1`. |
 | Convergence and consistency checks | PASS | It covers `N_w`, momentum resolution/domain, regulator removal, symmetry, normalization, and limiting behavior. |
 | No unsupported real-axis claim | PASS | It explicitly says the saved array does not demonstrate a real-frequency collective mode and requires continuation plus validation. |
-| No invented implementation or validation claim | PASS | The answer labels proposed checks as requirements and does not claim they were implemented or passed. |
+| No invented implementation or validation claim | FAIL | It states “With `n=0,\ldots,11`” and derives a maximum frequency, but the supplied configuration does not specify which 12 nonnegative indices were selected. |
 
 Optional observation: the answer adds a standard analytic Matsubara-sum form and temperature conversion without labeling their provenance. This motivates the future provenance protocol but is not counted as a failure under this scenario's current Core item 6.
 

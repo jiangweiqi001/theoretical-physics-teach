@@ -123,11 +123,20 @@ Assert-Contract (
 $lessonHtml = @(
     Get-ChildItem -LiteralPath (Join-Path $repoRoot 'lessons') -Filter '*.html' -File -Recurse -ErrorAction SilentlyContinue
 )
-$referenceHtml = @(
-    Get-ChildItem -LiteralPath (Join-Path $repoRoot 'reference') -Filter '*.html' -File -Recurse -ErrorAction SilentlyContinue
-)
+$referenceHtml = @(foreach ($relativeDirectory in @('reference', 'references')) {
+    Get-ChildItem -LiteralPath (Join-Path $repoRoot $relativeDirectory) -Filter '*.html' -File -Recurse -ErrorAction SilentlyContinue
+})
 Assert-Contract ($lessonHtml.Count -eq 0) 'canonical lessons contain no HTML files'
-Assert-Contract ($referenceHtml.Count -eq 0) 'canonical reference material contains no HTML files'
+Assert-Contract ($referenceHtml.Count -eq 0) 'canonical reference and references material contains no HTML files'
+
+$forbiddenArtifactFiles = @(Get-ChildItem -LiteralPath $repoRoot -File -Recurse -Force | Where-Object {
+    $relativePath = $_.FullName.Substring($repoRoot.Length).TrimStart([char[]]@('/', '\')) -replace '\\', '/'
+    $isExcludedPath = $relativePath -match '^(?:tests|docs|\.git|\.worktrees)(?:/|$)'
+    -not $isExcludedPath -and $_.Extension -match '(?i)^\.(?:html|css|js)$'
+})
+Assert-Contract (
+    $forbiddenArtifactFiles.Count -eq 0
+) 'production package contains no HTML, CSS, or JavaScript artifact files'
 
 $instructionFiles = [System.Collections.Generic.List[string]]::new()
 foreach ($relativePath in @('SKILL.md')) {
@@ -150,19 +159,29 @@ $instructionText = ($instructionFiles | ForEach-Object {
 }) -join [Environment]::NewLine
 
 Assert-Contract (
-    -not [regex]::IsMatch($instructionText, '(?i)<html\b')
-) 'skill instructions and templates contain no HTML document markup'
+    -not [regex]::IsMatch($instructionText, '(?i)<\s*/?\s*(?:html|script|style|div|body|head|link)\b')
+) 'skill instructions and templates contain no forbidden HTML markup tags'
 Assert-Contract (
-    -not [regex]::IsMatch($instructionText, '(?i)\blessons[/\\][^\s)\]>]*\.html\b')
-) 'skill instructions and templates contain no canonical lessons/*.html paths'
+    -not [regex]::IsMatch($instructionText, '(?i)\b(?:lessons|references?)[/\\][^\s)\]>]*\.html\b')
+) 'skill instructions and templates contain no canonical lesson or reference HTML paths'
 Assert-Contract (
-    -not [regex]::IsMatch($instructionText, '(?i)\breference[/\\][^\s)\]>]*\.html\b')
-) 'skill instructions and templates contain no canonical reference/*.html paths'
+    -not [regex]::IsMatch($instructionText, '(?i)\b(?:lessons|references?)[/\\][^\s)\]>]*\.(?:css|js)\b')
+) 'skill instructions and templates contain no canonical lesson or reference CSS/JavaScript paths'
 
 $positiveBrowserRequirementLines = @($instructionText -split '\r?\n' | Where-Object {
-    $_ -match '(?i)\b(?:must|should|need(?:s)?\s+to|require(?:s|d)?)\b' -and
-    $_ -match '(?i)\b(?:CSS|JavaScript|JS|browser(?:-only)?)\b' -and
-    $_ -notmatch '(?i)\b(?:do not|does not|don''t|never|no|not|without|forbid|prohibit|optional|separate)\b'
+    $hasPositiveVerb = $_ -match '(?i)\b(?:must|should|need(?:s)?\s+to|require(?:s|d)?|create|write|build|render|open|launch|serve|load|use)\b'
+    $mentionsBrowserTechnology = $_ -match '(?i)\b(?:CSS|JavaScript|JS|browser(?:-only)?)\b'
+    $isClearlyNegative =
+        $_ -match '(?i)\b(?:do not|does not|don''t|never|not required|without requiring|forbid(?:s|den)?|prohibit(?:s|ed)?)\b' -or
+        $_ -match '(?i)\b(?:must|should|need(?:s)?(?:\s+to)?)\s+not\b' -or
+        $_ -match '(?i)\bnot\s+(?:create|write|build|render|open|launch|serve|load|use)\b' -or
+        $_ -match '(?i)\b(?:no|without)\b.{0,80}\b(?:CSS|JavaScript|JS|browser(?:-only)?)\b'
+    $isClearlyOptional =
+        $_ -match '(?i)\boptional\b' -or
+        $_ -match '(?i)\bseparate\b.{0,80}\b(?:artifact|request|project|website)\b' -or
+        $_ -match '(?i)\b(?:artifact|request|project|website)\b.{0,80}\bseparate\b'
+
+    $hasPositiveVerb -and $mentionsBrowserTechnology -and -not ($isClearlyNegative -or $isClearlyOptional)
 })
 Assert-Contract (
     $positiveBrowserRequirementLines.Count -eq 0

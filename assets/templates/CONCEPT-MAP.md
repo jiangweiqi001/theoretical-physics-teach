@@ -24,4 +24,4 @@ Do not classify Relations here. Reference source-local Notation Entry IDs from `
 | --- | --- | --- | --- |
 |  |  | REL-000001 — [[SYNTHESIS#REL-000001]] | Y-001 — [[SYNTHESIS#Y-001]] |
 
-Structural changes are recorded in an immutable evidence record such as EV-000001 — [[learning-records/EV-000001]]; this file contains only the current canonical graph.
+Only structural or mastery-state changes caused by learner Evidence are recorded in an immutable Learning Record such as EV-000001 — [[learning-records/EV-000001]]. Bootstrap, planning, administrative, and source-availability structural updates require no learner Evidence; anchor them instead to the applicable canonical source/version/location, Open Question ID plus link, or Mission rationale. Such updates must not claim positive mastery or status `complete`. This file contains only the current canonical graph.

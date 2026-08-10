@@ -71,7 +71,13 @@ if ($Section -in @('Scope', 'All')) {
 }
 
 if ($Section -in @('Publication', 'All')) {
+    $templateCount = @(
+        Get-ChildItem -LiteralPath (Join-Path $repoRoot 'assets/templates') -File -Filter '*.md'
+    ).Count
     Assert-Rebrand ($readme.Contains('Current release: `v0.4.0`.')) 'README names v0.4.0'
+    Assert-Rebrand (
+        $readme.Contains("$templateCount maintained Markdown templates")
+    ) 'README reports the current maintained-template count'
     Assert-Rebrand (
         Test-Path -LiteralPath (Join-Path $repoRoot 'README.zh-CN.md') -PathType Leaf
     ) 'Chinese README exists'

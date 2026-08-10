@@ -122,7 +122,7 @@ The earlier [PR-oriented prototype](https://github.com/jiangweiqi001/skills/comm
 
 This independent project turns that initial experiment into a dedicated theoretical-physics learning system:
 
-- It provides a complete canonical workspace with 14 maintained Markdown templates instead of patching two files in a general teaching skill.
+- It provides a complete canonical workspace with 16 maintained Markdown templates instead of patching two files in a general teaching skill.
 - It treats multiple papers, textbooks, lecture notes, and code sources as one study corpus while preserving each source's local notation.
 - It maintains explicit notation crosswalks, six classified kinds of cross-source relation, assumptions, validity regimes, and unresolved conflicts.
 - It records an exact resume point, immutable learner evidence, mastery gates, source versions, and stable source anchors across sessions.

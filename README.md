@@ -1,10 +1,10 @@
 # theoretical-physics-math-teach
 
-`theoretical-physics-math-teach` is an explicit-only Agent Skill for sustained study of theoretical physics from user-supplied papers, textbooks, lecture notes, and related implementation material.
+`theoretical-physics-math-teach` is configured as an explicit-only skill in Codex for sustained study of theoretical physics from user-supplied papers, textbooks, lecture notes, and related implementation material.
 
 It is physics-first: pure mathematics is introduced to support a physical theory, derivation, proof, structural comparison, or implementation, and may be expanded when that physical dependency needs more detail. The skill is source-driven and multi-source. It preserves each source's notation, records explicit translations and assumptions between sources, and writes durable, Obsidian-compatible Markdown lessons with long, step-by-step derivations when needed.
 
-The skill never activates automatically. In Codex, invoke it with the exact `$theoretical-physics-math-teach` mention, for example “用 `$theoretical-physics-math-teach` 学这些论文”. In ChatGPT, type `@` and select the skill from the picker.
+Codex does not activate the skill automatically because `agents/openai.yaml` disables implicit invocation. Invoke it with the exact `$theoretical-physics-math-teach` mention, for example “用 `$theoretical-physics-math-teach` 学这些论文”. In ChatGPT, type `@` and select the skill from the picker.
 
 ## What it does
 
@@ -37,7 +37,7 @@ git clone https://github.com/jiangweiqi001/theoretical-physics-math-teach.git "$
 
 Alternatively, invoke `$skill-installer` in Codex and ask it to install the skill from `https://github.com/jiangweiqi001/theoretical-physics-math-teach`. You may also download the repository and copy the entire `theoretical-physics-math-teach` folder into the personal skills directory. Keep the root `SKILL.md`, `references/`, `assets/`, and metadata together.
 
-For another Agent Skills-compatible tool, place the entire repository folder in that tool's skills directory and confirm that it discovers the root `SKILL.md`. `agents/openai.yaml` is Codex-specific display and invocation-policy metadata; the Markdown skill and its supporting files remain portable to compatible tools.
+For another Agent Skills-compatible tool, place the entire repository folder in that tool's skills directory and confirm that it discovers the root `SKILL.md`. `agents/openai.yaml` is Codex-specific display and invocation-policy metadata; the Markdown instructions and supporting files are portable, but another host must provide or be configured with an equivalent explicit-only policy. If it cannot, automatic invocation behavior is not guaranteed there.
 
 ## Quick start
 

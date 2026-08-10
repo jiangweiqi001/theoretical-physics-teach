@@ -36,11 +36,27 @@ Copy the following subsection for every source-local symbol or meaning-changing 
 | Superseded by Notation Entry ID |  |
 | Open-question ID when unresolved |  |
 
+#### Relations to symbols or objects in other sources
+
+Every notation entry directly records each relevant cross-source relation. Copy the following narrow block once per Relation ID. Keep this local record brief; do not copy the complete Relation registry from `SYNTHESIS.md`.
+
+##### REL-000001
+
+| Field | Value |
+| --- | --- |
+| Relation to symbol or object in another source | Briefly state what this notation entry is related to |
+| Relation ID + canonical Obsidian link | REL-000001 — [[SYNTHESIS#REL-000001]] |
+| Counterpart endpoint type | Notation entry, physical object, assumption, method, claim, result, theorem, or code object |
+| Counterpart stable ID or canonical source anchor | Stable ID; or source ID, version, exact location, role, and provenance |
+| Counterpart Notation Entry ID, when applicable |  |
+| Assumptions under which the relation holds | Brief assumption map plus [[SYNTHESIS#REL-000001]] |
+| Canonical authority | The Relation heading [[SYNTHESIS#REL-000001]] is canonical; if this brief record conflicts with it, update this record to match `SYNTHESIS.md` |
+
 When superseding an entry, create a new stable Notation Entry ID, fill its `Supersedes` field, and set the prior entry's `Superseded by` field without reusing or rewriting either ID.
 
 ## Related Relation references
 
-Do not define endpoints, relation type, assumptions, or status here. Link only Relations in which a source-local notation entry participates.
+This optional index is navigation only and does not replace the direct relation and assumption records inside each notation entry. Do not reproduce the canonical Relation type, full endpoints, assumptions, or status here.
 
 | Notation Entry ID | Relation ID | Canonical Relation Obsidian link | Endpoint role |
 | --- | --- | --- | --- |

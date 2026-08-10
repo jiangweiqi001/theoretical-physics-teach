@@ -2,7 +2,8 @@
 
 ## User prompt
 
-Resume my Green-function course from the Obsidian state below. Yesterday I was stuck on why the convergence factor is legitimate. I now understand that $e^{-\eta t}$ with $\eta>0$ makes the upper limit converge and that the retarded prescription means taking $\eta\to0^+$ only after the integral is evaluated.
+<!-- BEGIN USER PROMPT -->
+This simulated session is dated 2026-08-10 and resumes from `learning-records/2026-08-09.md`. On 2026-08-09 I was stuck on why the convergence factor is legitimate. I now understand that $e^{-\eta t}$ with $\eta>0$ makes the upper limit converge and that the retarded prescription means taking $\eta\to0^+$ only after the integral is evaluated.
 
 Continue from that point rather than restarting the lesson. My requirement is strict: show every mathematical step and every logical implication, even if the response becomes long. Do not hide a calculation behind words such as "obviously," "similarly," or "it follows." When the explanation is complete, show the exact Markdown updates you would make to the course state so the next session resumes from the new boundary.
 
@@ -66,17 +67,26 @@ $$
 - Demonstrated unaided: used $\theta(t)$ to replace $(-\infty,\infty)$ by $(0,\infty)$
 - Remaining gap: convergence factor and evaluation of the complex exponential integral
 ```
+<!-- END USER PROMPT -->
 
 ---
 
-## Evaluator only - do not include in the user prompt or intended response
+## Evaluator only - never dispatch
 
-Record observations, including exact quotations where useful:
+This section must never be sent to the responding agent. Dispatch only the output of `tests/extract-user-prompts.ps1`.
 
-- Whether the response resumes at the regulated integral or unnecessarily restarts earlier material.
-- Whether it explicitly evaluates the endpoint limit, simplifies the complex denominator, takes $\eta\to0^+$ in the stated order, computes the imaginary part, and applies the supplied delta-function identity.
-- Whether any algebraic sign, factor of $i$, factor of $2$, or Fourier convention is skipped or changed.
-- Whether the active lesson is patched rather than duplicated, and whether the stale pause marker is removed or replaced.
-- Whether `CURRENT-STATE.md` advances the exact resume point and records the learner's newly reported understanding without falsely treating the report as an unaided derivation.
-- Whether the learning record distinguishes prior demonstrated work from the learner's present self-report and leaves an appropriate next check.
-- Whether the clarification remains only in chat or is represented in the proposed canonical Markdown updates.
+### Core PASS checklist
+
+The scenario passes only if every item below passes.
+
+- [ ] Resumes at the regulated integral without restarting the earlier definition or the already demonstrated $\theta(t)$ step.
+- [ ] Explicitly evaluates the endpoint limit, simplifies every factor of $i$ and sign, takes $\eta\to0^+$ only after integration, computes the imaginary part, and derives $A(k,\omega)=2\pi\delta(\omega-\xi_k)$ using the supplied convention.
+- [ ] Preserves the supplied Fourier and spectral-function conventions without skipping a mathematical or logical transition.
+- [ ] Patches `lessons/04-retarded-free-propagator.md` instead of duplicating it and removes or replaces the stale pause marker.
+- [ ] Advances `CURRENT-STATE.md` to a precise new resume point and writes the resolved clarification into the canonical Markdown state rather than leaving it only in chat.
+- [ ] Updates the learning record while distinguishing the learner's 2026-08-10 self-report from the unaided work demonstrated on 2026-08-09, and leaves an observable next mastery check.
+
+### Optional observations
+
+- Record exact quotations that conceal algebra or incorrectly inflate demonstrated mastery.
+- Note unnecessary repetition, useful consistency checks, and any proposed state files beyond those supplied.

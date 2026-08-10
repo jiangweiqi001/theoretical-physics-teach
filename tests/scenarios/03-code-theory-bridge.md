@@ -2,6 +2,7 @@
 
 ## User prompt
 
+<!-- BEGIN USER PROMPT -->
 I inherited the pseudocode below from a computational many-body project. I can read the loops, but I do not understand what calculation they represent physically. Explain what the code does using the accompanying paper excerpt, with enough detail that I could change the grids safely. Also tell me whether the saved array by itself demonstrates a real-frequency collective mode.
 
 ### Mock paper excerpt
@@ -44,7 +45,7 @@ for iq, q in enumerate(q_points):
         Pi = 0j
 
         for j, k in enumerate(k_points):
-            for m in range(-Nw, Nw + 1):
+            for m in range(-Nw, Nw):
                 omega = (2 * m + 1) * pi / beta
                 G_left = 1 / (1j * omega - xi(k))
                 G_right = 1 / (1j * (omega + nu) - xi(k + q))
@@ -57,16 +58,26 @@ save("W_matsubara.npy", W)
 ```
 
 The run configuration is `beta = 40 eV^-1`, `Nw = 256`, `kappa_IR = 0.02 Angstrom^-1`, 80 `q_points`, 12 nonnegative bosonic indices, and 4096 weighted `k_points`.
+<!-- END USER PROMPT -->
 
 ---
 
-## Evaluator only - do not include in the user prompt or intended response
+## Evaluator only - never dispatch
 
-Record observations, including exact quotations where useful:
+This section must never be sent to the responding agent. Dispatch only the output of `tests/extract-user-prompts.ps1`.
 
-- Whether the explanation first identifies the overall algorithm and then maps the inner sum/integral, polarization, RPA denominator, and saved output to the supplied equations.
-- Whether it maps code variables to their physical meanings and units, including `beta`, `Nw`, `kappa_IR`, the momentum points and weights, Matsubara indices, `Pi`, and `W`.
-- Whether it identifies the finite Matsubara cutoff, momentum quadrature, sampled external momenta/frequencies, RPA assumption, spin factor, and infrared regulator.
-- Whether it proposes relevant convergence and consistency checks before a grid change, such as varying `Nw`, momentum resolution/domain, and `kappa_IR`, while checking known limits or symmetries.
-- Whether it distinguishes the Matsubara-axis array from a real-frequency observable and avoids claiming that the file alone proves a collective mode.
-- Whether it invents implementation details, physical conclusions, or validation results not present in the excerpt.
+### Core PASS checklist
+
+The scenario passes only if every item below passes.
+
+- [ ] Identifies the overall RPA algorithm and maps the inner momentum/frequency loop to $\Pi_0$, the denominator to $W$, and the saved array to the sampled Matsubara-axis screened interaction.
+- [ ] Maps `beta`, `Nw`, `kappa_IR`, momentum points and weights, Matsubara indices, `Pi`, and `W` to their physical or numerical meanings and supplied units.
+- [ ] Identifies the momentum quadrature, finite Matsubara cutoff, sampled external grid, RPA approximation, spin factor, and numerical infrared regulator; recognizes that `range(-Nw, Nw)` is closed under $m\mapsto-m-1$.
+- [ ] Requires convergence checks in `Nw`, momentum resolution/domain, and $\kappa_{\mathrm{IR}}$, plus relevant limiting-case or symmetry checks, before treating a grid change as safe.
+- [ ] States that `W_matsubara.npy` is not by itself a real-frequency observable or evidence of a collective mode and that analytic continuation and separate validation are required.
+- [ ] Does not invent implementation details, physical conclusions, or completed validation results absent from the supplied material.
+
+### Optional observations
+
+- Record exact quotations that reveal a missing equation-to-code map or an unsupported physical claim.
+- Note especially clear architecture-first explanations or additional valid convergence diagnostics.

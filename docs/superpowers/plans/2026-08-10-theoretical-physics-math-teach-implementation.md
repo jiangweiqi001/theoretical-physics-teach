@@ -50,7 +50,13 @@ The prompt supplies a paper equation for a screened interaction and a small pseu
 
 - [ ] **Step 4: Run all scenarios without the new skill**
 
-Dispatch the three scenario files to an independent agent with no access to the intended design. Save concrete decisions and quotations to `tests/baseline-observations.md`.
+For each scenario, run the extractor with the corresponding filename:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File tests/extract-user-prompts.ps1 tests/scenarios/<file>.md
+```
+
+Dispatch **only the extractor output** to an independent agent with no access to the intended design. Never dispatch the whole scenario file or its evaluator-only section. Save concrete decisions and quotations to `tests/baseline-observations.md`.
 
 Expected: at least one specified failure in each scenario.
 
@@ -298,7 +304,13 @@ Expected: `Skill is valid!`
 
 - [ ] **Step 3: Run GREEN agent scenarios**
 
-Dispatch each scenario to an independent agent instructed to read and follow `SKILL.md`. Save concrete outputs and observations to `tests/green-observations.md`.
+For each scenario, run the extractor with the corresponding filename:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File tests/extract-user-prompts.ps1 tests/scenarios/<file>.md
+```
+
+Dispatch **only the extractor output** to an independent agent instructed to read and follow `SKILL.md`. Never dispatch the whole scenario file or its evaluator-only section. Save concrete outputs and observations to `tests/green-observations.md`.
 
 Expected: all listed GREEN behaviors appear and none of the corresponding RED failures recur.
 

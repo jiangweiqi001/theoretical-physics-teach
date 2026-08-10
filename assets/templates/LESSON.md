@@ -1,10 +1,13 @@
-# Lesson — Dependency-Sized Title
+# Lesson L-000001 — Dependency-Sized Title
 
 ## Notation and conventions
 
 Every new symbol must be defined before first use in prose or equations, regardless of whether its origin/provenance is `Source / crosswalk / defined here`. Complete every required field below before writing any later section. Include each decorated or indexed form as its own entry whenever a hat, bar, star, boldface, subscript, or superscript changes the meaning, type, domain, or convention.
 
-This lesson is canonical only for teaching content, check criteria, and links to stable Evidence IDs. The dependency graph belongs to `CONCEPT-MAP.md`, the active snapshot belongs to `CURRENT-STATE.md`, and historical learner evidence belongs to `LEARNING-RECORD.md`.
+- **Stable Lesson ID:** L-000001
+- **Canonical lesson Obsidian link:** [[lessons/L-000001]]
+
+This lesson is canonical only for teaching content, check criteria, and links to stable Evidence IDs plus Obsidian links. The dependency graph belongs to `CONCEPT-MAP.md`, the active snapshot belongs to `CURRENT-STATE.md`, and historical learner evidence belongs to immutable `learning-records/EV-000001.md`-style instances.
 
 ### Local symbol index
 
@@ -47,7 +50,7 @@ Before proceeding, verify that every symbol used below has a complete entry abov
 - Physical mission target advanced by this lesson:
 - One dependency-sized learning objective:
 - Prerequisite Concept Node IDs and Edge IDs, linked without redefining them:
-- Prior Evidence IDs relied upon, linked without copying learner history:
+- Prior Evidence ID + Obsidian links relied upon, such as EV-000001 — [[learning-records/EV-000001]], without copying learner history:
 - Separate prerequisite lesson to open if a required step is unfamiliar:
 
 ## Exact source anchors and provenance
@@ -118,36 +121,36 @@ For a pure-mathematics prerequisite, replace physical interpretation and dimensi
 
 Trigger this section only when the lesson actually compares two or more supplied sources. For a single-source lesson, write `Not applicable — single-source lesson` and do not manufacture a comparison.
 
-When comparison is active, reference canonical Synthesis IDs and Relation IDs. Repeat the controlled Relation classification exactly as recorded in `NOTATION-CROSSWALK.md`; if no canonical relation exists, create or resolve it there before claiming equivalence here.
+When comparison is active, link canonical Synthesis IDs and Relation IDs from `SYNTHESIS.md`. Do not copy Relation endpoint data, type, assumptions, status, or the six-class taxonomy into the lesson. If no canonical Relation exists, create or resolve it in `SYNTHESIS.md` before claiming a connection here.
 
-Use the same complete six-class display taxonomy:
-
-- `same object, different notation`
-- `same notation, different object`
-- `equivalent only under stated assumptions`
-- `alternative approximation or renormalization scheme`
-- `apparent contradiction requiring resolution`
-- `historical or pedagogical restatement`
-
-| Synthesis ID | Relation ID | Controlled classification | Lesson-specific comparison point |
+| Synthesis ID | Canonical Synthesis Obsidian link | Relation ID | Canonical Relation Obsidian link |
 | --- | --- | --- | --- |
-|  |  | One exact display name from the six-class taxonomy above |  |
+| Y-001 | [[SYNTHESIS#Y-001]] | REL-000001 | [[SYNTHESIS#REL-000001]] |
 
-Never claim equivalence without the assumption map owned by the referenced Synthesis ID and Relation ID.
+Never claim equivalence without following the assumption map owned by the linked Synthesis ID and Relation ID.
 
 ## Code–theory map
 
 Trigger this section only when supplied material includes code, pseudocode, numerical methods, or reproducibility instructions. Otherwise write `Not applicable — no supplied code or numerical material`.
 
-Complete the architecture-level map before adding line-level commentary.
+Every lesson-local Code Map ID must include this lesson's stable ID as the prefix, for example `CMAP-L-000001-001`, and is canonical only inside this lesson. Complete the architecture-level map before adding line-level commentary.
+
+A map shared by multiple lessons is not lesson-local. Create its canonical file as `reference/code-maps/CMAP-GLOBAL-000001.md`, register it in `reference/code-maps/INDEX.md`, and place only its ID plus Obsidian link in this lesson. Never copy a shared architecture map into a lesson.
+
+### Shared Code Map references
+
+| Code Map ID | Canonical Obsidian link | Role in this lesson |
+| --- | --- | --- |
+| CMAP-GLOBAL-000001 | [[reference/code-maps/CMAP-GLOBAL-000001]] |  |
 
 ### Architecture-level map
 
-#### CMAP-001
+#### CMAP-L-000001-001
 
 | Field | Mapping |
 | --- | --- |
-| Map ID | CMAP-001 |
+| Map ID | CMAP-L-000001-001 |
+| Canonical scope | Lesson-local in L-000001 — [[lessons/L-000001]] |
 | Theoretical object, equation, functional, action, or algorithm |  |
 | Theory source anchors and provenance |  |
 | Assumptions and controlled approximations |  |
@@ -169,13 +172,14 @@ Add these only after the architecture-level map is complete. Use exact commit-pi
 
 | Line map ID | Architecture map ID | Theory anchor | Commit | File and line range | Code symbol or array |
 | --- | --- | --- | --- | --- | --- |
-| CMAP-001-L1 | CMAP-001 |  |  |  |  |
+| CMAP-L-000001-001-L1 | CMAP-L-000001-001 |  |  |  |  |
 
-#### CMAP-001-L1
+#### CMAP-L-000001-001-L1
 
 | Field | Mapping |
 | --- | --- |
-| Line map ID | CMAP-001-L1 |
+| Line map ID | CMAP-L-000001-001-L1 |
+| Architecture map ID | CMAP-L-000001-001 |
 | Theoretical step or object |  |
 | Theory source anchor and provenance |  |
 | Assumptions used at this step |  |
@@ -214,7 +218,7 @@ Add these only after the architecture-level map is complete. Use exact commit-pi
 
 - Target capability and observable success criterion:
 - Retrieval, reconstruction, synthesis, or implementation check IDs in this lesson:
-- Evidence IDs created after an attempt, linked without copying the response, hints, or mastery history:
+- Evidence ID + Obsidian links created after an attempt, such as EV-000001 — [[learning-records/EV-000001]], without copying the response, hints, or mastery history:
 - Review IDs, when scheduled:
 - Next Concept Node IDs and Edge IDs from `CONCEPT-MAP.md`:
 - Next lesson link:

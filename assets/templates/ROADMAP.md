@@ -12,12 +12,33 @@
 
 The four positive mastery levels are capabilities, not a mandatory linear sequence. Set each phase target from the evidence that its mission outcome actually requires.
 
-## Phases
+## Phase index
 
-| Phase ID | Phase purpose | Concept Node IDs | Prerequisite Edge IDs | Exact source anchors | Mastery target | Observable exit criterion | Supporting Evidence IDs | Status |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| P-001 |  |  |  |  |  |  |  | Not started, active, blocked, review, or complete |
+| Phase ID | Concept Node IDs | Exact source anchors | Status | Entry anchor |
+| --- | --- | --- | --- | --- |
+| P-001 |  | [[ROADMAP#P-001 exact source anchors]] | Not started, active, blocked, review, or complete | [[ROADMAP#P-001]] |
 
-For each phase, `Exact source anchors` contains repeatable source ID, version, exact location, role, and provenance records, or precise links to records containing all five fields.
+## Phase entries
 
-Do not restate node definitions, edge endpoints, dependency reasons, or learner responses here. Resolve Node IDs and Edge IDs through `CONCEPT-MAP.md`; resolve Evidence IDs through `LEARNING-RECORD.md`.
+Copy this keyed block for each stable Phase ID.
+
+### P-001
+
+| Field | Value |
+| --- | --- |
+| Phase ID | P-001 |
+| Phase purpose |  |
+| Concept Node IDs | Resolve only through `CONCEPT-MAP.md` |
+| Prerequisite Edge IDs | Resolve only through `CONCEPT-MAP.md` |
+| Mastery target |  |
+| Observable exit criterion |  |
+| Supporting Evidence ID + Obsidian link | EV-000001 — [[learning-records/EV-000001]] |
+| Status | Not started, active, blocked, review, or complete |
+
+#### P-001 exact source anchors
+
+| Source ID | Version | Exact location | Role | Provenance |
+| --- | --- | --- | --- | --- |
+|  |  |  | Phase premise, target, or comparison | Source, Reconstructed, Inference, or Unresolved |
+
+Do not restate node definitions, edge endpoints, dependency reasons, or learner responses here. Resolve Node IDs and Edge IDs through `CONCEPT-MAP.md`; resolve evidence through both the Evidence ID and Obsidian link registered in `learning-records/INDEX.md`.

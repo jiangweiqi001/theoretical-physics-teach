@@ -4,9 +4,11 @@
 
 ## Concept nodes
 
-| Node ID | Physical concept or supporting mathematics | Scope | Exact source anchors | Mastery level | Status | Lesson path |
-| --- | --- | --- | --- | --- | --- | --- |
-| C-001 |  |  |  |  | Not started, active, blocked, review, or complete |  |
+| Node ID | Physical concept or supporting mathematics | Scope | Exact source anchors | Mastery level | Status | Supporting Evidence ID + Obsidian link | Lesson path |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| C-001 |  |  |  | Level 0, interpretation, reconstruction, synthesis, implementation, or blank | Not started, active, blocked, review, or complete |  |  |
+
+A node cannot carry a positive mastery level or status `complete` unless `Supporting Evidence ID + Obsidian link` contains at least one pair such as EV-000001 — [[learning-records/EV-000001]] whose linked record demonstrates the required capability. Without such evidence, leave mastery blank or level 0 and do not mark the node complete.
 
 ## Explicit prerequisite edges
 
@@ -16,10 +18,10 @@
 
 ## Cross-source concept relations
 
-Do not classify notation relations here. Reference the canonical Relation IDs from `NOTATION-CROSSWALK.md` and Synthesis IDs from `SYNTHESIS.md`.
+Do not classify Relations here. Reference source-local Notation Entry IDs from `NOTATION-CROSSWALK.md`, and reference canonical Relation IDs and Synthesis IDs from `SYNTHESIS.md`.
 
-| Node ID | Source-local presentation entry IDs | Relation IDs | Synthesis IDs |
+| Node ID | Source-local Notation Entry IDs | Relation ID + canonical link | Synthesis ID + canonical link |
 | --- | --- | --- | --- |
-|  |  |  |  |
+|  |  | REL-000001 — [[SYNTHESIS#REL-000001]] | Y-001 — [[SYNTHESIS#Y-001]] |
 
-Structural changes are recorded as historical evidence in an append-only `LEARNING-RECORD.md` entry; this file contains only the current canonical graph.
+Structural changes are recorded in an immutable evidence record such as EV-000001 — [[learning-records/EV-000001]]; this file contains only the current canonical graph.

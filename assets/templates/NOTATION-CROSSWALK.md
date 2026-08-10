@@ -1,6 +1,6 @@
 # Notation Crosswalk
 
-Preserve the notation of each source. A cross-source equality or translation is valid only under the assumptions recorded here.
+Preserve the notation of each source. `NOTATION-CROSSWALK.md` is the exclusive canonical owner of source-local notation entries. General cross-source Relations, including Relations whose endpoints are not notation, are owned by the Relation registry in `SYNTHESIS.md`; this file only links relevant Relation IDs.
 
 Use stable notation entry IDs such as `N-S1-001`. Never renumber an ID after another file links to it. The narrow index is for navigation; the keyed entry is canonical. Escape a literal vertical bar when it appears inside a Markdown table value.
 
@@ -32,45 +32,16 @@ Copy the following subsection for every source-local symbol or meaning-changing 
 | Sign, metric, Fourier-transform, normalization, natural-unit, boundary, and operator conventions |  |
 | Meaning of hats, bars, stars, boldface, subscripts, and superscripts |  |
 | Status | Draft, verified, ambiguous, or superseded |
+| Supersedes Notation Entry ID |  |
+| Superseded by Notation Entry ID |  |
 | Open-question ID when unresolved |  |
 
-## Relation index
+When superseding an entry, create a new stable Notation Entry ID, fill its `Supersedes` field, and set the prior entry's `Superseded by` field without reusing or rewriting either ID.
 
-Every cross-source relation has one stable Relation ID. `SYNTHESIS.md` must reference this ID and repeat the same controlled classification; it must not invent another classification.
+## Related Relation references
 
-Use exactly one of these six complete display names:
+Do not define endpoints, relation type, assumptions, or status here. Link only Relations in which a source-local notation entry participates.
 
-- `same object, different notation`
-- `same notation, different object`
-- `equivalent only under stated assumptions`
-- `alternative approximation or renormalization scheme`
-- `apparent contradiction requiring resolution`
-- `historical or pedagogical restatement`
-
-| Relation ID | Left entry ID | Right entry ID | Controlled classification | Status |
-| --- | --- | --- | --- | --- |
-| REL-001 |  |  | One exact display name from the six-class taxonomy above | Proposed, verified, disputed, or superseded |
-
-## Relation entries
-
-Copy the following subsection for every proposed relation.
-
-### REL-001
-
-- **Relation ID:** REL-001
-- **Left notation entry ID:**
-- **Right notation entry ID:**
-- **Controlled classification:** one exact display name from the six-class taxonomy above
-- **Assumptions required:**
-- **Translation or comparison map:**
-- **Differences that remain after translation:**
-
-#### Evidence anchors
-
-| Source ID | Version | Exact location | Role in relation | Provenance |
-| --- | --- | --- | --- | --- |
-|  |  |  | Left, right, assumption, or comparison | Source, Reconstructed, Inference, or Unresolved |
-
-- **Status:** Proposed, verified, disputed, or superseded
-- **Status rationale:**
-- **Open-question ID when unresolved:**
+| Notation Entry ID | Relation ID | Canonical Relation Obsidian link | Endpoint role |
+| --- | --- | --- | --- |
+| N-S1-001 | REL-000001 | [[SYNTHESIS#REL-000001]] | Left or right endpoint |

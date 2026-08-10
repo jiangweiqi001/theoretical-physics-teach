@@ -35,6 +35,6 @@ Add one row for every premise, conflicting statement, missing location, or resol
 
 - **Resolution summary:**
 - **Resolving source-anchor rows:**
-- **Related Evidence IDs, if learner evidence changed:**
+- **Related Evidence ID + Obsidian links, if learner evidence changed:** EV-000001 — [[learning-records/EV-000001]]
 - **Canonical files and stable IDs updated:**
 - **Resolution date:**

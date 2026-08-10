@@ -1,31 +1,37 @@
 # Baseline Diagnostics
 
-This file is an append-only diagnostic index. Never overwrite, reorder, or delete a historical diagnostic entry. If an entry needs correction, append a new entry with a new stable Diagnostic ID and reference the superseded ID.
+This file is an append-only diagnostic index with a bounded active-entry lifecycle:
 
-Each entry contains one prerequisite question and one evidence category only. The canonical verbatim response, hints, and demonstrated evidence live under the referenced Evidence ID in `LEARNING-RECORD.md`.
+1. Before asking a question, allocate a new Diagnostic ID, append its index row with status `active`, and create the matching level-2 entry containing the exact question, date, session, prerequisite, and evidence category.
+2. After the learner answers, allocate the next Evidence ID through `learning-records/INDEX.md`. The same `active` entry and its index row may then be completed once: add the Evidence ID plus Obsidian link, diagnostic implication, and confidence, then change status to `finalized` or `confirmed`.
+3. A `finalized` or `confirmed` entry and index row are immutable. Never overwrite, reorder, delete, or reopen them.
+4. Later correction requires a new Diagnostic ID with `Supersedes Diagnostic ID` pointing to the prior entry; do not edit the prior entry.
+
+Each entry contains one prerequisite question and one evidence category only. The canonical verbatim response, hints, and demonstrated evidence live in `learning-records/EV-000001.md`-style records and are referenced by both Evidence ID and Obsidian link.
 
 ## Diagnostic index
 
-| Diagnostic ID | Date | Session | Prerequisite | Evidence ID | Status |
+| Diagnostic ID | Date | Session | Prerequisite | Evidence ID + Obsidian link | Status |
 | --- | --- | --- | --- | --- | --- |
-| D-001 |  |  |  | EV-001 | Active, superseded, or confirmed |
+| D-000001 |  |  |  | Pending while active; then EV-000001 — [[learning-records/EV-000001]] | Active, finalized, or confirmed |
 
 Copy the following level-2 section for every new diagnostic. Change the stable ID and append it after earlier entries.
 
-## D-001
+## D-000001
 
-- **Diagnostic ID:** D-001
+- **Diagnostic ID:** D-000001
+- **Status:** active, finalized, or confirmed
 - **Date:**
 - **Session:**
-- **Evidence ID:** EV-001
+- **Evidence ID + Obsidian link:** Pending while active; then EV-000001 — [[learning-records/EV-000001]]
 - **Supersedes Diagnostic ID, if any:**
 - **Prerequisite being tested:**
 - **Evidence category:** explanation, derivation, proof, or computation
 - **Related mission target:**
-- **Source anchors:** reference the repeatable anchor table in Evidence ID EV-001 when applicable
+- **Source anchors:** reference the repeatable anchor table in EV-000001 — [[learning-records/EV-000001]] when applicable
 - **One question, exactly as asked:**
-- **Learner response:** link to the verbatim unaided response in Evidence ID EV-001; do not duplicate it here
-- **Observed evidence:** link to the mastery judgment in Evidence ID EV-001; do not duplicate historical evidence here
+- **Learner response:** link to the verbatim unaided response in EV-000001 — [[learning-records/EV-000001]]; do not duplicate it here
+- **Observed evidence:** link to the mastery judgment in EV-000001 — [[learning-records/EV-000001]]; do not duplicate historical evidence here
 - **Prerequisite implication:**
 - **Concept Node IDs or Edge IDs affected:**
 - **Next single diagnostic question, if needed:** create a new Diagnostic ID before asking it

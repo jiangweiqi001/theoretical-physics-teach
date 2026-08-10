@@ -1,14 +1,14 @@
 # Current Learning State
 
-This file is the canonical active snapshot only. Read it, the active lesson, and the latest Evidence ID before teaching. Resume at the exact recorded step; do not restart the topic.
+This file is the canonical active snapshot only. Read it, the active lesson, and the latest Evidence ID plus Obsidian link before teaching. Resume at the exact recorded step; do not restart the topic.
 
-Replace this snapshot atomically after each substantive exchange. Never append history here. `LEARNING-RECORD.md` is the exclusive owner of the prior-to-new snapshot transition and historical learner evidence.
+Replace this snapshot atomically after each substantive exchange. Never append history here. Immutable `learning-records/EV-000001.md`-style instances are the exclusive owner of the prior-to-new snapshot transition and historical learner evidence.
 
 ## Active phase and lesson
 
 - Snapshot updated at date and session:
 - Roadmap phase:
-- Active lesson path:
+- Active Lesson ID + canonical Obsidian link:
 - Active Concept Node IDs:
 - Active prerequisite Edge IDs:
 - Current mastery target:
@@ -36,8 +36,8 @@ Add one row for every source needed to resume safely.
 ## Resolution incorporated into this snapshot
 
 - Most recently resolved obstacle label:
-- Canonical Evidence ID containing the explanation and demonstrated evidence:
-- Active lesson path and heading where teaching content was patched, or linked prerequisite lesson:
+- Teaching explanation Lesson ID + section Obsidian link:
+- Supporting Evidence ID + Obsidian link: EV-000001 — [[learning-records/EV-000001]]
 - Resulting change to this active snapshot:
 - Related Concept Node IDs, Edge IDs, Notation Entry IDs, Relation IDs, Synthesis IDs, Review IDs, or Open Question IDs:
 
@@ -45,9 +45,16 @@ Do not copy the explanation, learner response, hints, or state-change history in
 
 ## Current evidence links
 
-- Latest Evidence IDs:
-- Current mastery level supported by those Evidence IDs:
+- Latest Evidence ID + Obsidian links: EV-000001 — [[learning-records/EV-000001]]
+- Current mastery level supported by those linked records:
 - Active Review IDs:
+
+## Code map links
+
+| Code Map ID | Canonical Obsidian link | Scope | Active role |
+| --- | --- | --- | --- |
+| CMAP-L-000001-001 | [[lessons/L-000001#CMAP-L-000001-001]] | Lesson-local |  |
+| CMAP-GLOBAL-000001 | [[reference/code-maps/CMAP-GLOBAL-000001]] | Shared architecture |  |
 
 ## Next action
 

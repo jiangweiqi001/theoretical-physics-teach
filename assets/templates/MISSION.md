@@ -26,11 +26,11 @@ These statements describe background, familiarity, or confidence. They are plann
 
 ## Diagnostically demonstrated prerequisites
 
-Every demonstrated-prerequisite claim must cite one or more canonical Evidence IDs from `LEARNING-RECORD.md`. If no Evidence ID supports the claim, record it above as self-report or leave it undemonstrated.
+Every demonstrated-prerequisite claim must cite one or more canonical evidence records using both Evidence ID and Obsidian link. If no linked evidence record supports the claim, record it above as self-report or leave it undemonstrated.
 
-| Prerequisite capability | Evidence IDs | Demonstrated unaided performance | Date or session |
+| Prerequisite capability | Evidence ID + Obsidian link | Demonstrated unaided performance | Date or session |
 | --- | --- | --- | --- |
-|  | EV-001 |  |  |
+|  | EV-000001 — [[learning-records/EV-000001]] |  |  |
 
 ## Constraints
 
@@ -48,8 +48,13 @@ Every demonstrated-prerequisite claim must cite one or more canonical Evidence I
 
 ## Completion evidence
 
-- Explanation evidence:
-- Unaided derivation or proof evidence:
-- Cross-source translation evidence:
-- Implementation evidence, when code or numerical work is in scope:
-- Conditions that must be met before the mission is considered complete:
+| Required completion item | Observable criterion | Evidence ID + Obsidian link | Gate status |
+| --- | --- | --- | --- |
+| Explanation |  | EV-000001 — [[learning-records/EV-000001]] | Open or satisfied |
+| Unaided derivation or proof |  |  | Open or satisfied |
+| Cross-source translation |  |  | Open, satisfied, or not applicable |
+| Implementation, when code or numerical work is in scope |  |  | Open, satisfied, or not applicable |
+
+### Completion gate
+
+Mark the mission complete only when every required row is `satisfied`, every accepted claim has an Evidence ID plus canonical Obsidian link, and the linked record demonstrates the row's observable criterion. Self-report, an unlinked ID, a link without an ID, recognition, or confidence alone cannot satisfy the gate.

@@ -41,9 +41,18 @@ Copy this source-record subsection once per compared source.
 
 Every row must reference a Relation ID owned by `NOTATION-CROSSWALK.md`. Repeat its classification exactly from the controlled set; do not create a synthesis-local synonym.
 
+The six complete display names are:
+
+- `same object, different notation`
+- `same notation, different object`
+- `shifted or rescaled convention`
+- `approximation-dependent correspondence`
+- `historical or pedagogical restatement`
+- `unresolved or genuinely conflicting`
+
 | Relation ID | Controlled classification | Relation status | Role in this synthesis |
 | --- | --- | --- | --- |
-| REL-001 | `equivalent`, `convention-only`, `approximation`, `incompatible`, or `unresolved` |  |  |
+| REL-001 | One exact display name from the six-class taxonomy above |  |  |
 
 #### Assumption map and result
 

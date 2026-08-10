@@ -120,9 +120,18 @@ Trigger this section only when the lesson actually compares two or more supplied
 
 When comparison is active, reference canonical Synthesis IDs and Relation IDs. Repeat the controlled Relation classification exactly as recorded in `NOTATION-CROSSWALK.md`; if no canonical relation exists, create or resolve it there before claiming equivalence here.
 
+Use the same complete six-class display taxonomy:
+
+- `same object, different notation`
+- `same notation, different object`
+- `shifted or rescaled convention`
+- `approximation-dependent correspondence`
+- `historical or pedagogical restatement`
+- `unresolved or genuinely conflicting`
+
 | Synthesis ID | Relation ID | Controlled classification | Lesson-specific comparison point |
 | --- | --- | --- | --- |
-|  |  | `equivalent`, `convention-only`, `approximation`, `incompatible`, or `unresolved` |  |
+|  |  | One exact display name from the six-class taxonomy above |  |
 
 Never claim equivalence without the assumption map owned by the referenced Synthesis ID and Relation ID.
 

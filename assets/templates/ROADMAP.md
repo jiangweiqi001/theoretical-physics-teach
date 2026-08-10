@@ -14,8 +14,10 @@ The four positive mastery levels are capabilities, not a mandatory linear sequen
 
 ## Phases
 
-| Phase ID | Phase purpose | Concept Node IDs | Prerequisite Edge IDs | Mastery target | Observable exit criterion | Supporting Evidence IDs | Status |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| P-001 |  |  |  |  |  |  | Not started, active, blocked, review, or complete |
+| Phase ID | Phase purpose | Concept Node IDs | Prerequisite Edge IDs | Exact source anchors | Mastery target | Observable exit criterion | Supporting Evidence IDs | Status |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| P-001 |  |  |  |  |  |  |  | Not started, active, blocked, review, or complete |
+
+For each phase, `Exact source anchors` contains repeatable source ID, version, exact location, role, and provenance records, or precise links to records containing all five fields.
 
 Do not restate node definitions, edge endpoints, dependency reasons, or learner responses here. Resolve Node IDs and Edge IDs through `CONCEPT-MAP.md`; resolve Evidence IDs through `LEARNING-RECORD.md`.

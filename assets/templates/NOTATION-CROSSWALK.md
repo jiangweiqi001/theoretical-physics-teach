@@ -38,9 +38,18 @@ Copy the following subsection for every source-local symbol or meaning-changing 
 
 Every cross-source relation has one stable Relation ID. `SYNTHESIS.md` must reference this ID and repeat the same controlled classification; it must not invent another classification.
 
+Use exactly one of these six complete display names:
+
+- `same object, different notation`
+- `same notation, different object`
+- `shifted or rescaled convention`
+- `approximation-dependent correspondence`
+- `historical or pedagogical restatement`
+- `unresolved or genuinely conflicting`
+
 | Relation ID | Left entry ID | Right entry ID | Controlled classification | Status |
 | --- | --- | --- | --- | --- |
-| REL-001 |  |  | `equivalent`, `convention-only`, `approximation`, `incompatible`, or `unresolved` | Proposed, verified, disputed, or superseded |
+| REL-001 |  |  | One exact display name from the six-class taxonomy above | Proposed, verified, disputed, or superseded |
 
 ## Relation entries
 
@@ -51,7 +60,7 @@ Copy the following subsection for every proposed relation.
 - **Relation ID:** REL-001
 - **Left notation entry ID:**
 - **Right notation entry ID:**
-- **Controlled classification:** `equivalent`, `convention-only`, `approximation`, `incompatible`, or `unresolved`
+- **Controlled classification:** one exact display name from the six-class taxonomy above
 - **Assumptions required:**
 - **Translation or comparison map:**
 - **Differences that remain after translation:**

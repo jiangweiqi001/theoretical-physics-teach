@@ -26,6 +26,11 @@ function Assert-Rebrand([bool]$Condition, [string]$Message) {
 $skill = Read-Utf8 'SKILL.md'
 $metadata = Read-Utf8 'agents/openai.yaml'
 $readme = Read-Utf8 'README.md'
+$chineseReadme = if (Test-Path -LiteralPath (Join-Path $repoRoot 'README.zh-CN.md')) {
+    Read-Utf8 'README.zh-CN.md'
+} else {
+    ''
+}
 
 if ($Section -in @('Identity', 'All')) {
     Assert-Rebrand ($skill -match '(?m)^name:\s*theoretical-physics-teach\s*$') 'new Skill name is canonical'
@@ -34,7 +39,7 @@ if ($Section -in @('Identity', 'All')) {
     Assert-Rebrand ($metadata -match '(?m)^\s*allow_implicit_invocation:\s*false\s*$') 'explicit-only policy is preserved'
     Assert-Rebrand ($readme.Contains('github.com/jiangweiqi001/theoretical-physics-teach')) 'README uses the new repository URL'
     Assert-Rebrand ($readme.Contains('$theoretical-physics-teach')) 'README uses the new invocation'
-    foreach ($text in @($skill, $metadata, $readme)) {
+    foreach ($text in @($skill, $metadata, $readme, $chineseReadme)) {
         Assert-Rebrand (-not $text.Contains('theoretical-physics-math-teach')) 'current identity surface contains no former identifier'
     }
 }
@@ -43,6 +48,7 @@ if ($Section -in @('Scope', 'All')) {
     $scopeFiles = @(
         'SKILL.md',
         'README.md',
+        'README.zh-CN.md',
         'references/physics-pedagogy.md',
         'assets/templates/MISSION.md',
         'assets/templates/CONCEPT-MAP.md',

@@ -1,5 +1,7 @@
 # theoretical-physics-teach
 
+[English](README.md) · [简体中文](README.zh-CN.md)
+
 [![validate](https://github.com/jiangweiqi001/theoretical-physics-teach/actions/workflows/validate.yml/badge.svg)](https://github.com/jiangweiqi001/theoretical-physics-teach/actions/workflows/validate.yml)
 
 > Read the paper. Preserve the notation. Finish the derivation. Resume exactly where you stopped.
@@ -9,6 +11,36 @@
 It is source-driven and multi-source. It preserves each source's notation, records explicit translations and assumptions between sources, and writes durable, Obsidian-compatible Markdown lessons with long, step-by-step derivations when needed. Formal tools and proof steps are developed inside the physical argument that requires them.
 
 Codex does not activate the skill automatically because `agents/openai.yaml` disables implicit invocation. Invoke it with the exact `$theoretical-physics-teach` mention, for example “用 `$theoretical-physics-teach` 学这些论文”. In ChatGPT, type `@` and select the skill from the picker.
+
+## Start here
+
+- [Five-minute start](#five-minute-start)
+- [Why this skill exists](#why-this-skill-exists)
+- [What happens when you say “this step is unclear”](#what-happens-when-you-say-this-step-is-unclear)
+- [Installation](#installation)
+- [Workspace artifacts](#workspace-artifacts)
+- [Optional code-theory bridge](#optional-code-theory-bridge)
+- [Validation](#validation)
+- [Architecture](docs/architecture.md) and [end-to-end walkthrough](docs/walkthrough.md)
+- [Release history](CHANGELOG.md)
+
+## Five-minute start
+
+1. Choose a writable learning directory in an Obsidian vault. Keep it outside the installed Skill directory.
+2. Supply one or more papers, books, lecture notes, or trustworthy corresponding code paths.
+3. Invoke the Skill explicitly and state the physical goal, explanatory language, and capability you want to demonstrate.
+
+```text
+$theoretical-physics-teach
+
+Learning workspace: D:\Obsidian\UEG-field-theory\study
+Materials: D:\papers\paper-A.pdf and D:\papers\paper-B.pdf
+Goal: understand how their Green-function derivations and approximations correspond.
+Preserve each source's notation, diagnose one prerequisite at a time, and write
+complete Obsidian Markdown lessons with exact resume state.
+```
+
+The first run creates only missing canonical workspace files. A later run reads the mission, atomic current state, active lesson, and latest evidence before continuing. See the validator-backed [retarded-propagator example](examples/retarded-propagator/MISSION.md) for the complete lifecycle.
 
 ## Why this skill exists
 
@@ -32,6 +64,8 @@ flowchart LR
 ```
 
 The loop matters: the next session does not restart the chapter. It reopens the exact Note heading or equation block, reads the last demonstrated boundary, and continues with one next action.
+
+The current owner graph and compatibility boundary are documented in [Architecture](docs/architecture.md). The [exact-resume walkthrough](docs/walkthrough.md) shows a learner reporting one unclear step and the resulting in-place Note rewrite.
 
 ## Who this is for
 
@@ -117,7 +151,7 @@ mkdir -p "$HOME/.agents/skills"
 git clone https://github.com/jiangweiqi001/theoretical-physics-teach.git "$HOME/.agents/skills/theoretical-physics-teach"
 ```
 
-Alternatively, invoke `$skill-installer` in Codex and ask it to install the skill from `https://github.com/jiangweiqi001/theoretical-physics-teach`. You may also download the repository and copy the entire `theoretical-physics-teach` folder into the personal skills directory. Keep the root `SKILL.md`, `references/`, `assets/`, and metadata together.
+Alternatively, invoke `$skill-installer` in Codex and ask it to install the skill from `https://github.com/jiangweiqi001/theoretical-physics-teach`. You may also download the runtime-only ZIP attached to the latest GitHub Release and extract its `theoretical-physics-teach` folder into the personal skills directory. Keep the root `SKILL.md`, `references/`, `assets/`, and metadata together.
 
 For another Agent Skills-compatible tool, place the entire repository folder in that tool's skills directory and confirm that it discovers the root `SKILL.md`. `agents/openai.yaml` is Codex-specific display and invocation-policy metadata; the Markdown instructions and supporting files are portable, but another host must provide or be configured with an equivalent explicit-only policy. If it cannot, automatic invocation behavior is not guaranteed there.
 
@@ -131,7 +165,9 @@ git -C "$env:USERPROFILE\.agents\skills\theoretical-physics-teach" pull --ff-onl
 
 Otherwise, download the new release and copy its files over the existing skill folder without deleting your separate learning workspace. Course Notes must never live inside the installed skill directory.
 
-## Quick start
+The `v0.4.0` upgrade performs no automatic workspace migration. Existing pre-v0.4 Code Maps embedded in lessons remain valid; newly allocated maps use focused external files.
+
+## First sustained study session
 
 1. Choose a learning workspace in your Obsidian vault or another writable directory. It must be outside the installed skill directory.
 2. Supply the papers, textbooks, lecture notes, or other study material. Multiple sources are welcome; give local paths or otherwise place their content explicitly in scope.
@@ -194,7 +230,7 @@ For multi-line work, the skill uses `\begin{aligned}...\end{aligned}` inside `$$
 | `NOTATION-CROSSWALK.md` | Source-local symbols, conventions, domains, dimensions, and qualified translations |
 | `SYNTHESIS.md` | Cross-source relations, assumption maps, comparisons, and regimes of validity |
 | `OPEN-QUESTIONS.md` | Missing evidence, ambiguities, conflicts, and their next verification steps |
-| `reference/code-maps/*` | Optional equation-to-code maps when the code bridge is active |
+| `reference/code-maps/*.md` | Optional canonical equation-to-code maps when the code bridge is active |
 | `execution-records/RUN-*.md` | Optional immutable records of actual runs and observed outputs |
 
 The workspace may also include baseline diagnostics, a concept map, glossary, review queue, preferences, static assets, and other source-grounded reference Notes.
@@ -211,6 +247,8 @@ source equation → approximation → discretization → code variable
 ```
 
 Pedagogical pseudocode is labeled **Reconstructed** and linked to the pinned implementation steps from which it was derived. Each loop or solver step is explained as a physical accumulation, contraction, propagation, update, or self-consistency operation.
+
+New canonical mappings are instantiated from `assets/templates/CODE-MAP.md`; real inspected executions are recorded from `assets/templates/RUN-RECORD.md`. The lesson itself retains only the learner-facing quantity chain, algorithm explanation, inputs, outputs, validation boundary, and canonical links. Existing maps embedded in older lessons remain readable and are not rewritten automatically.
 
 Git material is anchored to an exact commit. Non-Git files, chat excerpts, and inline pseudocode are first saved as read-only workspace snapshots with a recorded hash, received date, and exact locator. Without a linked Run record, the skill does not claim that code ran, results agreed, or a computation converged.
 
@@ -229,13 +267,20 @@ The repository ships deterministic contracts for package structure, inert bootst
 ./tests/bootstrap-contract.ps1
 ./tests/scenario-contract.ps1
 ./tests/green-contract.ps1
-python -m unittest tests.test_validate_workspace -v
+./tests/example-contract.ps1
+python -X utf8 -m unittest discover -s tests -v
 ```
 
 Validate a learning workspace without modifying it:
 
 ```powershell
-python scripts/validate_workspace.py "D:\Obsidian\many-body-course"
+python -X utf8 scripts/validate_workspace.py "D:\Obsidian\many-body-course"
+```
+
+Build the deterministic runtime-only release ZIP:
+
+```powershell
+python -X utf8 scripts/build_skill_package.py --output dist/theoretical-physics-teach-v0.4.0.zip
 ```
 
 The validator detects unresolved Note, heading, and block links; duplicate block IDs; forbidden math delimiters; obvious code-fenced mathematics; and non-Markdown canonical lesson/reference artifacts. It does not compile LaTeX or prove mathematical correctness, so the skill separately audits notation dependencies, derivations, assumptions, dimensions, limits, symmetries, and physical interpretation.
@@ -260,6 +305,6 @@ This is an independent project and is not endorsed by Matt Pocock. See [NOTICE.m
 
 ## Version
 
-Current release: `v0.3.0`.
+Current release: `v0.4.0`.
 
-This maintained release line is dedicated to sustained, source-driven theoretical-physics study in Obsidian.
+This maintained release line is dedicated to sustained, source-driven theoretical-physics study in Obsidian. See [CHANGELOG.md](CHANGELOG.md) for compatibility and release details.

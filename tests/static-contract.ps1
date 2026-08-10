@@ -440,7 +440,14 @@ Assert-Contract (
 ) $forbiddenArtifactMessage
 
 $instructionFiles = [System.Collections.Generic.List[string]]::new()
-foreach ($relativePath in @('SKILL.md')) {
+foreach ($relativePath in @(
+    'SKILL.md'
+    'README.md'
+    'README.zh-CN.md'
+    'CHANGELOG.md'
+    'docs/architecture.md'
+    'docs/walkthrough.md'
+)) {
     $path = Join-Path $repoRoot $relativePath
     if (Test-Path -LiteralPath $path -PathType Leaf) {
         $instructionFiles.Add($path) | Out-Null
@@ -498,6 +505,7 @@ Assert-Contract (
 ) 'NOTICE.md identifies mattpocock/skills'
 
 $readmeText = Get-RepositoryText 'README.md'
+$chineseReadmeText = Get-RepositoryText 'README.zh-CN.md'
 foreach ($requiredReadmePhrase in @(
     'an independent Agent Skill created, maintained, and published by [jiangweiqi001](https://github.com/jiangweiqi001)'
     '## Who this is for'
@@ -526,6 +534,12 @@ Assert-Contract (
     $readmeText.IndexOf([char]0x9225, [System.StringComparison]::Ordinal) -lt 0 -and
     $readmeText.IndexOf([char]0x701B, [System.StringComparison]::Ordinal) -lt 0
 ) 'README.md contains no replacement character or known Chinese mojibake'
+Assert-Contract (
+    $chineseReadmeText.Contains('$theoretical-physics-teach') -and
+    -not $chineseReadmeText.Contains([char]0xFFFD) -and
+    $chineseReadmeText.IndexOf([char]0x9225, [System.StringComparison]::Ordinal) -lt 0 -and
+    $chineseReadmeText.IndexOf([char]0x701B, [System.StringComparison]::Ordinal) -lt 0
+) 'README.zh-CN.md preserves the invocation and contains no known mojibake'
 
 foreach ($requiredPublicationPhrase in @(
     'Read the paper. Preserve the notation. Finish the derivation. Resume exactly where you stopped.'

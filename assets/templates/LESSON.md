@@ -6,16 +6,24 @@ Every new symbol must be defined before first use in prose or equations, regardl
 
 First use includes symbols inside another symbol's definition, domain, units, anchor, convention, or example cell. Order notation entries by dependency. A symbol inside an entry must resolve to an earlier complete entry or be defined completely in the same cell without introducing another undefined glyph. Define each standard function or constant at first use, or define related primitives in a clearly grouped mathematical primitives entry. Meaning-changing decorated or indexed forms still require separate entries.
 
+Code identifiers, unit glyphs, derived approximants, and error or variation symbols are not exempt; define each separately before first use.
+
+A grouped primitives entry does not waive dependencies: dummy symbols introduced inside it must be defined earlier or eliminated.
+
+Build the complete symbol-and-code-identifier dependency graph before drafting the notation section, then emit entries in topological order. Give every source symbol, lesson-local symbol, code identifier, and unit glyph its own entry; only a symbol and its genuinely equivalent code spelling may share an entry. Put all mathematical primitives needed anywhere in the finished Note before the first dependent entry. Do not place a code identifier in a later grouped row if an earlier definition, provenance cell, table, or formula already uses it.
+
 This exact leading section is also mandatory for every response-only finished Note or preview. Use $...$ for inline LaTeX and $$...$$ for display LaTeX. Never use backslash-parenthesis or backslash-bracket math delimiters in canonical or response-only Note content.
 
 Only after reading the complete canonical index may you allocate a stable ID. Absence from the prompt is not evidence that an index is empty. In provisional response-only output, replace every concrete sample ID below with inert type-specific placeholders such as `{{LESSON_ID_PENDING}}`, `{{EVIDENCE_ID_PENDING}}`, `{{SOURCE_ID_PENDING}}`, `{{RELATION_ID_PENDING}}`, `{{NOTATION_ID_PENDING}}`, `{{CODE_MAP_ID_PENDING}}`, and `{{RUN_ID_PENDING}}`; emit no live Obsidian link. Do not claim that a canonical record was created.
 
-When continuing an existing lesson, do not repeat completed content. Before first use of any new symbol in added prose or formulas, display or apply a patch to the leading notation section that completes every symbol-definition field. Apply that notation patch before the content patch; in response-only output, show it first without claiming a canonical write.
+When continuing an existing lesson, do not repeat completed content. Before first use of any new symbol in added prose or formulas, display or apply a patch to the leading notation section that completes every symbol-definition field. Apply that notation patch before the content patch; in response-only output, show it first without claiming a canonical write. The first H2 of that continuation output must still be exactly `## Notation and conventions`.
 
 - **Stable Lesson ID:** L-000001
 - **Canonical lesson Obsidian link:** [[lessons/L-000001]]
 
 This lesson is canonical only for teaching content, check criteria, and links to stable Evidence IDs plus Obsidian links. The dependency graph belongs to `CONCEPT-MAP.md`, the active snapshot belongs to `CURRENT-STATE.md`, and historical learner evidence belongs to immutable `learning-records/EV-000001.md`-style instances.
+
+Preserve each dated prior Evidence boundary explicitly: date, evidence category, exact capability demonstrated, and exact unfinished boundary. In continuation and writeback patches, keep current self-report, prior unaided performance, and assisted work distinct; link the prior record when possible instead of compressing its demonstrated capability into a generic stop point.
 
 ### Local symbol index
 
@@ -56,6 +64,8 @@ Before proceeding, verify that every symbol used below has a complete entry abov
 ### Pre-delivery symbol inventory audit
 
 Perform a symbol inventory audit before delivery.
+
+Audit the notation section from top to bottom and each entry from left to right. At each cell, reject, reorder, or rewrite any entry that uses a dependency not completely defined earlier; the glyph being defined may appear in its own defining cell, but an auxiliary or example glyph may not appear there unless already defined.
 
 - [ ] Inventory every glyph used in prose, inline mathematics, display mathematics, tables, and checks.
 - [ ] Recursively inventory definition, domain, units, anchor, convention, and example cells; order entries so every dependency is defined earlier or completely in the same cell without introducing an undefined glyph.

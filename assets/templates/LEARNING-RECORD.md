@@ -85,6 +85,8 @@ Level 0 makes no positive mastery claim. The four positive capability levels are
 
 ## Historical state changes caused by this evidence
 
+Preserve each dated prior Evidence boundary explicitly: date, evidence category, exact capability demonstrated, and exact unfinished boundary. Keep prior unaided work, current self-report, and assisted work distinct. Link the prior Evidence ID and canonical Obsidian link when available; if the canonical index cannot be read, retain the supplied date and locator without inventing an ID.
+
 - Previous active snapshot summary or prior Evidence ID + Obsidian link:
 - Atomic `CURRENT-STATE.md` replacement caused by this evidence:
 - `ROADMAP.md` Phase IDs whose status changed:

@@ -36,7 +36,8 @@ function Get-RepositoryText {
         return ''
     }
 
-    return Get-Content -LiteralPath $path -Raw
+    $utf8 = [System.Text.UTF8Encoding]::new($false, $true)
+    return [System.IO.File]::ReadAllText($path, $utf8)
 }
 
 function Get-RepositoryRelativePath {
@@ -59,7 +60,8 @@ function Get-InstructionMatchDiagnostics {
 
     foreach ($path in $Paths) {
         $relativePath = Get-RepositoryRelativePath $path
-        $text = Get-Content -LiteralPath $path -Raw
+        $utf8 = [System.Text.UTF8Encoding]::new($false, $true)
+        $text = [System.IO.File]::ReadAllText($path, $utf8)
         foreach ($match in [regex]::Matches($text, $Pattern)) {
             $snippet = [regex]::Replace($match.Value, '\s+', ' ').Trim()
             if ($snippet.Length -gt 120) {
@@ -142,6 +144,7 @@ Assert-Contract ([regex]::IsMatch($skillText, $longNotePattern)) 'SKILL.md expli
 Assert-Contract ([regex]::IsMatch($skillText, $noSkippedStepsPattern)) 'SKILL.md forbids skipped calculation or logic steps'
 
 $lessonTemplate = Get-RepositoryText 'assets/templates/LESSON.md'
+$learningRecordTemplate = Get-RepositoryText 'assets/templates/LEARNING-RECORD.md'
 $firstLevelTwoHeading = [regex]::Match($lessonTemplate, '(?m)^##[ \t]+([^\r\n]+)')
 Assert-Contract (
     $firstLevelTwoHeading.Success -and
@@ -164,11 +167,14 @@ foreach ($policyTarget in @(
     ) "$($policyTarget.Name) states: $mathDelimiterPolicy"
 }
 
+$emDash = [char]0x2014
+$pendingSourceSentinel = "Unassigned $emDash supplied excerpt; snapshot registration pending"
+
 foreach ($requiredResponseOnlySkillPhrase in @(
     'Stateful course use requires a real user-designated workspace.'
     'response-only finished Note, preview, or exact patch'
     'Provisional response-only artifact; no canonical write performed.'
-    'Unassigned — supplied excerpt; snapshot registration pending'
+    $pendingSourceSentinel
     'Canonical writeback is not complete.'
     'If response-only was not explicitly requested, ask for the workspace and stop.'
 )) {
@@ -180,7 +186,7 @@ foreach ($requiredResponseOnlySkillPhrase in @(
 foreach ($requiredResponseOnlyPedagogyPhrase in @(
     'response-only finished Note, preview, or exact patch'
     'Provisional response-only artifact; no canonical write performed.'
-    'Unassigned — supplied excerpt; snapshot registration pending'
+    $pendingSourceSentinel
     'Canonical writeback is not complete.'
 )) {
     Assert-Contract (
@@ -209,6 +215,11 @@ foreach ($provisionalIdTarget in @(
 
 $notationContinuationPolicy = 'Before first use of any new symbol in added prose or formulas, display or apply a patch to the leading notation section that completes every symbol-definition field.'
 $symbolInventoryPolicy = 'Perform a symbol inventory audit before delivery.'
+$continuationHeadingPolicy = 'The first H2 of that continuation output must still be exactly `## Notation and conventions`.'
+$leftToRightNotationPolicy = 'Audit the notation section from top to bottom and each entry from left to right.'
+$notationGraphPolicy = 'Build the complete symbol-and-code-identifier dependency graph before drafting the notation section, then emit entries in topological order.'
+$oneEntryPolicy = 'Give every source symbol, lesson-local symbol, code identifier, and unit glyph its own entry; only a symbol and its genuinely equivalent code spelling may share an entry.'
+$historicalEvidencePolicy = 'Preserve each dated prior Evidence boundary explicitly: date, evidence category, exact capability demonstrated, and exact unfinished boundary.'
 foreach ($notationPolicyTarget in @(
     @{ Name = 'SKILL.md'; Text = $skillText }
     @{ Name = 'references/physics-pedagogy.md'; Text = $pedagogyText }
@@ -219,16 +230,51 @@ foreach ($notationPolicyTarget in @(
     Assert-Contract (
         $notationPolicyTarget.Text.Contains($symbolInventoryPolicy)
     ) "$($notationPolicyTarget.Name) requires a pre-delivery symbol inventory"
+    Assert-Contract (
+        $notationPolicyTarget.Text.Contains($continuationHeadingPolicy)
+    ) "$($notationPolicyTarget.Name) preserves the exact first H2 in continuation output"
+    Assert-Contract (
+        $notationPolicyTarget.Text.Contains($leftToRightNotationPolicy)
+    ) "$($notationPolicyTarget.Name) requires a mechanical notation dependency audit"
+    Assert-Contract (
+        $notationPolicyTarget.Text.Contains($notationGraphPolicy)
+    ) "$($notationPolicyTarget.Name) requires a notation dependency graph"
+    Assert-Contract (
+        $notationPolicyTarget.Text.Contains($oneEntryPolicy)
+    ) "$($notationPolicyTarget.Name) requires atomic notation entries"
+    Assert-Contract (
+        $notationPolicyTarget.Text.Contains($historicalEvidencePolicy)
+    ) "$($notationPolicyTarget.Name) preserves dated prior Evidence boundaries"
 }
 Assert-Contract (
     $lessonTemplate.Contains('### Pre-delivery symbol inventory audit') -and
     $lessonTemplate.Contains($symbolInventoryPolicy)
 ) 'LESSON.md contains an explicit pre-delivery symbol inventory checklist'
+Assert-Contract (
+    $lessonTemplate.Contains($continuationHeadingPolicy)
+) 'LESSON.md preserves the exact first H2 in continuation output'
+Assert-Contract (
+    $lessonTemplate.Contains($leftToRightNotationPolicy)
+) 'LESSON.md requires a mechanical notation dependency audit'
+Assert-Contract (
+    $lessonTemplate.Contains($notationGraphPolicy)
+) 'LESSON.md requires a notation dependency graph'
+Assert-Contract (
+    $lessonTemplate.Contains($oneEntryPolicy)
+) 'LESSON.md requires atomic notation entries'
+Assert-Contract (
+    $lessonTemplate.Contains($historicalEvidencePolicy)
+) 'LESSON.md preserves dated prior Evidence boundaries'
+Assert-Contract (
+    $learningRecordTemplate.Contains($historicalEvidencePolicy)
+) 'LEARNING-RECORD.md preserves dated prior Evidence boundaries'
 
 $recursiveNotationPolicies = @(
     'First use includes symbols inside another symbol''s definition, domain, units, anchor, convention, or example cell.'
     'Order notation entries by dependency.'
     'clearly grouped mathematical primitives entry'
+    'A grouped primitives entry does not waive dependencies: dummy symbols introduced inside it must be defined earlier or eliminated.'
+    'Code identifiers, unit glyphs, derived approximants, and error or variation symbols are not exempt; define each separately before first use.'
     'Repeat the inventory scan until no undefined glyph remains.'
 )
 foreach ($recursiveNotationTarget in @(
@@ -243,7 +289,20 @@ foreach ($recursiveNotationTarget in @(
     }
 }
 
-$pendingSourceSentinel = 'Unassigned — supplied excerpt; snapshot registration pending'
+$unicodeOutputPolicy = 'Preserve the exact Unicode em dash U+2014 in canonical sentinels; if decoded tool output contains mojibake, repair it before delivery or writeback.'
+foreach ($unicodePolicyTarget in @(
+    @{ Name = 'SKILL.md'; Text = $skillText }
+    @{ Name = 'references/physics-pedagogy.md'; Text = $pedagogyText }
+)) {
+    Assert-Contract (
+        $unicodePolicyTarget.Text.Contains($unicodeOutputPolicy)
+    ) "$($unicodePolicyTarget.Name) requires Unicode-sentinel repair before delivery"
+    Assert-Contract (
+        -not $unicodePolicyTarget.Text.Contains([char]0xFFFD) -and
+        -not $unicodePolicyTarget.Text.Contains([char]0x9225)
+    ) "$($unicodePolicyTarget.Name) contains no replacement character or known em-dash mojibake"
+}
+
 $executionNonClaimPolicy = 'No execution or validation claim is made.'
 foreach ($codePolicyTarget in @(
     @{ Name = 'references/code-theory-bridge.md'; Text = $codeBridgeText }

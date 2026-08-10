@@ -28,6 +28,7 @@ When the user explicitly requests a response-only finished Note, preview, or exa
 
 - State `Provisional response-only artifact; no canonical write performed.`
 - If a supplied excerpt cannot be registered or snapshotted, use the exact pending sentinel `Unassigned — supplied excerpt; snapshot registration pending`, give the visible session/excerpt locator, and do not invent a Source ID, version key, path, hash, or registration.
+- Preserve the exact Unicode em dash U+2014 in canonical sentinels; if decoded tool output contains mojibake, repair it before delivery or writeback.
 - Only after reading the complete canonical index may you allocate a stable ID. Absence from the prompt is not evidence that an index is empty. When the applicable complete index cannot actually be read, exact response-only patches must use inert type-specific placeholders such as `{{LESSON_ID_PENDING}}`, `{{EVIDENCE_ID_PENDING}}`, `{{SOURCE_ID_PENDING}}`, `{{RELATION_ID_PENDING}}`, `{{NOTATION_ID_PENDING}}`, `{{CODE_MAP_ID_PENDING}}`, and `{{RUN_ID_PENDING}}`, with no live Obsidian link.
 - Follow every Note, notation, mathematics, provenance, and code non-claim rule below. Show the exact canonical patches that would be applied, but do not imply that any file changed.
 - State `Canonical writeback is not complete.` Never claim the conversation writeback or resume state was persisted.
@@ -76,7 +77,13 @@ Define every new symbol there before its first use in prose or equations. Comple
 
 First use includes symbols inside another symbol's definition, domain, units, anchor, convention, or example cell. Order notation entries by dependency. Every symbol used inside an entry must resolve to an earlier complete entry, or be defined completely at that point in the same cell without introducing another undefined glyph. Define standard functions and constants at first use, individually or in a clearly grouped mathematical primitives entry. Meaning-changing decorated or indexed forms still require separate entries.
 
-When continuing an existing lesson, resume at the recorded point without reteaching completed content. Before first use of any new symbol in added prose or formulas, display or apply a patch to the leading notation section that completes every symbol-definition field. Apply that notation patch before the content patch when canonical writing is available; in response-only output, show the notation patch first. Perform a symbol inventory audit before delivery. Recursively scan prose, inline and display mathematics, tables, and the notation definitions themselves in dependency order; repair newly exposed dependencies and scan again. Repeat the inventory scan until no undefined glyph remains.
+Code identifiers, unit glyphs, derived approximants, and error or variation symbols are not exempt; define each separately before first use.
+
+A grouped primitives entry does not waive dependencies: dummy symbols introduced inside it must be defined earlier or eliminated.
+
+Build the complete symbol-and-code-identifier dependency graph before drafting the notation section, then emit entries in topological order. Give every source symbol, lesson-local symbol, code identifier, and unit glyph its own entry; only a symbol and its genuinely equivalent code spelling may share an entry. List every mathematical primitive needed anywhere in the finished Note before the first dependent entry. Do not postpone code identifiers to a grouped row after source symbols have already referred to them.
+
+When continuing an existing lesson, resume at the recorded point without reteaching completed content. Before first use of any new symbol in added prose or formulas, display or apply a patch to the leading notation section that completes every symbol-definition field. Apply that notation patch before the content patch when canonical writing is available; in response-only output, show the notation patch first. The first H2 of that continuation output must still be exactly `## Notation and conventions`. Perform a symbol inventory audit before delivery. Audit the notation section from top to bottom and each entry from left to right. At each cell, reject, reorder, or rewrite any entry that uses a dependency not completely defined earlier; the glyph being defined may appear in its own defining cell, but an auxiliary or example glyph may not appear there unless already defined. Recursively scan prose, inline and display mathematics, tables, and the notation definitions themselves in dependency order; repair newly exposed dependencies and scan again. Repeat the inventory scan until no undefined glyph remains.
 
 Preserve source-local symbols. Register source notation in `NOTATION-CROSSWALK.md`; place general cross-source Relations and their assumption maps in `SYNTHESIS.md`. Use exactly the six complete Relation types defined in `references/source-workflow.md`; do not shorten them or invent another type. Never claim equivalence without the canonical assumption map and its validity conditions.
 
@@ -111,6 +118,8 @@ Put unavailable or ambiguous evidence and unresolved conflicts in `OPEN-QUESTION
 - Immutable `execution-records/RUN-*.md` instances own observed or computed execution evidence. Without a linked Run record, never claim execution, agreement, or convergence occurred.
 
 Material intake, planning, an agent explanation, or a pure explanation with no learner response, self-report, or attempt must not produce a fabricated Evidence record. Use level 0 when observable mastery is insufficient. Do not mark a Mission target, Roadmap phase, Concept Node, or Review complete unless a linked Evidence ID and canonical Obsidian link demonstrate that exact observable criterion. Recognition, confidence, rereading, an unlinked ID, or assisted work presented as unaided does not pass an evidence gate.
+
+Preserve each dated prior Evidence boundary explicitly: date, evidence category, exact capability demonstrated, and exact unfinished boundary. A new self-report or assisted explanation may move the current obstacle, but must not erase, generalize away, or relabel a prior unaided capability. Link the prior record when its canonical ID is available; otherwise retain its supplied date and locator without inventing an ID.
 
 ## Writeback and completion gate
 

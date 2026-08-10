@@ -4,13 +4,15 @@
 
 > Illustrative demo data — this complete Note demonstrates notation-first teaching, coherent clarification writeback, and exact resume state.
 
-Every symbol used later is defined here in dependency order. Energies and inverse times have the same dimension because the natural-unit convention sets the reduced Planck constant to unity.
+Every symbol used later is defined here in dependency order. Energies and inverse times have the same dimension because the natural-unit convention sets the reduced Planck constant to unity, $\hbar=1$.
 
 | Symbol | Read as | Type and domain | Physical meaning | Units or dimensions | Origin and convention |
 | --- | --- | --- | --- | --- | --- |
+| $0,1,2,+,-,=,<,>,\to,\int$ | zero, one, two, plus, minus, equals, less than, greater than, tends to, integral | Grouped arithmetic, relation, limit, and integration primitives | Standard mathematical operations used in the definitions and derivation below | Dimensionless operators; operands retain their stated units | Defined here as a dependency-closed mathematical-primitives group |
 | $\mathbb{R}$ | the real numbers | Ordered field | Domain for real time, energy, frequency, and regulator variables | Not applicable | Defined here as a mathematical primitive |
 | $\mathbb{C}$ | the complex numbers | Field containing $\mathbb{R}$ | Domain for propagators and exponential values | Not applicable | Defined here as a mathematical primitive |
 | $i$ | imaginary unit | Element of $\mathbb{C}$ with $i^2=-1$ | Distinguishes oscillatory phase from decay | Dimensionless | Defined here |
+| $\hbar$ | h bar | Positive physical constant | Reduced Planck constant relating energy to inverse time | Energy times time | Natural-unit convention sets $\hbar=1$; the bar is part of the constant's standard glyph |
 | $t$ | time | Element of $\mathbb{R}$ | Real time difference | Time | Source-local variable from DEMO-SRC-001 |
 | $k$ | momentum label | Label in the source's momentum domain | Selects one free-particle mode | Momentum | Source-local variable; boldface is not used in this demo |
 | $\varepsilon_k$ | epsilon sub k | Real-valued function of $k$ | Free-particle energy of mode $k$ | Energy | Defined here to make the relative-energy convention explicit |
@@ -21,6 +23,7 @@ Every symbol used later is defined here in dependency order. Energies and invers
 | $0^+$ | zero from above | Positive limiting direction in $\mathbb{R}$ | Indicates that $\eta$ approaches zero through positive values | Energy when attached to $\eta$ | Lesson-local limiting notation; superscript $+$ means from above |
 | $T$ | capital tee | Positive element of $\mathbb{R}$ | Finite upper time cutoff used before the infinite-time limit | Time | Lesson-local auxiliary variable |
 | $z$ | zee | Generic element of $\mathbb{C}$ | Dummy argument of the exponential function | Dimensionless | Defined here as a mathematical primitive |
+| $e$ | Euler's number | Positive element of $\mathbb{R}$ | Base of the natural exponential | Dimensionless | Defined here as a mathematical constant |
 | $\exp(z)$ | exponential of z | Function from $\mathbb{C}$ to $\mathbb{C}$ | Exponential function, also written as $e^z$ | Dimensionless output | Defined here; $e$ is the conventional exponential base |
 | $\theta(t)$ | theta of t | Function from $\mathbb{R}$ to $\mathbb{R}$ | Step function equal to zero for $t<0$ and one for $t>0$; its value at zero does not affect this integral | Dimensionless | Source-local causal-support convention |
 | $dt$ | dee t | Integration measure associated with $t$ | Infinitesimal time measure | Time | Source-local integration measure |
@@ -29,7 +32,7 @@ Every symbol used later is defined here in dependency order. Energies and invers
 | $\operatorname{Re}(q)$ | real part of q | Real-valued function of $q$ | Real part controlling exponential growth or decay | Energy | Mathematical primitive applied to $q$ |
 | $G_0^R(k,t)$ | G zero R of k and t | Complex-valued two-point propagator | Free retarded propagator in time | Dimensionless in this convention | DEMO-SRC-001; subscript $0$ means free and superscript $R$ means retarded |
 | $G_{0,\eta}^R(k,\omega)$ | regulated G zero R of k and omega | Complex-valued frequency-space propagator | Fourier transform before removing $\eta$ | Inverse energy | Lesson-local regulated form; subscript $\eta$ records the regulator |
-| $G_0^R(k,\omega)$ | G zero R of k and omega | Complex-valued frequency-space propagator | Retarded free propagator after $η$ approaches $0^+$ | Inverse energy | Reconstructed from DEMO-SRC-001 with the source convention |
+| $G_0^R(k,\omega)$ | G zero R of k and omega | Complex-valued frequency-space propagator | Retarded free propagator after $\eta$ approaches $0^+$ | Inverse energy | Reconstructed from DEMO-SRC-001 with the source convention |
 
 ## Mission connection and prerequisites
 
@@ -124,12 +127,12 @@ $$
 
 ## Physical interpretation and checks
 
-The denominator becomes large near the free-particle energy $ω=ξ_k$. The positive infinitesimal records the retarded boundary condition inherited from positive-time support.
+The denominator becomes small near the free-particle energy $\omega=\xi_k$, so the propagator becomes large and develops its free-particle pole. The positive infinitesimal records the retarded boundary condition inherited from positive-time support.
 
 - Units: the denominator has energy units, so $G_0^R(k,\omega)$ has inverse-energy units.
-- Sign: positive $η$ makes $\operatorname{Re}(q)$ negative, so the large-time exponential decays.
+- Sign: positive $\eta$ makes $\operatorname{Re}(q)$ negative, so the large-time exponential decays.
 - Causal limit: changing the support prescription would change the infinitesimal boundary prescription.
-- Claim boundary: the option response in the evidence record shows recognition of $θ(t)$, not unaided reconstruction of the integral.
+- Claim boundary: the option response in the evidence record shows recognition of $\theta(t)$, not unaided reconstruction of the integral.
 
 ## Mastery check and next dependency
 
@@ -139,9 +142,9 @@ The exact resume state is stored in [[CURRENT-STATE]]. The next dependency is th
 
 For the regulated integrand above, which condition makes the exponential decay when $T$ becomes arbitrarily large?
 
-- A. $η<0$
-- B. $ξ_k=0$
-- C. $η>0$
-- D. $ω=0$
+- A. $\eta<0$
+- B. $\xi_k=0$
+- C. $\eta>0$
+- D. $\omega=0$
 
 Choose one option. The answer is intentionally withheld; an option answer locates the sign convention but does not by itself establish that the integral can be reconstructed.

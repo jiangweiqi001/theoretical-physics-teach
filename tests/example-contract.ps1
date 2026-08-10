@@ -69,6 +69,14 @@ Assert-Example ($evidence.Contains('Unaided response')) 'example separates the u
 Assert-Example ($evidence.Contains('Learner self-report')) 'example separates learner self-report'
 Assert-Example ($evidence.Contains('Assisted explanation')) 'example separates assisted explanation'
 Assert-Example ($lesson.Contains('first dependent point')) 'clarification is located at the first dependent point'
+Assert-Example (
+    $lesson.Contains('propagator becomes large') -and $lesson.Contains('denominator becomes small')
+) 'pole interpretation states that the propagator grows while its denominator shrinks'
+Assert-Example ($lesson.Contains('$\hbar$')) 'natural-unit convention defines the reduced Planck constant glyph'
+$rawGreekGlyphs = @([char]0x03B7, [char]0x03C9, [char]0x03BE, [char]0x03B8)
+Assert-Example (
+    -not ($rawGreekGlyphs | Where-Object { $lesson.Contains([string]$_) })
+) 'example lesson uses LaTeX commands instead of raw Greek glyphs'
 Assert-Example (-not $allText.Contains('chat transcript')) 'example contains no detached chat transcript'
 Assert-Example (-not $allText.Contains('clarification appendix')) 'example contains no clarification appendix'
 Assert-Example (-not $allText.Contains('RUN-000001')) 'example makes no live Run claim'

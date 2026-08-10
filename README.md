@@ -4,7 +4,7 @@
 
 It is physics-first: pure mathematics is introduced to support a physical theory, derivation, proof, structural comparison, or implementation, and may be expanded when that physical dependency needs more detail. The skill is source-driven and multi-source. It preserves each source's notation, records explicit translations and assumptions between sources, and writes durable, Obsidian-compatible Markdown lessons with long, step-by-step derivations when needed.
 
-The skill never activates automatically. Invoke it explicitly with `$theoretical-physics-math-teach` or a direct request such as “用理论教学 skill 学这些论文”.
+The skill never activates automatically. In Codex, invoke it with the exact `$theoretical-physics-math-teach` mention, for example “用 `$theoretical-physics-math-teach` 学这些论文”. In ChatGPT, type `@` and select the skill from the picker.
 
 ## What it does
 
@@ -18,12 +18,12 @@ The skill never activates automatically. Invoke it explicitly with `$theoretical
 
 ## Installation
 
-Codex is the primary tested environment. After the repository is published, clone the complete public repository into the Codex skills directory.
+Codex is the primary tested environment. Its personal skills directory is `$HOME/.agents/skills`; on Windows, the equivalent is `%USERPROFILE%\.agents\skills`. After the repository is published, clone the complete public repository there.
 
 PowerShell:
 
 ```powershell
-$skillsDirectory = Join-Path $env:USERPROFILE ".codex\skills"
+$skillsDirectory = Join-Path $env:USERPROFILE ".agents\skills"
 New-Item -ItemType Directory -Force -Path $skillsDirectory | Out-Null
 git clone https://github.com/jiangweiqi001/theoretical-physics-math-teach.git (Join-Path $skillsDirectory "theoretical-physics-math-teach")
 ```
@@ -31,11 +31,11 @@ git clone https://github.com/jiangweiqi001/theoretical-physics-math-teach.git (J
 macOS or Linux:
 
 ```sh
-mkdir -p "$HOME/.codex/skills"
-git clone https://github.com/jiangweiqi001/theoretical-physics-math-teach.git "$HOME/.codex/skills/theoretical-physics-math-teach"
+mkdir -p "$HOME/.agents/skills"
+git clone https://github.com/jiangweiqi001/theoretical-physics-math-teach.git "$HOME/.agents/skills/theoretical-physics-math-teach"
 ```
 
-You may also download the repository and copy the entire `theoretical-physics-math-teach` folder into the skills directory. Keep the root `SKILL.md`, `references/`, `assets/`, and metadata together.
+Alternatively, invoke `$skill-installer` in Codex and ask it to install the skill from `https://github.com/jiangweiqi001/theoretical-physics-math-teach`. You may also download the repository and copy the entire `theoretical-physics-math-teach` folder into the personal skills directory. Keep the root `SKILL.md`, `references/`, `assets/`, and metadata together.
 
 For another Agent Skills-compatible tool, place the entire repository folder in that tool's skills directory and confirm that it discovers the root `SKILL.md`. `agents/openai.yaml` is Codex-specific display and invocation-policy metadata; the Markdown skill and its supporting files remain portable to compatible tools.
 
@@ -43,7 +43,7 @@ For another Agent Skills-compatible tool, place the entire repository folder in 
 
 1. Choose a learning workspace in your Obsidian vault or another writable directory. It must be outside the installed skill directory.
 2. Supply the papers, textbooks, lecture notes, or other study material. Multiple sources are welcome; give local paths or otherwise place their content explicitly in scope.
-3. Invoke the skill and state the workspace, physical learning goal, materials, preferred explanatory language, and desired observable capabilities.
+3. Include the exact `$theoretical-physics-math-teach` mention and state the workspace, physical learning goal, materials, preferred explanatory language, and desired observable capabilities.
 4. Continue in later sessions from `CURRENT-STATE.md`; learning files stay in the designated workspace and are never written into the installed skill folder.
 
 Example with two papers that use different conventions:

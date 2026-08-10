@@ -1,408 +1,257 @@
-# Are These Two Retarded Propagators the Same? Energy-Origin Translation and Free Poles
+Provisional response-only artifact; no canonical write performed.
+
+# Comparing Two Retarded Propagators and Their Free Poles
 
 ## Notation and conventions
 
-| Symbol | Definition, domain, and physical meaning | Units | Provenance and convention |
-| --- | --- | --- | --- |
-| \(S1\), \(S2\) | Identifiers for the two supplied mock excerpts | none | Defined in the prompt |
-| \(k\), \(p\) | Source-local labels for a one-particle momentum or band state; their ranges are not supplied | momentum | \(k\): \(S1\), section 3.2; \(p\): \(S2\), section 2 |
-| \(\varepsilon_k\), \(E_p\) | Real normal-state band energies of the states labeled by \(k\) and \(p\); the subscripts indicate state dependence | energy | \(S1\), section 3.2, equation (18); \(S2\), section 2, equations (5)–(6). \(S2\) states that \(E_p\) is the dispersion elsewhere denoted \(\varepsilon_k\) |
-| \(\mu\) | Chemical potential and reference energy of the Fermi surface | energy | \(S1\), section 3.2, equation (18) and adjacent text; \(S2\), section 2, adjacent text |
-| \(\xi_k\) | Band energy relative to the chemical potential for state \(k\) | energy | Defined by \(S1\), section 3.2, equation (18) |
-| \(\omega\) | \(S1\)'s real frequency-energy variable measured relative to \(\mu\), with complex continuation used to discuss poles | energy | \(S1\), section 3.2, equation (19) and adjacent text |
-| \(p_0\) | \(S2\)'s absolute one-particle energy variable; the subscript \(0\) denotes the energy component, not a free-particle limit | energy | \(S2\), section 2, equations (5)–(6) and adjacent text |
-| \(G(k,\omega)\) | Complex retarded one-particle propagator in \(S1\)'s variables | inverse energy in the displayed normalization | \(S1\), section 3.2, equation (19) |
-| \(\mathcal G(p,p_0)\) | Complex retarded propagator in \(S2\)'s variables; the calligraphic typeface is source-local notation | inverse energy in the displayed normalization | \(S2\), section 2, equation (5) |
-| \(\Sigma(k,\omega)\) | \(S1\)'s generally complex self-energy correction | energy | \(S1\), section 3.2, equation (19) |
-| \(\mathcal\Sigma(p,p_0)\) | \(S2\)'s generally complex self-energy correction; no relation to \(\Sigma\) is supplied | energy | \(S2\), section 2, equation (5) and final sentence |
-| \(G_0(k,\omega)\), \(\mathcal G_0(p,p_0)\) | Lesson-local notation for the free propagators obtained by setting the corresponding self-energy to zero; the subscript \(0\) means noninteracting | inverse energy | Defined here |
-| \(i\) | Imaginary unit, satisfying \(i^2=-1\) | none | Standard mathematical notation used in both excerpts |
-| \(0^+\) | A positive infinitesimal with energy units when it appears in these denominators; the superscript \(+\) specifies approach from positive values | energy | Both displayed propagators |
-| \(i0^+\) | Retarded boundary prescription; a denominator containing \(+i0^+\) has its free pole infinitesimally below the real energy axis | energy | Both displayed propagators |
-| \(t\) | Time variable in the inverse Fourier kernels | inverse energy because \(\hbar=1\) | Both excerpts |
-| \(e\) | Base of the exponential in the Fourier kernels | none | Both excerpts |
-| \(\hbar\) | Reduced Planck constant, set equal to one in both sources | one in the adopted natural units | Both excerpts |
-| \(\mathrm{eV}\) | Electronvolt, the energy unit used in the numerical example | energy | Numerical condition in the prompt |
+No canonical lesson, notation, relation, or evidence ID is allocated.
 
-Both sources use inverse-transform kernels with a negative exponent: \(e^{-i\omega t}\) in \(S1\) and \(e^{-ip_0t}\) in \(S2\). No hats, bars, stars, or boldface occur. Apart from the explicitly described subscripts and superscripts, no additional index convention is assumed.
+Both excerpts have immutable-anchor status `Unassigned — supplied excerpt; snapshot registration pending`.
+
+- Prompt-local `S1` locator: *Condensed Matter Lecture Notes*, section 3.2, equations (18)–(19).
+- Prompt-local `S2` locator: *Relativistic-Style Green Functions for Electron Systems*, section 2, equations (5)–(6).
+- The labels `S1` and `S2` below identify only these visible excerpts; they are not newly registered canonical Source IDs.
+
+| Inert local symbol ID | Local label | Exact glyph and reading | Mathematical type, domain, and indices | Physical meaning and units | Origin and local convention |
+| --- | --- | --- | --- | --- | --- |
+| `{{NOTATION_ID_PENDING}}-S01-001` | Arithmetic | $0$, $1$, $0.20$, $+$, $-$, $=$, and the fraction bar | Ordinary numerals and arithmetic operations; no indices | Used for energy differences and reciprocals | Defined here; ordinary algebra |
+| `{{NOTATION_ID_PENDING}}-S01-002` | Energy unit | $\mathrm{eV}$, “electron-volt” | Energy unit; no indices | Unit used in the numerical example | Supplied in the request |
+| `{{NOTATION_ID_PENDING}}-S01-003` | Imaginary unit | $i$, “eye” | Complex scalar; no indices | Produces the retarded complex displacement | `S1`, eq. (19); `S2`, eq. (5) |
+| `{{NOTATION_ID_PENDING}}-S01-004` | Positive infinitesimal | $0^+$, “zero plus” | Positive infinitesimal energy; no indices; superscript $+$ means approach from positive values | Specifies the retarded boundary prescription | Both propagators contain $+i0^+$ |
+| `{{NOTATION_ID_PENDING}}-S01-005` | Natural-unit constant | $\hbar$, “h-bar” | Physical constant with dimensions of action; no indices | Converts frequency to energy | Both sources set $\hbar=1$ |
+| `{{NOTATION_ID_PENDING}}-S01-006` | Chemical potential | $\mu$, “mu” | Real energy; no indices | Energy of the Fermi surface | `S1`, section 3.2; `S2`, section 2 |
+| `{{NOTATION_ID_PENDING}}-S01-007` | Source-S1 state label | $k$, “kay” | Momentum or band-state label; range and units not supplied | Labels the state in `S1` | `S1`, eqs. (18)–(19); no decoration |
+| `{{NOTATION_ID_PENDING}}-S01-008` | Source-S2 state label | $p$, “pee” | Momentum or band-state label; range and units not supplied | Labels the state in `S2` | `S2`, eqs. (5)–(6); no identification with $k$ is supplied |
+| `{{NOTATION_ID_PENDING}}-S01-009` | S1 band energy | $\varepsilon_k$, “epsilon sub kay” | Real energy indexed by $k$ | Normal-state band energy | `S1`, eq. (18); subscript $k$ selects the state |
+| `{{NOTATION_ID_PENDING}}-S01-010` | S2 band energy | $E_p$, “capital E sub pee” | Real energy indexed by $p$ | The same normal-state band dispersion that is called $\varepsilon_k$ | `S2`, eq. (6); subscript $p$ selects the state |
+| `{{NOTATION_ID_PENDING}}-S01-011` | Relative band energy | $\xi_k$, “xi sub kay” | Real energy indexed by $k$ | Band energy measured from $\mu$ | `S1`, eq. (18): $\xi_k=\varepsilon_k-\mu$ |
+| `{{NOTATION_ID_PENDING}}-S01-012` | S1 energy variable | $\omega$, “omega” | Real energy variable with a retarded complex boundary prescription; no index | Energy measured relative to $\mu$; its Fermi-surface value is zero | `S1`, section 3.2; inverse-transform sign is negative |
+| `{{NOTATION_ID_PENDING}}-S01-013` | S2 energy variable | $p_0$, “pee zero” | Absolute real energy variable with a retarded complex boundary prescription; no index range | Absolute one-particle energy; its Fermi-surface value is $\mu$ | `S2`, section 2; subscript $0$ is part of the source-local energy name |
+| `{{NOTATION_ID_PENDING}}-S01-014` | S1 self-energy | $\Sigma(k,\omega)$, “Sigma of kay and omega” | Generally complex, energy-valued function of $k$ and $\omega$ | Interaction correction in `S1` | `S1`, eq. (19); no relation to the S2 self-energy is supplied |
+| `{{NOTATION_ID_PENDING}}-S01-015` | S2 self-energy | $\mathcal\Sigma(p,p_0)$, “calligraphic Sigma of pee and pee zero” | Generally complex, energy-valued function of $p$ and $p_0$ | Interaction correction in `S2` | `S2`, eq. (5); calligraphic styling marks the source-local object |
+| `{{NOTATION_ID_PENDING}}-S01-016` | S1 propagator | $G(k,\omega)$, “G of kay and omega” | Complex-valued function with units of inverse energy | Retarded one-particle propagator in relative-energy variables | `S1`, eq. (19) |
+| `{{NOTATION_ID_PENDING}}-S01-017` | S2 propagator | $\mathcal G(p,p_0)$, “calligraphic G of pee and pee zero” | Complex-valued function with units of inverse energy | Retarded propagator in absolute-energy variables | `S2`, eq. (5) |
+| `{{NOTATION_ID_PENDING}}-S01-018` | S1 free propagator | $G_0(k,\omega)$, “G zero of kay and omega” | Complex-valued function with units of inverse energy | Form obtained here by setting $\Sigma(k,\omega)=0$ | Subscript $0$ means noninteracting in this lesson |
+| `{{NOTATION_ID_PENDING}}-S01-019` | S2 free propagator | $\mathcal G_0(p,p_0)$, “calligraphic G zero of pee and pee zero” | Complex-valued function with units of inverse energy | Form obtained here by setting $\mathcal\Sigma(p,p_0)=0$ | Subscript $0$ means noninteracting in this lesson |
+
+Both inverse transforms use the same negative frequency–time sign. No metric, spatial boundary condition, or operator normalization beyond the displayed unit numerators is supplied.
 
 ## Mission connection and prerequisites
 
-The objective is to decide whether the two formulas represent the same full physical propagator and to translate their free-particle poles without confusing an energy-zero shift with a physical discrepancy.
-
-The only prerequisites are solving a linear denominator for its zero and distinguishing an absolute energy from energy measured relative to the chemical potential.
-
-> [!summary] Bottom line
-> The excerpts establish that both formulas are retarded propagators and that their **free-particle poles describe the same band excitation after the energy-coordinate shift**
-> \[
-> p_0=\omega+\mu.
-> \]
-> They do **not** establish that the full interacting propagators are the same physical object, because \(S2\) explicitly assumes no relation between \(\Sigma\) and \(\mathcal\Sigma\). Full equality is therefore conditional, not a conclusion of the excerpts.
+- **Objective:** decide whether the displayed propagators are demonstrably the same interacting object and translate their free poles between relative and absolute energy.
+- **Prerequisite:** solving for a pole by setting a denominator to zero.
+- **Prior learner evidence:** none supplied; no Evidence record is created.
 
 ## Exact source anchors and provenance
 
-| Statement used | Provenance | Exact anchor |
-| --- | --- | --- |
-| \(\xi_k=\varepsilon_k-\mu\) | **Source** | \(S1\), section 3.2, equation (18) |
-| Formula for \(G(k,\omega)\), relative-energy meaning of \(\omega\), Fermi surface at \(\omega=0\), and kernel \(e^{-i\omega t}\) | **Source** | \(S1\), section 3.2, equation (19) and adjacent sentences |
-| Formula for \(\mathcal G(p,p_0)\), absolute-energy meaning of \(p_0\), Fermi surface at \(p_0=\mu\), and kernel \(e^{-ip_0t}\) | **Source** | \(S2\), section 2, equations (5)–(6) and adjacent sentences |
-| \(E_p\) and \(\varepsilon_k\) denote the same normal-state band dispersion | **Source** | \(S2\), section 2, sentence following equation (5) |
-| No relation between the two self-energies is assumed | **Source** | \(S2\), section 2, final sentence |
-| \(\varepsilon_k=E_p=\mu+0.20\,\mathrm{eV}\) for the state under study | **Source** | Numerical condition in the prompt |
-
-The prompt supplies section and equation locators but no immutable source-version records. No version key or bibliographic detail beyond the mock citations is invented here.
+| Claim | Label | Prompt-local source | Version status | Exact anchor |
+| --- | --- | --- | --- | --- |
+| $\xi_k=\varepsilon_k-\mu$ and $\omega$ is relative to $\mu$ | Source | `S1` | `Unassigned — supplied excerpt; snapshot registration pending` | Section 3.2, eqs. (18)–(19) and following convention paragraph |
+| $p_0$ is absolute energy, the Fermi surface is at $\mu$, and $E_p$ is the same dispersion as $\varepsilon_k$ | Source | `S2` | `Unassigned — supplied excerpt; snapshot registration pending` | Section 2, eqs. (5)–(6) and following notation paragraph |
+| No relation between $\Sigma$ and $\mathcal\Sigma$ is assumed | Source | `S2` | `Unassigned — supplied excerpt; snapshot registration pending` | Final sentence of the supplied excerpt |
+| The coordinate translation is $p_0=\omega+\mu$ | Reconstructed | `S1` and `S2` | Both pending | From their stated Fermi-surface origins |
+| Equality of the full propagators requires an additional self-energy translation | Reconstructed | `S1` and `S2` | Both pending | Algebra below |
+| The two free poles represent the same energy above the Fermi surface after translation | Reconstructed | `S1` and `S2` | Both pending | Free-pole calculation below |
 
 ## Physical question
 
-Do \(G(k,\omega)\) and \(\mathcal G(p,p_0)\) denote the same particular retarded one-particle propagator, or do their denominators merely look different because the sources choose different energy zeros? How do their free poles compare for the specified state?
+Are the two formulas the same retarded one-particle propagator written with different energy zeros, and where is the noninteracting pole in each convention?
 
 ## Complete derivation
 
-### 1. Translate the energy coordinates
+### 1. Translate the energy origin
 
-\(S1\) says that \(\omega\) is measured relative to \(\mu\), while \(S2\) says that \(p_0\) is absolute. Therefore the coordinate translation is
+`S1` places the Fermi surface at $\omega=0$, while `S2` places it at $p_0=\mu$. Therefore the same physical energy is represented by
 
-\[
-\omega=p_0-\mu,
-\]
+$$
+p_0=\omega+\mu,
+$$
 
-or, equivalently,
+or equivalently,
 
-\[
-p_0=\omega+\mu.
-\]
+$$
+\omega=p_0-\mu.
+$$
 
-**Reconstructed — from the energy-reference statements in \(S1\), section 3.2, and \(S2\), section 2.**
+**Provenance:** Reconstructed from the frequency conventions in `S1`, section 3.2, and `S2`, section 2.
 
-For corresponding band states, use the supplied dispersion identification
+### 2. Compare the interacting denominators
 
-\[
-E_p=\varepsilon_k.
-\]
+Identify corresponding states provisionally as $p$ and $k$, and use the source-stated band correspondence $E_p=\varepsilon_k$. Substitute $p_0=\omega+\mu$ into `S2`:
 
-Then
-
-\[
-\begin{aligned}
-p_0-E_p
-&=(\omega+\mu)-\varepsilon_k
-\\
-&=\omega-\left(\varepsilon_k-\mu\right)
-\\
-&=\omega-\xi_k.
-\end{aligned}
-\]
-
-The second line only regroups terms; the third uses \(\xi_k=\varepsilon_k-\mu\).
-
-**Reconstructed — from \(S1\), equation (18), and \(S2\)'s identification of \(E_p\) with \(\varepsilon_k\).**
-
-This is the central algebraic fact: the apparently different free denominators are the same denominator expressed relative to different energy zeros.
-
-### 2. Free pole in \(S1\)'s variables
-
-The noninteracting limit sets
-
-\[
-\Sigma(k,\omega)=0.
-\]
-
-Thus
-
-\[
-G_0(k,\omega)
+$$
+\mathcal G(p,\omega+\mu)
 =
-\frac{1}{\omega-\xi_k+i0^+}.
-\]
+\frac{1}
+{\omega+\mu-\varepsilon_k-\mathcal\Sigma(p,\omega+\mu)+i0^+}.
+$$
 
-A pole occurs where the denominator vanishes:
+Regroup the band and chemical-potential terms:
 
-\[
-\omega-\xi_k+i0^+=0.
-\]
-
-Solving one algebraic step at a time,
-
-\[
-\omega-\xi_k=-i0^+,
-\]
-
-and therefore
-
-\[
-\omega=\xi_k-i0^+.
-\]
-
-Its real-axis location is \(\omega=\xi_k\), and the retarded prescription places it infinitesimally below the real axis.
-
-**Reconstructed — from \(S1\), equations (18)–(19), after the explicitly stated noninteracting assumption.**
-
-For the supplied state,
-
-\[
-\varepsilon_k=\mu+0.20\,\mathrm{eV}.
-\]
+$$
+\omega+\mu-\varepsilon_k
+=
+\omega-(\varepsilon_k-\mu)
+=
+\omega-\xi_k.
+$$
 
 Hence
 
-\[
-\begin{aligned}
+$$
+\mathcal G(p,\omega+\mu)
+=
+\frac{1}
+{\omega-\xi_k-\mathcal\Sigma(p,\omega+\mu)+i0^+}.
+$$
+
+This equals the `S1` expression only if the additional translation rule
+
+$$
+\mathcal\Sigma(p,\omega+\mu)=\Sigma(k,\omega)
+$$
+
+holds for corresponding states, with the same underlying operator definition and normalization. Under those assumptions,
+
+$$
+\mathcal G(p,\omega+\mu)=G(k,\omega).
+$$
+
+**Provenance:** Reconstructed algebra from `S1`, eqs. (18)–(19), and `S2`, eqs. (5)–(6).
+
+The excerpts explicitly do **not** assume the required self-energy relation. Therefore equality of the interacting propagators is **not established**.
+
+### 3. Compute the free pole in `S1`
+
+For the noninteracting comparison, set $\Sigma(k,\omega)=0$:
+
+$$
+G_0(k,\omega)
+=
+\frac{1}{\omega-\xi_k+i0^+}.
+$$
+
+A pole occurs when the denominator vanishes:
+
+$$
+\omega-\xi_k+i0^+=0.
+$$
+
+Solving gives
+
+$$
+\omega=\xi_k-i0^+.
+$$
+
+For $\varepsilon_k=\mu+0.20\,\mathrm{eV}$,
+
+$$
 \xi_k
-&=\varepsilon_k-\mu
-\\
-&=\left(\mu+0.20\,\mathrm{eV}\right)-\mu
-\\
-&=0.20\,\mathrm{eV}.
-\end{aligned}
-\]
+=
+\varepsilon_k-\mu
+=
+(\mu+0.20\,\mathrm{eV})-\mu
+=
+0.20\,\mathrm{eV}.
+$$
 
-Therefore the \(S1\) free pole is
+Thus the retarded free pole in `S1` variables is
 
-\[
-\boxed{\omega=0.20\,\mathrm{eV}-i0^+},
-\]
+$$
+\boxed{\omega=0.20\,\mathrm{eV}-i0^+}.
+$$
 
-with real-axis location
+### 4. Compute the free pole in `S2`
 
-\[
-\boxed{\omega=0.20\,\mathrm{eV}}.
-\]
+Set $\mathcal\Sigma(p,p_0)=0$:
 
-### 3. Free pole in \(S2\)'s variables
-
-The noninteracting limit now sets
-
-\[
-\mathcal\Sigma(p,p_0)=0.
-\]
-
-Then
-
-\[
+$$
 \mathcal G_0(p,p_0)
 =
 \frac{1}{p_0-E_p+i0^+}.
-\]
+$$
 
-The denominator vanishes when
+Set the denominator to zero:
 
-\[
-p_0-E_p+i0^+=0.
-\]
-
-Thus
-
-\[
-p_0-E_p=-i0^+,
-\]
+$$
+p_0-E_p+i0^+=0,
+$$
 
 so
 
-\[
+$$
 p_0=E_p-i0^+.
-\]
+$$
 
-**Reconstructed — from \(S2\), equations (5)–(6), after the explicitly stated noninteracting assumption.**
+Using $E_p=\mu+0.20\,\mathrm{eV}$,
 
-Using the supplied band energy,
+$$
+\boxed{p_0=\mu+0.20\,\mathrm{eV}-i0^+}.
+$$
 
-\[
-E_p=\mu+0.20\,\mathrm{eV},
-\]
+Subtracting the energy origin verifies the mapping:
 
-gives
-
-\[
-\boxed{p_0=\mu+0.20\,\mathrm{eV}-i0^+},
-\]
-
-with real-axis location
-
-\[
-\boxed{p_0=\mu+0.20\,\mathrm{eV}}.
-\]
-
-Because no numerical value of \(\mu\) is supplied, this is the most specific absolute energy that can be given.
-
-Relative to the Fermi-surface energy in \(S2\),
-
-\[
-\begin{aligned}
+$$
 p_0-\mu
-&=\left(\mu+0.20\,\mathrm{eV}\right)-\mu
-\\
-&=0.20\,\mathrm{eV}.
-\end{aligned}
-\]
-
-Thus both poles lie \(0.20\,\mathrm{eV}\) above their respective Fermi-surface coordinates.
-
-### 4. Direct free-propagator comparison
-
-Insert \(p_0=\omega+\mu\) and \(E_p=\varepsilon_k\) into \(S2\)'s free expression:
-
-\[
-\begin{aligned}
-\mathcal G_0(p,\omega+\mu)
-&=
-\frac{1}{(\omega+\mu)-E_p+i0^+}
-\\
-&=
-\frac{1}{(\omega+\mu)-\varepsilon_k+i0^+}
-\\
-&=
-\frac{1}{\omega-(\varepsilon_k-\mu)+i0^+}
-\\
-&=
-\frac{1}{\omega-\xi_k+i0^+}
-\\
-&=
-G_0(k,\omega).
-\end{aligned}
-\]
-
-This equality assumes that \(p\) and \(k\) label the corresponding band state. It preserves the identical \(+i0^+\) prescription.
-
-**Reconstructed — from both source formulas and the supplied energy/state identification.**
-
-Therefore the two free poles are not physically displaced from each other. Their coordinates differ by exactly \(\mu\):
-
-\[
-\boxed{p_0=\omega+\mu}.
-\]
-
-### 5. Why the full interacting equality does not follow
-
-Apply the same variable translation to \(S2\)'s interacting propagator:
-
-\[
-\begin{aligned}
-\mathcal G(p,\omega+\mu)
-&=
-\frac{1}
-{(\omega+\mu)-E_p-\mathcal\Sigma(p,\omega+\mu)+i0^+}
-\\
-&=
-\frac{1}
-{\omega-\xi_k-\mathcal\Sigma(p,\omega+\mu)+i0^+}.
-\end{aligned}
-\]
-
-By contrast, \(S1\) gives
-
-\[
-G(k,\omega)
 =
-\frac{1}
-{\omega-\xi_k-\Sigma(k,\omega)+i0^+}.
-\]
+0.20\,\mathrm{eV}-i0^+
+=
+\omega.
+$$
 
-After matching the state labels and energy variables, the written functions would agree if
-
-\[
-\boxed{\mathcal\Sigma(p,\omega+\mu)=\Sigma(k,\omega)}
-\]
-
-and if the propagators use the same operator definition and normalization.
-
-**Reconstructed — this is the sufficient algebraic equality condition obtained by comparing the two denominators.**
-
-But \(S2\) explicitly states that no relation between \(\Sigma\) and \(\mathcal\Sigma\) is assumed. Consequently,
-
-\[
-\boxed{\text{the equality of the full interacting propagators is unresolved from the excerpts.}}
-\]
-
-This is not evidence that they are different; it is evidence that their identity has not been established.
-
-### 6. Fourier-kernel check
-
-Under the same energy translation,
-
-\[
-\begin{aligned}
-e^{-ip_0t}
-&=e^{-i(\omega+\mu)t}
-\\
-&=e^{-i\mu t}e^{-i\omega t}.
-\end{aligned}
-\]
-
-The second line uses the exponential identity for a sum in the exponent.
-
-**Reconstructed — from the Fourier-kernel conventions stated in both excerpts.**
-
-Thus changing the energy origin introduces the time-dependent phase \(e^{-i\mu t}\). This phase does not change the frequency-space pole correspondence, but it shows why raw time-domain expressions should not be declared literally identical without also translating the field or operator convention.
+**Provenance for both free-pole calculations:** Reconstructed from the displayed source propagators by setting their self-energies to zero.
 
 ## Physical interpretation and checks
 
-### Interpretation
+The numerical pole coordinates are not identical because the sources choose different energy zeros. Physically, both free poles lie $0.20\,\mathrm{eV}$ above their stated Fermi-surface energy. Both have the same retarded displacement, $-i0^+$.
 
-Both formulas have the causal structure of a retarded propagator. The energy-zero convention differs:
-
-- In \(S1\), the Fermi surface is at \(\omega=0\).
-- In \(S2\), the Fermi surface is at \(p_0=\mu\).
-- The same excitation \(0.20\,\mathrm{eV}\) above the Fermi surface is therefore written as \(\omega=0.20\,\mathrm{eV}\) or \(p_0=\mu+0.20\,\mathrm{eV}\).
-
-The sources establish the same **kind** of object and a matching free-particle representation after translation. They do not establish the same particular interacting function.
-
-### Checks
-
-| Check | Calculation or argument | Outcome |
+| Check | Calculation | Outcome |
 | --- | --- | --- |
-| Units | Every term in each denominator is an energy; therefore each displayed propagator has inverse-energy units | Consistent |
-| Fermi-surface limit | If \(\varepsilon_k=E_p=\mu\), then \(\xi_k=0\), so \(S1\)'s free pole is at \(\omega=0\), while \(S2\)'s is at \(p_0=\mu\) | The stated Fermi-surface locations map correctly |
-| Retarded sign | Solving a denominator with \(+i0^+\) gives an energy minus \(i0^+\) | Both free poles lie infinitesimally below the real axis |
-| Free residue | Each free denominator is linear in its own energy variable with coefficient one, and each numerator is one | Both free poles are simple and have unit residue in the displayed normalization |
-| Fourier convention | Both inverse kernels have the same negative-exponent sign; the energy shift produces \(e^{-i\mu t}\) | Compatible after the expected phase translation |
-| Interacting pole comparison | The two denominator equations contain unrelated self-energies | Pole positions, widths, and residues cannot be compared from the excerpts |
-| Symmetry or conservation | No Hamiltonian, symmetry, or conservation statement is supplied | No further check is justified |
+| Units | Every denominator term has energy units, so each propagator has inverse-energy units | Consistent |
+| Fermi-surface limit | If the band energy equals $\mu$, then `S1` gives $\omega=0$ and `S2` gives $p_0=\mu$ | Correct energy-origin translation |
+| Retarded sign | Solving a denominator containing $+i0^+$ places the pole at an energy containing $-i0^+$ | Same prescription in both |
+| Energy shift | $(\omega+\mu)-\varepsilon_k=\omega-(\varepsilon_k-\mu)$ | Chemical-potential shift cancels exactly |
+| Symmetry or conservation | No relevant symmetry or conservation statement is supplied | No further conclusion |
 
 ## Cross-source comparison
 
-The best-supported relation class is **`equivalent only under stated assumptions`**.
+**Would-be Relation type:** `equivalent only under stated assumptions`; canonical Relation ID remains pending.
 
-| Question | Conclusion | Provenance |
-| --- | --- | --- |
-| Are the symbols \(G\) and \(\mathcal G\) automatically identical? | No. Similar formula structure and retarded labels do not prove identity | **Inference**, constrained by both excerpts |
-| Are the free propagators equivalent? | Yes, for corresponding states, after \(E_p=\varepsilon_k\), \(p_0=\omega+\mu\), and both self-energies are set to zero | **Reconstructed** from \(S1\) and \(S2\) |
-| Are the full interacting propagators equivalent? | Only if the self-energies translate as \(\mathcal\Sigma(p,\omega+\mu)=\Sigma(k,\omega)\), together with matching state/operator conventions | **Reconstructed conditional result** |
-| Does the excerpt establish that self-energy relation? | No; \(S2\) explicitly says that no relation is assumed | **Source**, \(S2\), section 2, final sentence |
-| Do their free poles represent the same excitation? | Yes: both are \(0.20\,\mathrm{eV}\) above the Fermi surface, with identical retarded placement | **Reconstructed** |
-| Can the interacting poles, lifetimes, or spectral weights be compared? | No, not without a relation between the self-energies and fuller operator definitions | **Unresolved** |
+Required assumptions are:
+
+1. $p$ and $k$ label the same one-particle state.
+2. $E_p=\varepsilon_k$, as stated in `S2`.
+3. $p_0=\omega+\mu$, reconstructed from the two energy origins.
+4. $\mathcal\Sigma(p,\omega+\mu)=\Sigma(k,\omega)$.
+5. The operator definition and normalization represent the same physical one-particle response.
+
+Consequently:
+
+- **Can conclude:** the formulas use compatible retarded prescriptions, their free denominators map by an energy-origin shift, and their free poles describe the same $0.20\,\mathrm{eV}$ excitation above the Fermi surface when the state labels correspond.
+- **Cannot conclude:** the full interacting propagators are the same object, their self-energies are translated versions of one another, or their interacting poles, widths, and residues agree.
 
 ## Code–theory map
 
-**N/A — implementation is not a mission target and no code was supplied.**
-
-## Discussion-ready statement
-
-> The two expressions are retarded propagators written with different energy origins. With \(p_0=\omega+\mu\) and \(E_p=\varepsilon_k\), their free denominators coincide:
-> \[
-> p_0-E_p=\omega-\xi_k.
-> \]
-> Hence the state at \(\varepsilon_k=E_p=\mu+0.20\,\mathrm{eV}\) has a free pole at \(\omega=0.20\,\mathrm{eV}-i0^+\) in \(S1\), and at \(p_0=\mu+0.20\,\mathrm{eV}-i0^+\) in \(S2\). These are the same pole relative to the Fermi surface. The full interacting propagators cannot be identified from the excerpts because no relation between \(\Sigma\) and \(\mathcal\Sigma\) is assumed.
+**Code bridge state:** N/A — implementation is not a mission target.
 
 ## Exercises
 
-### Retrieval
-
-Without looking back, state where each source places the Fermi surface and give the frequency-coordinate translation.
-
-**Success criterion:** \(\omega=0\), \(p_0=\mu\), and \(p_0=\omega+\mu\).
-
-### Reconstruction
-
-Starting from \(p_0-E_p\), reproduce every step leading to \(\omega-\xi_k\), then state the additional self-energy condition required for the interacting denominators to match.
-
-**Success criterion:** the derivation explicitly uses \(p_0=\omega+\mu\), \(E_p=\varepsilon_k\), and \(\xi_k=\varepsilon_k-\mu\), followed by
-\(\mathcal\Sigma(p,\omega+\mu)=\Sigma(k,\omega)\).
+- **Retrieval:** Explain why $0.20\,\mathrm{eV}$ and $\mu+0.20\,\mathrm{eV}$ can locate the same excitation.
+- **Reconstruction:** Starting from `S2`, substitute $p_0=\omega+\mu$ and state the exact condition on $\mathcal\Sigma$ required to recover `S1`.
 
 ## Mastery check and next dependency
 
-A successful synthesis is demonstrated by distinguishing these two claims:
+No learner attempt was supplied, so mastery remains `level 0 - not yet demonstrated / insufficient evidence`. The next dependency is an explicit source relation between the two self-energies, or common operator definitions, before any interacting equivalence can be established.
 
-1. The free poles coincide after an energy-origin translation.
-2. The full interacting propagators are equal only under an additional, unsupplied self-energy map.
+## Response-only writeback patch
 
-No learner attempt was provided, so no mastery judgment or evidence record is claimed.
+- **Would-be lesson patch:** the complete Markdown lesson above, under canonical lesson ID `{{LESSON_ID_PENDING}}`.
+- **Would-be current-state patch:**
+  - Active lesson: `{{LESSON_ID_PENDING}}`
+  - Last completed step: translated the energy origin and derived both free poles.
+  - First unfinished implication: determine whether the interacting self-energies transform into one another.
+  - Obstacle: `S2` explicitly assumes no relation between the self-energies; source snapshots and canonical relation registration are also pending.
+  - Latest learner evidence: none.
+  - Next action: obtain an anchored self-energy or common operator-definition relation, then test the conditional equality.
+
+Canonical writeback is not complete.

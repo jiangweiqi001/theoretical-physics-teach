@@ -95,6 +95,9 @@ $requiredPaths = @(
     'README.md'
     'LICENSE'
     'NOTICE.md'
+    'tests/scenario-contract.ps1'
+    'tests/scenarios/04-coherent-clarification-writeback.md'
+    'tests/scenarios/05-conditional-code-explanation.md'
 )
 
 foreach ($relativePath in $requiredPaths) {
@@ -144,7 +147,10 @@ Assert-Contract ([regex]::IsMatch($skillText, $longNotePattern)) 'SKILL.md expli
 Assert-Contract ([regex]::IsMatch($skillText, $noSkippedStepsPattern)) 'SKILL.md forbids skipped calculation or logic steps'
 
 $lessonTemplate = Get-RepositoryText 'assets/templates/LESSON.md'
+$baselineTemplate = Get-RepositoryText 'assets/templates/BASELINE.md'
+$currentStateTemplate = Get-RepositoryText 'assets/templates/CURRENT-STATE.md'
 $learningRecordTemplate = Get-RepositoryText 'assets/templates/LEARNING-RECORD.md'
+$reviewQueueTemplate = Get-RepositoryText 'assets/templates/REVIEW-QUEUE.md'
 $firstLevelTwoHeading = [regex]::Match($lessonTemplate, '(?m)^##[ \t]+([^\r\n]+)')
 Assert-Contract (
     $firstLevelTwoHeading.Success -and
@@ -155,6 +161,60 @@ $defineBeforeUsePattern = '(?is)\b(?:define(?:s|d)? every new symbol|every new s
 Assert-Contract (
     [regex]::IsMatch($lessonTemplate, $defineBeforeUsePattern)
 ) 'LESSON.md requires every new symbol to be defined before use'
+
+$coherentWritebackPolicy = 'A coherent writeback must make the Note read as if the clarification had been designed in place from the start.'
+$detachedAppendixPolicy = 'Do not append a detached chat transcript or clarification appendix.'
+$optionDefaultPolicy = 'Multiple-choice or true/false is the default for initial diagnosis, end-of-Note checkpoints, and ordinary knowledge checks.'
+$recognitionBoundaryPolicy = 'Passing an option item alone does not establish reconstruction mastery.'
+$finalCheckpointHeading = 'End-of-Note checkpoint'
+$headingLinkPolicy = 'Use [[note#heading]] for section links and [[note#^block-id]] only when an exact equation or derivation step needs a stable deep link.'
+$codeEligibilityPolicy = 'Use corresponding implementation material only when it is official or author-associated open-source code at a pinned commit, a user-supplied immutable snapshot, or anchored pseudocode sufficient for the mapping.'
+
+foreach ($policyTarget in @(
+    @{ Name = 'SKILL.md'; Text = $skillText }
+    @{ Name = 'references/physics-pedagogy.md'; Text = $pedagogyText }
+)) {
+    Assert-Contract (
+        $policyTarget.Text.Contains($coherentWritebackPolicy)
+    ) "$($policyTarget.Name) requires coherent in-place writeback"
+    Assert-Contract (
+        $policyTarget.Text.Contains($detachedAppendixPolicy)
+    ) "$($policyTarget.Name) forbids detached clarification appendices"
+    Assert-Contract (
+        $policyTarget.Text.Contains($optionDefaultPolicy)
+    ) "$($policyTarget.Name) defaults assessments to option questions"
+    Assert-Contract (
+        $policyTarget.Text.Contains($recognitionBoundaryPolicy)
+    ) "$($policyTarget.Name) separates recognition from reconstruction"
+}
+
+$levelTwoHeadings = [regex]::Matches($lessonTemplate, '(?m)^##[ \t]+([^\r\n]+)')
+$lastLevelTwoHeading = if ($levelTwoHeadings.Count -gt 0) {
+    $levelTwoHeadings[$levelTwoHeadings.Count - 1].Groups[1].Value.Trim()
+} else {
+    ''
+}
+Assert-Contract (
+    $lastLevelTwoHeading -ceq $finalCheckpointHeading
+) 'LESSON.md ends with the exact heading ## End-of-Note checkpoint'
+Assert-Contract (
+    $lessonTemplate.Contains($headingLinkPolicy)
+) 'LESSON.md defines Obsidian heading and block deep links'
+Assert-Contract (
+    $currentStateTemplate.Contains('First unfinished section or block link')
+) 'CURRENT-STATE.md stores an exact unfinished deep link'
+Assert-Contract (
+    $baselineTemplate.Contains('Misconception mapped to each distractor')
+) 'BASELINE.md maps distractors to diagnostic meanings'
+Assert-Contract (
+    $learningRecordTemplate.Contains($recognitionBoundaryPolicy)
+) 'LEARNING-RECORD.md separates option evidence from reconstruction'
+Assert-Contract (
+    $reviewQueueTemplate.Contains($optionDefaultPolicy)
+) 'REVIEW-QUEUE.md defaults ordinary review checks to option questions'
+Assert-Contract (
+    $codeBridgeText.Contains($codeEligibilityPolicy)
+) 'code protocol restricts corresponding implementation material'
 
 $mathDelimiterPolicy = 'Use $...$ for inline LaTeX and $$...$$ for display LaTeX.'
 foreach ($policyTarget in @(

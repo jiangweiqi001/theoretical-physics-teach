@@ -32,6 +32,10 @@ $chineseReadme = if (Test-Path -LiteralPath (Join-Path $repoRoot 'README.zh-CN.m
     ''
 }
 
+function ConvertFrom-CodePoints([int[]]$CodePoints) {
+    return -join ($CodePoints | ForEach-Object { [char]$_ })
+}
+
 if ($Section -in @('Identity', 'All')) {
     Assert-Rebrand ($skill -match '(?m)^name:\s*theoretical-physics-teach\s*$') 'new Skill name is canonical'
     Assert-Rebrand ($skill.Contains('$theoretical-physics-teach')) 'new explicit invocation is documented'
@@ -68,6 +72,10 @@ if ($Section -in @('Scope', 'All')) {
     }
     Assert-Rebrand ($readme.Contains('## Who this is for')) 'README retains a clear audience section'
     Assert-Rebrand ($readme.Contains('theoretical physics only')) 'README states the single-subject boundary'
+    $chineseAudienceHeading = '## ' + (ConvertFrom-CodePoints @(0x9002, 0x5408, 0x8C01))
+    $chinesePhysicsOnly = ConvertFrom-CodePoints @(0x53EA, 0x9762, 0x5411, 0x7406, 0x8BBA, 0x7269, 0x7406)
+    Assert-Rebrand ($chineseReadme.Contains($chineseAudienceHeading)) 'Chinese README retains a clear audience section'
+    Assert-Rebrand ($chineseReadme.Contains($chinesePhysicsOnly)) 'Chinese README states the single-subject boundary'
 }
 
 if ($Section -in @('Publication', 'All')) {
@@ -81,6 +89,14 @@ if ($Section -in @('Publication', 'All')) {
     Assert-Rebrand (
         Test-Path -LiteralPath (Join-Path $repoRoot 'README.zh-CN.md') -PathType Leaf
     ) 'Chinese README exists'
+    $chinesePrototypeHeading = '## ' + (ConvertFrom-CodePoints @(0x4E0E, 0x65E9, 0x671F)) + ' PR ' + (ConvertFrom-CodePoints @(0x539F, 0x578B, 0x7684, 0x533A, 0x522B))
+    $chineseNoUpstream = (ConvertFrom-CodePoints @(0x6CA1, 0x6709, 0x6210, 0x4E3A, 0x4E0A, 0x6E38)) + ' pull request'
+    $chineseIndependentProject = ConvertFrom-CodePoints @(0x72EC, 0x7ACB, 0x9879, 0x76EE)
+    Assert-Rebrand (
+        $chineseReadme.Contains($chinesePrototypeHeading) -and
+        $chineseReadme.Contains($chineseNoUpstream) -and
+        $chineseReadme.Contains($chineseIndependentProject)
+    ) 'Chinese README distinguishes the independent project from the earlier prototype'
     Assert-Rebrand (
         -not [regex]::IsMatch($readme, '(?i)\b(?:star|starring)\s+(?:this\s+|the\s+)?repository\b')
     ) 'README contains no repository-star request'

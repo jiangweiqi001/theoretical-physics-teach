@@ -16,6 +16,8 @@ Codex 不会自动调用本 Skill。必须显式写出 `$theoretical-physics-tea
 
 - [五分钟开始](#五分钟开始)
 - [它解决什么问题](#它解决什么问题)
+- [适合谁](#适合谁)
+- [与早期 PR 原型的区别](#与早期-pr-原型的区别)
 - [断点续学](#断点续学)
 - [对话回写与全文连贯性](#对话回写与全文连贯性)
 - [符号、多材料与完整推导](#符号多材料与完整推导)
@@ -60,6 +62,32 @@ $theoretical-physics-teach
 这个 Skill 把上述状态变成可检查、可链接、可恢复的 Markdown 文件。
 
 完整工作流和示例见 [端到端学习演示](https://github.com/jiangweiqi001/theoretical-physics-teach/blob/main/docs/walkthrough.md)，canonical 所有权见 [架构说明](https://github.com/jiangweiqi001/theoretical-physics-teach/blob/main/docs/architecture.md)。
+
+## 适合谁
+
+本 Skill 只面向理论物理，适合希望真正掌握一篇或多篇理论材料，而不是只得到摘要的学生、独立学习者和研究者。特别适合这些任务：
+
+- 精读凝聚态场论、量子场论、多体理论、重整化群以及物理论证实际需要的形式工具；
+- 同时阅读符号、能量基准、Fourier 约定、近似方案或适用区域不同的多篇材料；
+- 把论文省略的中间代数、积分、求和、指标缩并和极限顺序完整补出来；
+- 在 Obsidian 中长期保存课程 Note，并从上次未完成的等号精确继续；
+- 在存在可靠对应代码时，理解每个物理量如何进入离散化、数组和算法流程。
+
+它不面向快速论文摘要，也不会把形式工具脱离具体物理问题单独扩展成另一套课程。
+
+## 与早期 PR 原型的区别
+
+早期的 [PR-oriented prototype](https://github.com/jiangweiqi001/skills/commit/14a2dc2) 是在通用上游 `teach` Skill 的 fork 上改动两个文件，主要把网页课程改成 Obsidian Markdown，并加入有限的理论物理符号说明。那个原型没有成为上游 pull request。
+
+当前仓库不是等待合并的补丁，而是由 [jiangweiqi001](https://github.com/jiangweiqi001) 独立创建、发布和持续维护的独立项目。它已经发展成专门的理论物理学习系统：
+
+- 维护 16 个 Markdown 模板和明确的 canonical 所有权；
+- 支持多来源符号对照、成立假设、近似、适用区域和冲突记录；
+- 保存精确断点、不可变学习证据和连贯的原位解释回写；
+- 只在可靠对应材料存在时启用独立 Code Map 和 Run 记录；
+- 提供规范示例、只读 workspace validator、双平台 CI 和确定性发布包。
+
+上游 MIT 项目的版权与许可说明继续保留，但当前架构、模板、协议、测试、发布和后续维护属于本仓库自己的发布线。
 
 ## 断点续学
 

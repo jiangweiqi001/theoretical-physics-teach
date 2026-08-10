@@ -95,6 +95,8 @@ $requiredPaths = @(
     'README.md'
     'LICENSE'
     'NOTICE.md'
+    'scripts/validate_workspace.py'
+    'tests/test_validate_workspace.py'
     'tests/scenario-contract.ps1'
     'tests/scenarios/04-coherent-clarification-writeback.md'
     'tests/scenarios/05-conditional-code-explanation.md'
@@ -135,6 +137,7 @@ foreach ($requiredSkillPhrase in @(
     'NOTATION-CROSSWALK.md'
     'SYNTHESIS.md'
     'conversation writeback'
+    'scripts/validate_workspace.py'
 )) {
     Assert-Contract (
         $skillText.IndexOf($requiredSkillPhrase, [System.StringComparison]::OrdinalIgnoreCase) -ge 0

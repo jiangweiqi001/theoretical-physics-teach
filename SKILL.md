@@ -19,6 +19,10 @@ Use only materials the user supplies or explicitly places in scope. Do not brows
 - Preserve each source's notation. Translate through `NOTATION-CROSSWALK.md` and compare through canonical Relations and entries in `SYNTHESIS.md`; never silently normalize sources into one convention.
 - Ground material-dependent claims in supplied evidence and exact, reopenable anchors. Do not expand the available evidence from memory.
 - Resume from the recorded first unfinished equation, proof step, code operation, or conceptual obstacle. Do not restart or silently skip ahead.
+- A coherent writeback must make the Note read as if the clarification had been designed in place from the start.
+- Do not append a detached chat transcript or clarification appendix.
+- Multiple-choice or true/false is the default for initial diagnosis, end-of-Note checkpoints, and ordinary knowledge checks.
+- Passing an option item alone does not establish reconstruction mastery.
 - There is no Note length cap.
 - No skipped calculation or logic steps.
 
@@ -62,9 +66,9 @@ Do not convert `Blocked` to `N/A` merely because evidence has not arrived.
    Then, for an existing initialized workspace, first read all of `MISSION.md` and `CURRENT-STATE.md`, followed by the active lesson and latest linked immutable Evidence record when they exist. Open the related canonical source, graph, notation, synthesis, question, review, code-map, and Run records needed for the next action.
 3. **Take the bootstrap branch when needed.** If no current snapshot, active lesson, or prior Evidence exists, initialize the mission, registered materials, and an atomic current snapshot with `None yet — bootstrap`. Material intake, planning, or agent explanation without a learner response, self-report, or attempt creates no Evidence record and no fictional mastery history.
 4. **Register sources before use.** Assign stable Source IDs and immutable version records, verify availability, and anchor the portion actually used. Stop only the claim or branch that lacks evidence; continue independent safe work.
-5. **Diagnose one dependency.** Ask exactly one prerequisite question and test exactly one evidence category at a time. Treat "I do not know" as a starting-boundary signal, not failure. Keep self-report, unaided work, hints, and assisted work separate.
+5. **Diagnose one dependency.** Ask exactly one prerequisite question and test exactly one evidence category at a time. Default to one multiple-choice or true/false item; require produced work when the target itself is derivation, proof, calculation, source translation, or implementation reasoning. Treat "I do not know" as a starting-boundary signal, not failure. Keep self-report, unaided work, hints, and assisted work separate.
 6. **Teach one dependency-sized lesson.** Answer one physical question or close one prerequisite edge. Split a second independent dependency into a linked lesson, never merely to shorten the derivation.
-7. **Perform conversation writeback.** After every substantive exchange, patch the canonical files under the ownership rules below. A new explanation in chat must patch the active lesson when it belongs there or create and link a separate prerequisite lesson; chat is never canonical memory.
+7. **Perform conversation writeback.** After every substantive exchange, read the complete active Note, patch the leading notation first, and integrate a new explanation at the first sentence, equation, proof step, or code operation that depends on it. Rewrite the transition into and out of the clarification; remove obsolete stuck wording, duplicate explanations, and local contradictions; repair numbering, provenance, navigation links, and the final checkpoint. If it is a separate prerequisite, create the linked prerequisite Note and add a continuous bridge in the parent. Chat is never canonical memory.
 8. **Record the exact next action.** Atomically replace `CURRENT-STATE.md` with the precise resume point and one next observable teaching or retrieval action, whether or not learner Evidence was created.
 
 ## Lesson and Note contract
@@ -90,6 +94,8 @@ Preserve source-local symbols. Register source notation in `NOTATION-CROSSWALK.m
 Show all intermediate algebra, substitutions, index contractions, sign changes, Fourier transforms, integrals, sums, limits, and proof or logical implications. At every non-trivial transition, name the identity, theorem, assumption, approximation, boundary condition, or convention; track domains, indices, units/dimensions, assumptions, and validity; explain why the transition follows and what would make it fail.
 
 For physics, explain the physical meaning of important terms and observables and perform applicable dimensional/unit, limiting-case, symmetry/conservation, sign, normalization, and boundary checks. For a supporting pure-mathematics lesson, give hypotheses, complete proof structure, edge cases or counterexamples, and the exact downstream physical use.
+
+Every learner-facing Note ends with exactly one final section headed `## End-of-Note checkpoint`. Ask one item at a time and withhold its answer until the learner responds. Use three or four parallel, independently plausible options for multiple choice, vary the correct-option position, and avoid grammar, length, overlap, trick, or all/none cues. Use true/false only for one precise claim. If the target is reconstruction, proof, calculation, cross-source translation, or implementation reasoning, follow the option item with the smallest necessary produced-work task; do not promote option recognition to the stronger capability.
 
 ## Evidence and provenance
 
@@ -125,11 +131,12 @@ Preserve each dated prior Evidence boundary explicitly: date, evidence category,
 
 For a provisional response-only artifact, show the would-be patches and the two required provisional status statements instead of performing this checklist. Do not claim canonical writeback. Otherwise, before ending a teaching turn:
 
-1. Patch the active lesson or create and link the required prerequisite lesson when teaching content changed.
+1. Read the complete active Note and its directly linked local context. Locate the first statement or equation that depends on the clarification; patch there or create and link the required prerequisite lesson when it is a separate dependency.
 2. Update every affected canonical source, notation, terminology, Relation, synthesis, Open Question, code-map, or Run record without duplicating its owner's data.
 3. Create and index Evidence only when the learner supplied a response, self-report, or attempt. The learner Evidence gate applies only to positive mastery advancement, Mission completion, and marking a target, row, phase, node, or review `satisfied`, `complete`, or `completed`. Bootstrap, `Blocked`, `N/A`, scope or administrative updates, and `CURRENT-STATE.md` snapshot updates do not require learner Evidence; write them from mission scope or anchored source availability and link the relevant Q-ID, canonical Open Question, and source anchors when applicable.
-4. Atomically update `CURRENT-STATE.md` with the exact stop point, last completed step, first unfinished implication, obstacle, required anchors, latest Evidence when one exists, and one next action.
-5. Validate affected local paths, Obsidian links, stable IDs, source anchors, and supersession links. Repair failures before ending the turn.
+4. Rewrite the incoming and outgoing transitions, remove obsolete stuck wording and duplicates, repair local step numbering and references, and update the final checkpoint so the Note remains continuous through the first downstream result.
+5. Atomically update `CURRENT-STATE.md` with the exact stop point, last completed step, first unfinished implication, obstacle, required anchors, latest Evidence when one exists, and one next action.
+6. Validate affected local paths, Obsidian links, stable IDs, source anchors, supersession links, and the full edited Note's notation and logical continuity. Repair failures before ending the turn.
 
 Do not say the teaching task is complete unless every target-required `MISSION.md` completion row is satisfied by an Evidence ID plus resolvable canonical link that proves its observable criterion; `CURRENT-STATE.md` records a next action or explicit complete state consistent with those rows; required `OPEN-QUESTIONS.md` blockers are resolved or explicitly handled by scope; and all required local links resolve.
 

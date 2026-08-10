@@ -4,7 +4,7 @@ Use this protocol for diagnostics, lessons, clarification, review, and mastery d
 
 ## 1. Resume before teaching
 
-Before every teaching action, read `CURRENT-STATE.md`, the active lesson when one exists, and the latest linked immutable Evidence record when one exists. Open the referenced roadmap phase, Concept Nodes/Edges, source anchors, notation entries, Relations, Synthesis entries, Reviews, Code Maps, and Run records needed for the next action. Resume at the recorded first unfinished equation, proof step, code operation, or conceptual obstacle; do not restart or silently skip ahead.
+Before every teaching action, read `CURRENT-STATE.md`, the complete active lesson when one exists, and the latest linked immutable Evidence record when one exists. Open the referenced roadmap phase, Concept Nodes/Edges, source anchors, notation entries, Relations, Synthesis entries, Reviews, Code Maps, and Run records needed for the next action. Resume at the recorded first unfinished equation, proof step, code operation, or conceptual obstacle; do not restart or silently skip ahead.
 
 On first bootstrap, `CURRENT-STATE.md`, an active lesson, or prior Evidence may not exist. Initialize the required canonical documents and an atomic current snapshot from the mission and registered materials; write `None yet — bootstrap` instead of inventing lesson or Evidence links. Material intake, agent explanation, and planning without a learner response, self-report, or attempt update the canonical documents and current snapshot but do not create Evidence.
 
@@ -28,6 +28,8 @@ If response-only delivery was not explicit, ask for the workspace and stop rathe
 ## 2. Diagnose one dependency at a time
 
 Ask exactly one prerequisite question and test exactly one evidence category per diagnostic entry. Before asking, allocate a new Diagnostic ID in `BASELINE.md`, append its active index row, and create its keyed entry with the exact question. A learner saying "I do not know" locates the starting dependency; it is not failure.
+
+Multiple-choice or true/false is the default for initial diagnosis, end-of-Note checkpoints, and ordinary knowledge checks. Use one item at a time. Start with three or four option multiple choice when plausible distractors distinguish meaningful misconceptions, or true/false when one precise claim, sign, assumption, limiting case, or implication is being tested. If the mission target itself requires produced derivation, proof, calculation, source translation, or implementation reasoning, use the option item to locate the boundary and then request the smallest sufficient produced-work follow-up.
 
 After the answer, allocate the next Evidence ID through the append-only `learning-records/INDEX.md` and create its immutable instance. Complete the active diagnostic once, link both Evidence ID and canonical Obsidian link, then finalize or confirm it. Never reopen a finalized entry; corrections receive a new Diagnostic ID that supersedes it. If the learner supplied only self-report or a response with no performance opportunity, record `No observable attempt elicited` and level 0 rather than inferring capability.
 
@@ -61,7 +63,7 @@ Use $...$ for inline LaTeX and $$...$$ for display LaTeX. Never use backslash-pa
 
 When continuing an existing lesson, do not reteach completed content. Before first use of any new symbol in added prose or formulas, display or apply a patch to the leading notation section that completes every symbol-definition field. Apply the notation patch before the content patch when writing canonically; show it first in response-only output. The first H2 of that continuation output must still be exactly `## Notation and conventions`. Perform a symbol inventory audit before delivery. Audit the notation section from top to bottom and each entry from left to right. At each cell, reject, reorder, or rewrite any entry that uses a dependency not completely defined earlier; the glyph being defined may appear in its own defining cell, but an auxiliary or example glyph may not appear there unless already defined. Recursively scan prose, inline and display mathematics, tables, definition/domain/unit/anchor/convention/example cells, indices, and meaning-changing decorations in dependency order. Each repair may introduce another glyph, so rescan from the leading section. Repeat the inventory scan until no undefined glyph remains.
 
-After notation, follow the canonical `LESSON.md` order: mission connection and prerequisites; exact anchors and provenance; one physical question; complete derivation or proof; interpretation and checks; conditional comparison/code map; exercises; mastery check and next dependency. Preserve source-local symbols and pair the learner's explanatory language with the source-language technical term at first use. Add a new first-use bilingual term or a term whose meaning is source-dependent to `GLOSSARY.md`; that file owns terminology definitions and ambiguity records, while the lesson links the relevant term in context.
+After notation, follow the canonical `LESSON.md` order: mission connection and prerequisites; exact anchors and provenance; one physical question; complete derivation or proof; interpretation and checks; conditional comparison/code map; exercises; mastery check and next dependency; then the structurally final `## End-of-Note checkpoint`. Preserve source-local symbols and pair the learner's explanatory language with the source-language technical term at first use. Add a new first-use bilingual term or a term whose meaning is source-dependent to `GLOSSARY.md`; that file owns terminology definitions and ambiguity records, while the lesson links the relevant term in context.
 
 ## 4. Close every calculation and implication
 
@@ -78,7 +80,17 @@ Do not hide work behind brevity phrases. If a missing step is a separate depende
 
 For physics, explain the physical meaning of each important term, mechanism, and observable, then perform applicable dimensional/unit, limiting-case, symmetry/conservation, sign, normalization, and boundary-condition checks. State what the result does not establish. For a pure-mathematics prerequisite, replace physical interpretation and dimensional checks with hypotheses, proof structure, edge cases/counterexamples, and the exact downstream physical use.
 
-## 5. Judge only observable evidence
+## 5. Design diagnostic checkpoints
+
+Every learner-facing Note ends with exactly one `## End-of-Note checkpoint` section. Do not place navigation, answer keys, appendices, or canonical-state dumps after it. Withhold the answer and feedback until the learner responds.
+
+For multiple choice, write three or four options that are parallel in grammar, comparable in length and specificity, independently plausible, and mutually exclusive. Map every distractor to a concrete misconception or missing prerequisite before asking. Vary the correct-option position across questions. Do not use trick wording, accidental grammatical agreement, a uniquely detailed correct answer, overlapping options, or `all of the above` / `none of the above` shortcuts. Use `cannot be determined from the supplied evidence` only when epistemic sufficiency is the target.
+
+For true/false, test one precise proposition and avoid compound claims whose clauses can differ in truth value. An option item may establish interpretation or recognition of a sign, assumption, convention, limiting case, or next step. Passing an option item alone does not establish reconstruction mastery. A reconstruction, proof, calculation, source-translation, or implementation target additionally requires the learner to produce the relevant steps without hidden assistance.
+
+After the learner responds, store the verbatim response and ordered assistance in the Evidence record. If correction or elaboration changes teaching content, integrate it coherently into the Note and replace or add the next final checkpoint for the remaining boundary.
+
+## 6. Judge only observable evidence
 
 Use `level 0 - not yet demonstrated / insufficient evidence` when no positive mastery claim is supported. The four positive capabilities are:
 
@@ -95,15 +107,19 @@ Preserve each dated prior Evidence boundary explicitly: date, evidence category,
 
 Do not mark a Mission target, Roadmap phase, Concept Node, or Review complete unless a linked Evidence ID and canonical Obsidian link demonstrate that exact observable criterion. A Review uses retrieval, a limiting-case check, short derivation/proof, source translation, or implementation validation; rereading alone is not completion.
 
-## 6. Write the conversation back canonically
+## 7. Write the conversation back canonically
 
-Chat is never canonical memory. A provisional response-only delivery shows exact would-be patches but performs none of the steps below and cannot report writeback complete. After every other substantive exchange, perform one coherent writeback:
+Chat is never canonical memory. A provisional response-only delivery shows exact would-be patches but performs none of the steps below and cannot report writeback complete. After every other substantive exchange, perform one coherent writeback. A coherent writeback must make the Note read as if the clarification had been designed in place from the start. Do not append a detached chat transcript or clarification appendix.
 
-1. when teaching content changed, patch the active lesson if it belongs to that dependency, otherwise create and link a new prerequisite lesson; for intake or planning with no teaching content, do not invent a lesson;
-2. update canonical notation, terminology/ambiguity in `GLOSSARY.md`, source, Relation, Synthesis, Open Question, Code Map, or Run records affected by the exchange;
-3. update `CONCEPT-MAP.md` only for current canonical nodes/edges, `ROADMAP.md` only for phase ordering/targets/exit criteria/status, and `MISSION.md` only for mission targets and completion rows; change a Mission completion row only when target scope changes or linked Evidence satisfies its exact criterion;
-4. only if the learner supplied a response, self-report, or attempt, create and index the immutable Evidence record and record its prior-to-new snapshot transition;
-5. only when demonstrated weakness exists, add or update `REVIEW-QUEUE.md`, especially for recognition without reconstruction;
-6. atomically replace `CURRENT-STATE.md` with the exact new resume point and one next observable action, whether or not an Evidence record was created.
+1. Read the complete active Note, the exact `CURRENT-STATE.md` snapshot, and directly linked prerequisite or successor sections needed to understand the local flow.
+2. Find the first sentence, equation, proof step, or code operation whose understanding depends on the clarification. If the gap is a separate prerequisite dependency, create its own linked Note and plan a short bridge in the parent.
+3. Patch the leading `## Notation and conventions` section before content whenever the edit introduces a new symbol, decorated form, unit glyph, code identifier, or convention.
+4. Insert or replace teaching content at the conceptual dependency point. Rewrite both the transition into the clarification and the transition from it into the first downstream result.
+5. Remove obsolete pause or stuck wording, duplicate explanations, and local contradictions. Preserve the dated learner boundary in Evidence rather than leaving historical confusion inside the teaching argument.
+6. Repair derivation-step numbering, nearby terminology, source/provenance labels, equation or block references, prerequisite links, successor links, and the final checkpoint affected by the edit.
+7. Read continuously from the preceding established result through the first downstream result. Confirm that notation, assumptions, algebra, prose, and source labels now form one uninterrupted chain.
+8. Update canonical terminology/ambiguity in `GLOSSARY.md`, sources, Relations, Synthesis, Open Questions, Code Maps, or Run records affected by the exchange without duplicating canonical owners.
+9. Update `CONCEPT-MAP.md` only for current canonical nodes/edges, `ROADMAP.md` only for phase ordering/targets/exit criteria/status, and `MISSION.md` only for mission targets and completion rows. Only if the learner supplied a response, self-report, or attempt, create and index immutable Evidence; only when demonstrated weakness exists, update `REVIEW-QUEUE.md`.
+10. Atomically replace `CURRENT-STATE.md` with the exact new Note section or block link, last completed step, first unfinished implication, current obstacle, and one next observable action, whether or not Evidence was created.
 
 Canonical ownership is strict: lessons own teaching content and checks; `MISSION.md` owns mission targets and completion rows; `GLOSSARY.md` owns terminology definitions and ambiguity records; `CONCEPT-MAP.md` owns nodes and prerequisite edges; Evidence instances own historical learner evidence and evidence-caused state transitions; `CURRENT-STATE.md` owns only the live snapshot; `REVIEW-QUEUE.md` owns review state. Link stable IDs instead of copying history, graph definitions, Relation assumptions, or active-state data into lessons. Validate affected local links before ending the teaching turn.

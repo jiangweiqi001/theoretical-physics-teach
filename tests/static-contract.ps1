@@ -113,6 +113,7 @@ $requiredPaths = @(
     'tests/example-contract.ps1'
     'tests/scenarios/04-coherent-clarification-writeback.md'
     'tests/scenarios/05-conditional-code-explanation.md'
+    'tests/scenarios/06-chat-explanation-rendering.md'
 )
 
 foreach ($relativePath in $requiredPaths) {
@@ -274,27 +275,43 @@ foreach ($policyTarget in @(
     ) "$($policyTarget.Name) states: $mathDelimiterPolicy"
 }
 
-$chatMathBoundaryPolicy = 'Chat-delivered assessment prompts must not rely on inline LaTeX rendering.'
-$chatMathDefaultPolicy = 'For learner-facing chat prompts, use Unicode or plain text for short mathematics and reserve LaTeX for standalone display blocks.'
-$chatMathLabelPolicy = 'Keep prose and option labels outside display-math delimiters.'
-$chatMathFallbackPolicy = 'If displayed mathematics still fails to render, restate the complete unchanged item in Unicode or plain text without allocating a new Diagnostic ID.'
-$chatMathSessionPolicy = 'After any learner-reported rendering failure in the current chat, use Unicode or plain text for all later assessment mathematics in that chat unless the learner explicitly asks to retry LaTeX.'
-$chatMathIdentityPolicy = 'The canonical Note keeps Obsidian LaTeX; a chat fallback must not change the mathematics, option order, mastery criterion, or Evidence boundary.'
+$allChatMathBoundaryPolicy = 'All learner-facing conversational teaching must not rely on inline LaTeX rendering.'
+$canonicalArtifactExceptionPolicy = 'Canonical Notes, exact canonical patches, and response-only finished Note previews are canonical artifact payloads even when transported through chat; keep their Obsidian LaTeX unchanged.'
+$allChatMathDefaultPolicy = 'For conversational explanations, clarification answers, assessment prompts, feedback, progress summaries, and navigation, use Unicode or plain text for short mathematics and reserve LaTeX for necessary standalone display blocks.'
+$allChatMathNestingPolicy = 'Do not put LaTeX delimiters or commands in conversational headings, Markdown table cells, list labels, option labels, or Markdown link labels.'
+$allChatMathSessionPolicy = 'After any learner-reported rendering failure in the current chat, use no LaTeX delimiters or commands in later conversational mathematics unless the learner explicitly requests a LaTeX retry.'
+$allChatMathAuditPolicy = 'Before sending conversational mathematics, audit headings, prose, tables, lists, options, and links for inline delimiters or LaTeX commands.'
+$assessmentInheritancePolicy = 'Assessment prompts inherit the general conversational rendering procedure; they do not define a narrower exception.'
 
-Assert-Contract (
-    $skillText.Contains($chatMathBoundaryPolicy)
-) 'SKILL.md separates chat assessment rendering from canonical Note formatting'
-
-foreach ($chatMathPolicy in @(
-    $chatMathDefaultPolicy
-    $chatMathLabelPolicy
-    $chatMathFallbackPolicy
-    $chatMathSessionPolicy
-    $chatMathIdentityPolicy
+foreach ($chatMathSkillPolicy in @(
+    $allChatMathBoundaryPolicy
+    $canonicalArtifactExceptionPolicy
 )) {
     Assert-Contract (
-        $pedagogyText.Contains($chatMathPolicy)
-    ) "physics-pedagogy.md states chat-math policy: $chatMathPolicy"
+        $skillText.Contains($chatMathSkillPolicy)
+    ) "SKILL.md states all-chat rendering policy: $chatMathSkillPolicy"
+}
+
+foreach ($chatMathPedagogyPolicy in @(
+    $allChatMathDefaultPolicy
+    $allChatMathNestingPolicy
+    $allChatMathSessionPolicy
+    $allChatMathAuditPolicy
+    $assessmentInheritancePolicy
+)) {
+    Assert-Contract (
+        $pedagogyText.Contains($chatMathPedagogyPolicy)
+    ) "physics-pedagogy.md states all-chat rendering policy: $chatMathPedagogyPolicy"
+}
+
+foreach ($obsoleteNarrowPolicy in @(
+    'Chat-delivered assessment prompts must not rely on inline LaTeX rendering.'
+    'For learner-facing chat prompts, use Unicode or plain text for short mathematics and reserve LaTeX for standalone display blocks.'
+)) {
+    Assert-Contract (
+        -not $skillText.Contains($obsoleteNarrowPolicy) -and
+        -not $pedagogyText.Contains($obsoleteNarrowPolicy)
+    ) "runtime instructions omit obsolete assessment-only chat policy: $obsoleteNarrowPolicy"
 }
 
 $emDash = [char]0x2014

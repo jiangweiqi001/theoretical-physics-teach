@@ -23,8 +23,8 @@ function Add-Pass {
 }
 
 $scenarioFiles = @(Get-ChildItem -LiteralPath $scenarioDirectory -Filter '*.md' -File | Sort-Object Name)
-if ($scenarioFiles.Count -lt 5) {
-    Add-Failure 'at least five behavioral scenarios exist'
+if ($scenarioFiles.Count -lt 6) {
+    Add-Failure 'at least six behavioral scenarios exist'
 }
 
 foreach ($scenarioFile in $scenarioFiles) {

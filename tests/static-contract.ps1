@@ -169,6 +169,7 @@ Assert-Contract ([regex]::IsMatch($skillText, $noSkippedStepsPattern)) 'SKILL.md
 
 $lessonTemplate = Get-RepositoryText 'assets/templates/LESSON.md'
 $baselineTemplate = Get-RepositoryText 'assets/templates/BASELINE.md'
+$roadmapTemplate = Get-RepositoryText 'assets/templates/ROADMAP.md'
 $currentStateTemplate = Get-RepositoryText 'assets/templates/CURRENT-STATE.md'
 $learningRecordTemplate = Get-RepositoryText 'assets/templates/LEARNING-RECORD.md'
 $reviewQueueTemplate = Get-RepositoryText 'assets/templates/REVIEW-QUEUE.md'
@@ -202,6 +203,17 @@ $contextualPrerequisiteRecoveryPolicy = 'If a later non-trivial physics task rev
 $finalCheckpointHeading = 'End-of-Note checkpoint'
 $headingLinkPolicy = 'Use [[note#heading]] for section links and [[note#^block-id]] only when an exact equation or derivation step needs a stable deep link.'
 $codeEligibilityPolicy = 'Use corresponding implementation material only when it is official or author-associated open-source code at a pinned commit, a user-supplied immutable snapshot, or anchored pseudocode sufficient for the mapping.'
+$preCourseCoreMaterialPolicy = 'Before creating or teaching the first learner-facing lesson, inspect every available core material named in the Mission.'
+$preCourseRoadmapPolicy = 'Then write a provisional course main line and approximate sequence into `ROADMAP.md`.'
+
+Assert-Contract (
+    $skillText.Contains($preCourseCoreMaterialPolicy) -and
+    $skillText.Contains($preCourseRoadmapPolicy)
+) 'SKILL.md gates the first lesson on a provisional architecture pass across all available core materials'
+Assert-Contract (
+    $roadmapTemplate.Contains('## Provisional course main line') -and
+    $roadmapTemplate.Contains('## Approximate sequence')
+) 'ROADMAP.md provides canonical Markdown sections for the provisional main line and approximate sequence'
 
 foreach ($policyTarget in @(
     @{ Name = 'SKILL.md'; Text = $skillText }

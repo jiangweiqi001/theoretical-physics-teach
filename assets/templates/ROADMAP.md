@@ -4,6 +4,20 @@
 
 `ROADMAP.md` owns phase ordering, targets, exit criteria, and phase status. It never defines a prerequisite node or edge: reference stable Node IDs and Edge IDs owned by `CONCEPT-MAP.md`.
 
+## Provisional course main line
+
+Before the first learner-facing lesson, replace this paragraph with the provisional conceptual thread inferred after inspecting every available core material named in `MISSION.md`. Keep it explicitly provisional and source-grounded.
+
+{{PROVISIONAL_COURSE_MAIN_LINE}}
+
+## Approximate sequence
+
+Before the first learner-facing lesson, replace the schema row below with an approximate reading-and-lesson order. Every available core material named in `MISSION.md` must appear at least once. This is an initial route, not a commitment to additional milestones or periodic replanning.
+
+| Order | Core Source ID | Stable version key | Inspection anchor | Provisional role or topic |
+| --- | --- | --- | --- | --- |
+| {{ORDER}} | {{SOURCE_ID}} | {{STABLE_VERSION_KEY}} | {{OBSIDIAN_LINK}} | {{PROVISIONAL_ROLE_OR_TOPIC}} |
+
 ## Mastery levels
 
 - **Level 0 — Not yet demonstrated / insufficient evidence:** no positive mastery claim is supported yet.

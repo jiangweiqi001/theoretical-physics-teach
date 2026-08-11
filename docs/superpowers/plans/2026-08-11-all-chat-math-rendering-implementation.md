@@ -115,8 +115,8 @@ Replace the assessment-only changelog entry with an all-chat entry. Do not chang
 Run:
 
 ```powershell
-python -X utf8 scripts/check_markdown_links.py
-rg -n "assessment prompts use|聊天题干和选项|chat assessment" README.md README.zh-CN.md CHANGELOG.md
+python -X utf8 scripts/check_markdown_links.py README.md README.zh-CN.md CHANGELOG.md docs/architecture.md docs/walkthrough.md
+rg -n "Added a chat-math rendering boundary: assessment prompts use|Short mathematics in chat questions and options|聊天题干和选项" README.md README.zh-CN.md CHANGELOG.md
 git diff --check
 ```
 
@@ -158,7 +158,7 @@ Expected: every contract exits zero.
 ```powershell
 python -X utf8 -m unittest discover -s tests -v
 python -X utf8 C:/Users/25739/.codex/skills/.system/skill-creator/scripts/quick_validate.py .
-python -X utf8 scripts/check_markdown_links.py
+python -X utf8 scripts/check_markdown_links.py README.md README.zh-CN.md CHANGELOG.md docs/architecture.md docs/walkthrough.md
 python -X utf8 scripts/build_skill_package.py --output dist/theoretical-physics-teach-v0.4.0.zip
 ```
 

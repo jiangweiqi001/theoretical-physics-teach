@@ -5,7 +5,7 @@ All notable changes to `theoretical-physics-teach` are documented here.
 ## Unreleased
 
 - Added learner-aware assessment granularity: detached elementary algebra and routine symbolic manipulation can be skipped after an explicit learner preference, without turning the preference or skipped work into mastery evidence; later demonstrated blockers are repaired in context.
-- Added a chat-math rendering boundary: assessment prompts use Unicode/plain text or standalone display blocks with an unchanged plain-text fallback, while canonical Obsidian Notes retain native LaTeX.
+- Extended the chat-math rendering boundary to all conversational teaching: explanations, clarifications, feedback, progress, navigation, and assessments use renderer-safe mathematics, while canonical Notes, exact patches, and finished Note previews retain native Obsidian LaTeX.
 - Added paired strengths and practical boundaries for researchers to both public READMEs, clarifying how the Skill accelerates deep reading without compressing derivations or overstating source coverage, correctness, or execution evidence.
 
 ## v0.4.0 — 2026-08-11

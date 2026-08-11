@@ -101,6 +101,50 @@ if ($Section -in @('Publication', 'All')) {
         -not [regex]::IsMatch($readme, '(?i)\b(?:star|starring)\s+(?:this\s+|the\s+)?repository\b')
     ) 'README contains no repository-star request'
     Assert-Rebrand ($readme.Contains('actions/workflows/validate.yml/badge.svg')) 'README retains the validation badge'
+
+    $englishResearcherHeading = '## Strengths and practical boundaries for researchers'
+    Assert-Rebrand (
+        $readme.Contains('[Strengths and practical boundaries for researchers](#strengths-and-practical-boundaries-for-researchers)')
+    ) 'README navigation links the researcher strengths and boundaries section'
+    Assert-Rebrand ($readme.Contains($englishResearcherHeading)) 'README contains the researcher strengths and boundaries section'
+    foreach ($pairLabel in @(
+        'Prior research training',
+        'Source-faithful reading',
+        'Derivation depth',
+        'Cross-source reasoning',
+        'Durable learning state',
+        'Code-theory provenance'
+    )) {
+        Assert-Rebrand ($readme.Contains($pairLabel)) "README contains researcher pair: $pairLabel"
+    }
+    foreach ($boundary in @(
+        'registered source corpus',
+        'Persistent state is not a correctness guarantee',
+        'Without a canonical Run record',
+        'not from skipping the theory or shortening required derivations'
+    )) {
+        Assert-Rebrand ($readme.Contains($boundary)) "README states researcher boundary: $boundary"
+    }
+
+    $chineseResearcherTitle = ConvertFrom-CodePoints @(
+        0x9762, 0x5411, 0x7814, 0x7A76, 0x8005, 0x7684, 0x4F18, 0x52BF,
+        0x4E0E, 0x5B9E, 0x9645, 0x8FB9, 0x754C
+    )
+    $chineseResearcherHeading = '## ' + $chineseResearcherTitle
+    Assert-Rebrand (
+        $chineseReadme.Contains("[$chineseResearcherTitle](#$chineseResearcherTitle)")
+    ) 'Chinese README navigation links the researcher strengths and boundaries section'
+    Assert-Rebrand ($chineseReadme.Contains($chineseResearcherHeading)) 'Chinese README contains the researcher strengths and boundaries section'
+    $chineseSectionMatch = [regex]::Match(
+        $chineseReadme,
+        '(?ms)^' + [regex]::Escape($chineseResearcherHeading) + '\s*(.+?)(?=^##\s)'
+    )
+    Assert-Rebrand ($chineseSectionMatch.Success) 'Chinese researcher section has a bounded body'
+    if ($chineseSectionMatch.Success) {
+        $chineseTableRows = [regex]::Matches($chineseSectionMatch.Groups[1].Value, '(?m)^\|').Count
+        Assert-Rebrand ($chineseTableRows -ge 8) 'Chinese researcher section contains six paired table rows'
+        Assert-Rebrand ($chineseSectionMatch.Groups[1].Value.Contains('Run')) 'Chinese researcher section preserves the Run boundary'
+    }
 }
 
 if ($failures.Count -gt 0) { exit 1 }

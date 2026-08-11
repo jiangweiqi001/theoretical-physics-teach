@@ -4,6 +4,7 @@ All notable changes to `theoretical-physics-teach` are documented here.
 
 ## Unreleased
 
+- Added a chat-math rendering boundary: assessment prompts use Unicode/plain text or standalone display blocks with an unchanged plain-text fallback, while canonical Obsidian Notes retain native LaTeX.
 - Added paired strengths and practical boundaries for researchers to both public READMEs, clarifying how the Skill accelerates deep reading without compressing derivations or overstating source coverage, correctness, or execution evidence.
 
 ## v0.4.0 — 2026-08-11

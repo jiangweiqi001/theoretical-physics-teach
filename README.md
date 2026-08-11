@@ -272,6 +272,8 @@ Git material is anchored to an exact commit. Non-Git files, chat excerpts, and i
 
 Initial diagnosis, ordinary checks, and the end of every learner-facing Note default to one multiple-choice or true/false item at a time. Distractors are designed around specific misconceptions rather than filler, and the correct position is varied.
 
+Chat delivery and the canonical Note use different math-format boundaries. Short mathematics in chat questions and options is written with renderer-safe Unicode or plain text; longer expressions use standalone display blocks, and a learner-reported rendering failure triggers an unchanged plain-text restatement of the same pending item. Assessment mathematics then stays in Unicode/plain text for the rest of that chat unless the learner asks to retry LaTeX. The canonical Note still uses Obsidian-native `$...$` and `$$...$$` LaTeX, so chat compatibility never degrades the durable lesson.
+
 An option answer can locate a sign, convention, assumption, limiting case, or next-step boundary. It cannot by itself prove that the learner can reconstruct a derivation. When the target is a proof, calculation, cross-source translation, or implementation explanation, the skill follows with the smallest necessary produced-work task and records assisted work separately from unaided work.
 
 ## Validation

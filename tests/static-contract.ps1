@@ -255,6 +255,29 @@ foreach ($policyTarget in @(
     ) "$($policyTarget.Name) states: $mathDelimiterPolicy"
 }
 
+$chatMathBoundaryPolicy = 'Chat-delivered assessment prompts must not rely on inline LaTeX rendering.'
+$chatMathDefaultPolicy = 'For learner-facing chat prompts, use Unicode or plain text for short mathematics and reserve LaTeX for standalone display blocks.'
+$chatMathLabelPolicy = 'Keep prose and option labels outside display-math delimiters.'
+$chatMathFallbackPolicy = 'If displayed mathematics still fails to render, restate the complete unchanged item in Unicode or plain text without allocating a new Diagnostic ID.'
+$chatMathSessionPolicy = 'After any learner-reported rendering failure in the current chat, use Unicode or plain text for all later assessment mathematics in that chat unless the learner explicitly asks to retry LaTeX.'
+$chatMathIdentityPolicy = 'The canonical Note keeps Obsidian LaTeX; a chat fallback must not change the mathematics, option order, mastery criterion, or Evidence boundary.'
+
+Assert-Contract (
+    $skillText.Contains($chatMathBoundaryPolicy)
+) 'SKILL.md separates chat assessment rendering from canonical Note formatting'
+
+foreach ($chatMathPolicy in @(
+    $chatMathDefaultPolicy
+    $chatMathLabelPolicy
+    $chatMathFallbackPolicy
+    $chatMathSessionPolicy
+    $chatMathIdentityPolicy
+)) {
+    Assert-Contract (
+        $pedagogyText.Contains($chatMathPolicy)
+    ) "physics-pedagogy.md states chat-math policy: $chatMathPolicy"
+}
+
 $emDash = [char]0x2014
 $pendingSourceSentinel = "Unassigned $emDash supplied excerpt; snapshot registration pending"
 

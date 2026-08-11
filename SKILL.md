@@ -16,7 +16,8 @@ Use only materials the user supplies or explicitly places in scope. Do not brows
 - Do not create HTML, CSS, JavaScript, or browser-dependent lessons.
 - In canonical Notes and response-only Note previews, use this exact rule: Use $...$ for inline LaTeX and $$...$$ for display LaTeX.
 - Canonical Notes must not use backslash-parenthesis or backslash-bracket math delimiters.
-- Chat-delivered assessment prompts must not rely on inline LaTeX rendering. Apply the renderer-safe chat formatting and fallback rules in `references/physics-pedagogy.md` without changing the canonical Note.
+- All learner-facing conversational teaching must not rely on inline LaTeX rendering. Apply the renderer-safe chat formatting and fallback rules in `references/physics-pedagogy.md`.
+- Canonical Notes, exact canonical patches, and response-only finished Note previews are canonical artifact payloads even when transported through chat; keep their Obsidian LaTeX unchanged.
 - Preserve each source's notation. Translate through `NOTATION-CROSSWALK.md` and compare through canonical Relations and entries in `SYNTHESIS.md`; never silently normalize sources into one convention.
 - Ground material-dependent claims in supplied evidence and exact, reopenable anchors. Do not expand the available evidence from memory.
 - Resume from the recorded first unfinished equation, proof step, code operation, or conceptual obstacle. Do not restart or silently skip ahead.

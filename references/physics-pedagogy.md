@@ -25,6 +25,18 @@ Do not claim that a canonical record was created. All allocation instructions be
 
 If response-only delivery was not explicit, ask for the workspace and stop rather than silently downgrading a stateful course turn.
 
+## Chat delivery rendering contract
+
+Classify learner-facing output by artifact type before drafting. Canonical Notes, exact canonical patches, and response-only finished Note previews remain Obsidian-compatible artifact payloads even when chat transports them; preserve their `$...$` and `$$...$$` LaTeX exactly. Every other learner-facing response is conversational teaching.
+
+For conversational explanations, clarification answers, assessment prompts, feedback, progress summaries, and navigation, use Unicode or plain text for short mathematics and reserve LaTeX for necessary standalone display blocks. Use a display block only when Unicode or plain text would be ambiguous, materially incomplete, or unreadable; put its opening and closing delimiters on lines by themselves and keep all explanatory prose outside it.
+
+Do not put LaTeX delimiters or commands in conversational headings, Markdown table cells, list labels, option labels, or Markdown link labels. Do not use formula-heavy Markdown tables in chat; prefer prose or bullets and place any necessary standalone display block between items. Preserve source-local notation, indices, signs, and mathematical content: renderer adaptation changes presentation only. Link the canonical Note and summarize it conversationally instead of pasting a complete Note into an ordinary chat explanation.
+
+If the learner reports any uncompiled or unreadable chat mathematics, immediately restate the affected content completely in Unicode or plain text without changing the mathematical claim. After any learner-reported rendering failure in the current chat, use no LaTeX delimiters or commands in later conversational mathematics unless the learner explicitly requests a LaTeX retry. Keep canonical Note writeback in Obsidian LaTeX. A format correction is not a new learner attempt, performance opportunity, Diagnostic ID, Evidence record, or mastery advancement.
+
+Before sending conversational mathematics, audit headings, prose, tables, lists, options, and links for inline delimiters or LaTeX commands. Convert short mathematics to Unicode or plain text and move only unavoidable complex mathematics into standalone display blocks. After a learner-reported failure, verify that the conversational response contains no LaTeX delimiters or commands at all. This audit does not apply inside a clearly identified canonical Note, exact patch, or response-only finished Note preview.
+
 ## 2. Diagnose one dependency at a time
 
 Ask exactly one prerequisite question and test exactly one evidence category per diagnostic entry. Before asking, allocate a new Diagnostic ID in `BASELINE.md`, append its active index row, and create its keyed entry with the exact question. A learner saying "I do not know" locates the starting dependency; it is not failure.
@@ -88,7 +100,7 @@ For physics, explain the physical meaning of each important term, mechanism, and
 
 Every learner-facing Note ends with exactly one `## End-of-Note checkpoint` section. Do not place navigation, answer keys, appendices, or canonical-state dumps after it. Withhold the answer and feedback until the learner responds.
 
-Treat the canonical Note and the chat delivery as different rendering surfaces. For learner-facing chat prompts, use Unicode or plain text for short mathematics and reserve LaTeX for standalone display blocks. Keep prose and option labels outside display-math delimiters. If displayed mathematics still fails to render, restate the complete unchanged item in Unicode or plain text without allocating a new Diagnostic ID. After any learner-reported rendering failure in the current chat, use Unicode or plain text for all later assessment mathematics in that chat unless the learner explicitly asks to retry LaTeX. The canonical Note keeps Obsidian LaTeX; a chat fallback must not change the mathematics, option order, mastery criterion, or Evidence boundary. A format-only restatement is the same pending item, not a second attempt or a new performance opportunity.
+Assessment prompts inherit the general conversational rendering procedure; they do not define a narrower exception. A format-only restatement keeps the mathematics, option order, Diagnostic ID, mastery criterion, and Evidence boundary unchanged. It is the same pending item, not a second attempt or a new performance opportunity.
 
 For multiple choice, write three or four options that are parallel in grammar, comparable in length and specificity, independently plausible, and mutually exclusive. Map every distractor to a concrete misconception or missing prerequisite before asking. Vary the correct-option position across questions. Do not use trick wording, accidental grammatical agreement, a uniquely detailed correct answer, overlapping options, or `all of the above` / `none of the above` shortcuts. Use `cannot be determined from the supplied evidence` only when epistemic sufficiency is the target.
 

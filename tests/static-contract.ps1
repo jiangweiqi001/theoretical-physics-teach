@@ -194,6 +194,10 @@ $coherentWritebackPolicy = 'A coherent writeback must make the Note read as if t
 $detachedAppendixPolicy = 'Do not append a detached chat transcript or clarification appendix.'
 $optionDefaultPolicy = 'Multiple-choice or true/false is the default for initial diagnosis, end-of-Note checkpoints, and ordinary knowledge checks.'
 $recognitionBoundaryPolicy = 'Passing an option item alone does not establish reconstruction mastery.'
+$assessmentGranularityPolicy = 'Do not separately assess isolated elementary algebra or routine symbolic manipulation when it is below the learner''s established assessment granularity.'
+$highDiagnosticValuePolicy = 'Prefer prompts with high diagnostic value: physical interpretation, approximation validity, non-trivial derivation structure, source translation, cross-source comparison, or theory-to-code reasoning.'
+$assessmentPreferenceEvidencePolicy = 'Record an explicit learner assessment-granularity preference canonically, but do not treat that preference or a skipped low-level task as mastery evidence.'
+$contextualPrerequisiteRecoveryPolicy = 'If a later non-trivial physics task reveals an elementary operation as the actual blocking dependency, address and reassess it in context rather than reopening a detached drill.'
 $finalCheckpointHeading = 'End-of-Note checkpoint'
 $headingLinkPolicy = 'Use [[note#heading]] for section links and [[note#^block-id]] only when an exact equation or derivation step needs a stable deep link.'
 $codeEligibilityPolicy = 'Use corresponding implementation material only when it is official or author-associated open-source code at a pinned commit, a user-supplied immutable snapshot, or anchored pseudocode sufficient for the mapping.'
@@ -214,6 +218,21 @@ foreach ($policyTarget in @(
     Assert-Contract (
         $policyTarget.Text.Contains($recognitionBoundaryPolicy)
     ) "$($policyTarget.Name) separates recognition from reconstruction"
+}
+
+Assert-Contract (
+    $skillText.Contains($assessmentGranularityPolicy)
+) 'SKILL.md skips detached elementary assessment below established learner granularity'
+
+foreach ($assessmentPolicy in @(
+    $assessmentGranularityPolicy
+    $highDiagnosticValuePolicy
+    $assessmentPreferenceEvidencePolicy
+    $contextualPrerequisiteRecoveryPolicy
+)) {
+    Assert-Contract (
+        $pedagogyText.Contains($assessmentPolicy)
+    ) "physics-pedagogy.md states learner-aware assessment policy: $assessmentPolicy"
 }
 
 $levelTwoHeadings = [regex]::Matches($lessonTemplate, '(?m)^##[ \t]+([^\r\n]+)')

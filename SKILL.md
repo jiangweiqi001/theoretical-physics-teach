@@ -23,6 +23,7 @@ Use only materials the user supplies or explicitly places in scope. Do not brows
 - A coherent writeback must make the Note read as if the clarification had been designed in place from the start.
 - Do not append a detached chat transcript or clarification appendix.
 - Multiple-choice or true/false is the default for initial diagnosis, end-of-Note checkpoints, and ordinary knowledge checks.
+- Do not separately assess isolated elementary algebra or routine symbolic manipulation when it is below the learner's established assessment granularity.
 - Passing an option item alone does not establish reconstruction mastery.
 - There is no Note length cap.
 - No skipped calculation or logic steps.

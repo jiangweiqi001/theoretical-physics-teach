@@ -4,7 +4,7 @@ All notable changes to `theoretical-physics-teach` are documented here.
 
 ## Unreleased
 
-No unreleased changes.
+- Added paired strengths and practical boundaries for researchers to both public READMEs, clarifying how the Skill accelerates deep reading without compressing derivations or overstating source coverage, correctness, or execution evidence.
 
 ## v0.4.0 — 2026-08-11
 

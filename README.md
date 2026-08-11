@@ -16,6 +16,7 @@ Codex does not activate the skill automatically because `agents/openai.yaml` dis
 
 - [Five-minute start](#five-minute-start)
 - [Why this skill exists](#why-this-skill-exists)
+- [Strengths and practical boundaries for researchers](#strengths-and-practical-boundaries-for-researchers)
 - [What happens when you say “this step is unclear”](#what-happens-when-you-say-this-step-is-unclear)
 - [Installation](#installation)
 - [Workspace artifacts](#workspace-artifacts)
@@ -78,6 +79,21 @@ This skill is primarily for students, independent learners, and researchers who 
 - connect equations and approximations to supplied pseudocode or research code without inventing execution results.
 
 This project is for theoretical physics only. Formal tools, theorem statements, and proof steps are developed when a physical argument requires them; they are not presented as a separate curriculum or audience. This is not a quick paper-summarization skill.
+
+## Strengths and practical boundaries for researchers
+
+For a researcher entering another theoretical-physics subfield through deep paper reading, the useful feature is not artificial compression. It is the removal of repeated orientation work while the full theoretical chain remains inspectable.
+
+| Strength | Practical boundary |
+| --- | --- |
+| **Prior research training.** A one-dependency-at-a-time diagnosis can reuse demonstrated field-theory, many-body, analytical, or computational background instead of reteaching it. | Background self-report guides the route but is not mastery evidence. A capability is treated as demonstrated only when the corresponding observable task supports it. |
+| **Source-faithful reading.** Source-local notation, conventions, version keys, and exact anchors make it possible to follow an unfamiliar paper without silently rewriting it into a generic house notation. | The Skill can be only as complete as the registered source corpus. It does not guarantee that the supplied papers cover the whole subfield or represent every current viewpoint. |
+| **Derivation depth.** Intermediate algebra, transforms, sums, limits, assumptions, and physical checks remain available for reconstruction. | This is not an instant-summary workflow. Required steps are not removed merely to create a faster-looking answer. |
+| **Cross-source reasoning.** Notation crosswalks and qualified Relations expose when two sources agree, differ by convention, use different approximations, or genuinely conflict. | The Skill does not manufacture consensus. A conflict remains unresolved until anchored evidence establishes the assumptions, regime, or correction that resolves it. |
+| **Durable learning state.** Exact resume links and coherent in-place clarification writeback prevent repeated explanations and lost stopping points across sessions. | Persistent state is not a correctness guarantee. Source checking, independent calculation, physical judgment, and expert review remain necessary. |
+| **Code-theory provenance.** When trustworthy corresponding material exists, equations, approximations, discretization, physical quantities, code variables, and outputs can be traced together. | Without a canonical Run record and inspected output, the Skill makes no claim that code executed, agreed with theory, or converged. |
+
+The speed comes from avoiding repeated orientation, notation loss, and reteaching—not from skipping the theory or shortening required derivations.
 
 ## What it does
 
